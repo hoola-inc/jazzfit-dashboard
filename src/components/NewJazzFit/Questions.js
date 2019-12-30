@@ -101,6 +101,7 @@ export default class Questions extends Component {
       answerText: this.state.answerText,
       wellnessType: this.state.wellnessType,
       answerWeightage: this.state.answerWeightage,
+      serialNumber : this.state.myarray.length,
       totalAttempt: 1
     };
 
@@ -151,7 +152,7 @@ export default class Questions extends Component {
       "Content-Type": "application/json",
       "x-access-token": this.state.jwtToken
     };
-    if (this.state.myarray.length == 20) {
+    if (this.state.myarray.length === 20) {
       this.enterIconLoading();
       axios
         .post("https://jazzfit-api.herokuapp.com/qa", this.state.myarray, {
@@ -277,7 +278,6 @@ export default class Questions extends Component {
                   </Col>
                 </Row>
                
-
                 <Divider style={{ margin: "0 0 0 0" }}></Divider>
                 <Row>
                   <Col span={12}>
@@ -518,7 +518,7 @@ export default class Questions extends Component {
                             //   this.props.myNext1(1)
                             //   this.onSectionChanged()}}
                           >
-                            {this.state.myarray.length >= 19
+                            {this.state.myarray.length > 19
                               ? "Finish"
                               : "Next Question"}
                           </Button>
@@ -1033,7 +1033,7 @@ const stArray = [
         ]
       },
       {
-        question: "I spend enough time with my family",
+        question: "I don't spend enough time with my family",
         answers: [
           {
             answer: "No",

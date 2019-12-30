@@ -10,6 +10,10 @@ import ProCharts from "../charts/ProCharts";
 import SvgChart from "../charts/SvgChart";
 import { renderToString } from "react-dom/server";
 import PDF, { Text, AddPage, Line, Image, Table, Html } from "jspdf-react";
+import physical from "../drawables/physical.png";
+import mental from "../drawables/mental.png";
+import emotional from "../drawables/emotional.png";
+import social from "../drawables/social.png";
 const monthNames = [
   "January",
   "February",
@@ -75,6 +79,7 @@ const Prints = () => (
                 <Col span={12}>
                   <h1>Physical Wellness</h1>
                 </Col>
+
                 <Divider
                   style={{
                     background: "##FFC20E",
@@ -110,6 +115,7 @@ const Prints = () => (
                 <Col span={12}>
                   <h1>Emotional Wellness</h1>
                 </Col>
+
                 <Divider
                   style={{
                     background: "##FFC20E",
@@ -453,14 +459,19 @@ class Summary extends React.Component {
               {/* Physical Card */}
               <Col xs={{ span: 20, offset: 1 }} lg={{ span: 10, offset: 1 }}>
                 <Row gutter={[48, 48]}>
+                  <Col xs={{ span: 4 }} lg={{ span: 2 }}>
+                    <Avatar src={physical} />
+                  </Col>
                   <Col span={12}>
                     <h1 className="font-weight-sixteen">Physical Wellness</h1>
                   </Col>
+
                   <Divider
                     style={{
                       background: "##FFC20E",
                       borderradius: "3px",
-                      height: "3px"
+                      height: "3px",
+                      marginTop: "5%"
                     }}
                   ></Divider>
                   <Row gutter={24}>
@@ -537,14 +548,19 @@ class Summary extends React.Component {
               {/* Emotional Wellness start here */}
               <Col xs={{ span: 20, offset: 1 }} lg={{ span: 10, offset: 2 }}>
                 <Row gutter={[12, 24]}>
+                  <Col xs={{ span: 4 }} lg={{ span: 2 }}>
+                    <Avatar src={emotional} />
+                  </Col>
                   <Col span={12}>
                     <h1 className="font-weight-sixteen">Emotional Wellness</h1>
                   </Col>
+
                   <Divider
                     style={{
                       background: "##FFC20E",
                       borderradius: "3px",
-                      height: "3px"
+                      height: "3px",
+                      marginTop: "5%"
                     }}
                   ></Divider>
                   <Row gutter={24}>
@@ -622,14 +638,19 @@ class Summary extends React.Component {
               {/* Mental Card */}
               <Col xs={{ span: 20, offset: 1 }} lg={{ span: 10, offset: 1 }}>
                 <Row gutter={[12, 24]}>
+                  <Col xs={{ span: 4 }} lg={{ span: 2 }}>
+                    <Avatar src={mental} />
+                  </Col>
                   <Col span={12}>
                     <h1 className="font-weight-sixteen">Mental Wellness</h1>
                   </Col>
+
                   <Divider
                     style={{
                       background: "##FFC20E",
                       borderradius: "3px",
-                      height: "3px"
+                      height: "3px",
+                      marginTop: "5%"
                     }}
                   ></Divider>
                   <Row gutter={24}>
@@ -706,14 +727,19 @@ class Summary extends React.Component {
               {/* Social Wellness start here */}
               <Col xs={{ span: 20, offset: 1 }} lg={{ span: 10, offset: 2 }}>
                 <Row gutter={[12, 24]}>
+                  <Col xs={{ span: 4 }} lg={{ span: 2 }}>
+                    <Avatar src={social} />
+                  </Col>
                   <Col span={12}>
                     <h1 className="font-weight-sixteen">Social Wellness</h1>
                   </Col>
+
                   <Divider
                     style={{
                       background: "##FFC20E",
                       borderradius: "3px",
-                      height: "3px"
+                      height: "3px",
+                      marginTop: "5%"
                     }}
                   ></Divider>
                   <Row gutter={24}>
