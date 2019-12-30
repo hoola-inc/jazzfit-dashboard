@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "jazzf-6874f",
+    "staging": "jazzfit-staging"
+  }
+}
