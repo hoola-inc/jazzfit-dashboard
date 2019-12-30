@@ -4,7 +4,16 @@ import axios from "axios";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "../MyCSS/MyCss.css";
-import { Layout, Row, Col, Button, Divider, Avatar, Progress } from "antd";
+import {
+  Layout,
+  Row,
+  Col,
+  Button,
+  Divider,
+  Avatar,
+  Progress,
+  Collapse
+} from "antd";
 import SummaryCard from "./ReportCards/SummaryCard";
 import ProCharts from "../charts/ProCharts";
 import SvgChart from "../charts/SvgChart";
@@ -14,6 +23,7 @@ import physical from "../drawables/physical.png";
 import mental from "../drawables/mental.png";
 import emotional from "../drawables/emotional.png";
 import social from "../drawables/social.png";
+const { Panel } = Collapse;
 const monthNames = [
   "January",
   "February",
@@ -531,7 +541,23 @@ class Summary extends React.Component {
                                 </Row>
                                 <Row gutter={24}>
                                   <Col span={24}>
-                                    <Button type="link">Read More</Button>
+                                    <Collapse bordered={false}>
+                                      <Panel
+                                        showArrow={false}
+                                        header="Read More"
+                                        type="link"
+                                      >
+                                        {physical.recommendation.map(
+                                          (data, index) => {
+                                            return (
+                                              <div>
+                                                <p>{data.detail}</p>
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </Panel>
+                                    </Collapse>
                                   </Col>
                                 </Row>
                               </div>
@@ -610,17 +636,34 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      Sleep is essential for your physical
+                                      {emotional.recommendation[0].detail}
+                                      {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
                                       a few tips that can help you get good
-                                      sleep.
+                                      sleep. */}
                                     </h3>
                                   </Col>
                                 </Row>
                                 <Row gutter={24}>
                                   <Col span={24}>
-                                    <Button type="link">Read More</Button>
+                                    <Collapse bordered={false}>
+                                      <Panel
+                                        showArrow={false}
+                                        header="Read More"
+                                        type="link"
+                                      >
+                                        {emotional.recommendation.map(
+                                          (data, index) => {
+                                            return (
+                                              <div>
+                                                <p>{data.detail}</p>
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </Panel>
+                                    </Collapse>
                                   </Col>
                                 </Row>
                               </div>
@@ -700,17 +743,34 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      Sleep is essential for your physical
+                                      {mental.recommendation[0].detail}
+                                      {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
                                       a few tips that can help you get good
-                                      sleep.
+                                      sleep. */}
                                     </h3>
                                   </Col>
                                 </Row>
                                 <Row gutter={24}>
                                   <Col span={24}>
-                                    <Button type="link">Read More</Button>
+                                    <Collapse bordered={false}>
+                                      <Panel
+                                        showArrow={false}
+                                        header="Read More"
+                                        type="link"
+                                      >
+                                        {mental.recommendation.map(
+                                          (data, index) => {
+                                            return (
+                                              <div>
+                                                <p>{data.detail}</p>
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </Panel>
+                                    </Collapse>
                                   </Col>
                                 </Row>
                               </div>
@@ -789,17 +849,35 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      Sleep is essential for your physical
+                                      {social.recommendation[0].detail}
+                                      {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
                                       a few tips that can help you get good
-                                      sleep.
+                                      sleep. */}
                                     </h3>
                                   </Col>
                                 </Row>
                                 <Row gutter={24}>
                                   <Col span={24}>
-                                    <Button type="link">Read More</Button>
+                                    <Collapse bordered={false}>
+                                      <Panel
+                                        showArrow={false}
+                                        header="Read More"
+                                        type="link"
+                                      >
+                                        {social.recommendation.map(
+                                          (data, index) => {
+                                            return (
+                                              <div>
+                                                <p>{data.detail}</p>
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </Panel>
+                                    </Collapse>
+                                    {/* <Button type="link">Read More</Button> */}
                                   </Col>
                                 </Row>
                               </div>
