@@ -531,7 +531,7 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      {physical.recommendation[0].detail}
+                                      {physical.recommendationTitle}
                                       {/* Sleep is essential for your physical
                                   wellbeing. On-going sleep deficiency can add
                                   to your stress and anxieties. Here are a few
@@ -636,7 +636,7 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      {emotional.recommendation[0].detail}
+                                      {emotional.recommendationTitle}
                                       {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
@@ -743,7 +743,7 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      {mental.recommendation[0].detail}
+                                      {mental.recommendationTitle}
                                       {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
@@ -849,7 +849,7 @@ class Summary extends React.Component {
                                 <Row gutter={24}>
                                   <Col span={24}>
                                     <h3>
-                                      {social.recommendation[0].detail}
+                                      {social.recommendationTitle}
                                       {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
