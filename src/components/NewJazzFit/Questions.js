@@ -163,27 +163,42 @@ export default class Questions extends Component {
           if (response.status === 200) {
             this.onPatchAttempt();
           } else {
-            message.warning("There is some error please refill questionnaire");
+            Swal.fire(
+              "",
+              "There is an error kindly refill the survey !",
+              "error"
+            );
             this.setState({
               section: 0,
-              page: 1
+              page: 1,
+              myarray : this.state.myarray.splice(0,this.state.myarray.length)
             });
           }
         })
         .catch(error => {
           //console.log("error", error.message);
           this.state.myarray.splice(this.state.myarray.length - 1, 1);
-          message.warning("There is some error please refill questionnaire");
+          Swal.fire(
+            "",
+            "There is an error kindly refill the survey !",
+            "error"
+          );
           this.setState({
             section: 0,
-            page: 1
+            page: 1,
+            myarray : this.state.myarray.splice(0,this.state.myarray.length)
           });
         });
     } else {
-      message.warning("There is some error please refill questionnaire");
+      Swal.fire(
+        "",
+        "There is an error kindly refill the survey !",
+        "error"
+      );
       this.setState({
         section: 0,
-        page: 1
+        page: 1,
+        myarray : this.state.myarray.splice(0,this.state.myarray.length)
       });
       // console.log("array ", this.state.myarray);
       // this.enterIconLoading();

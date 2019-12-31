@@ -38,197 +38,103 @@ const monthNames = [
   "November",
   "December"
 ];
+let OverAllText = "";
+let anArr = [];
+let PhysicalText = "";
+let PhysicalScore = 0;
+let PhysicalArr = [];
 
 const Prints = () => (
   <div>
-    <Layout className="App">
-      {/* <Header /> */}
-      <Layout style={{ marginTop: "5%", padding: "0% 3%", background: "#fff" }}>
-        <div style={{ background: "#fff" }}>
+    <Layout style={{ marginTop: "5%", padding: "0% 3%", background: "#fff" }}>
+      <div style={{ background: "#fff" }}>
+        <Row gutter={24}>
+          <Col span={6} offset={1} style={{ padding: "0% 1%" }}>
+            Summary {monthNames[new Date().getMonth()]} {new Date().getDate()} ,{" "}
+            {new Date().getFullYear()}
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={6} style={{ padding: "0% 1%" }}>
+            <h3> Employee Name : Adeel</h3> <h3> Department : Hoola Dev</h3>
+          </Col>
+        </Row>
+        <div style={{ margin: "1% 4% 0% 4%" }} className=" box-shadow">
           <Row gutter={24}>
-            <Col span={6} offset={1} style={{ padding: "0% 1%" }}>
-              Summary {monthNames[new Date().getMonth()]} {new Date().getDate()}{" "}
-              , {new Date().getFullYear()}
+            <Col span={12} offset={1}>
+              <h1 style={{ marginTop: "1.2%" }}> OverAll Score </h1>
             </Col>
           </Row>
-          <div style={{ margin: "1% 4% 0% 4%" }} className=" box-shadow">
-            <Row gutter={24}>
-              <Col span={12} offset={1}>
-                <h1 style={{ marginTop: "1.2%" }}> OverAll Score</h1>
-              </Col>
-            </Row>
-            <Row gutter={24}>
-              <Col span={14} offset={1}>
-                <Divider style={{ marginLeft: "-7.3%" }}></Divider>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={3} offset={1}>
-                {/* TO DO charts */}
-                {/* <ProCharts /> */}
-              </Col>
-              <Col span={12}>
-                Your wellbeing needs attention; Some dimensions of your life
-                need to be worked on. Without addressing them, you may have to
-                face adverse consequences related to health, stress, anxiety,
-                relationships and self-image. Please read the summary of your
-                results and make use of the recommendations provided.
-              </Col>
-            </Row>
-            <Row>
-              <Col span={2} offset={1} style={{ marginTop: "20px" }}>
-                You are in the 87th percentile and your score ranks 22nd.
-              </Col>
-            </Row>
-          </div>
-          {/* Summary Cards */}
-          <Row gutter={24} style={{ marginTop: "2%" }}>
-            {/* Physical Card */}
-            <Col span={10} offset={1}>
-              <Row gutter={[48, 48]}>
-                <Col span={12}>
-                  <h1>Physical Wellness</h1>
-                </Col>
-
-                <Divider
-                  style={{
-                    background: "##FFC20E",
-                    borderradius: "3px",
-                    height: "3px"
-                  }}
-                ></Divider>
-                <Row gutter={24}>
-                  <Col span={12}>
-                    You are good at managing your emotional wellbeing; however,
-                    there are areas which need your immediate attention. Little
-                    changes can lead to a much better and productive lifestyle.
-                  </Col>
-                  <Col span={6} offset={2}>
-                    <Progress
-                      type="circle"
-                      percent={75}
-                      strokeColor="#F00"
-                      width="100px"
-                      style={{ margin: "20px" }}
-                    />
-                  </Col>
-                  <Divider></Divider>
-                </Row>
-                {/* first  */}
-                {/* <SummaryCard /> */}
-              </Row>
-            </Col>
-
-            {/* Emotional Wellness start here */}
-            <Col span={10} offset={2}>
-              <Row gutter={[12, 24]}>
-                <Col span={12}>
-                  <h1>Emotional Wellness</h1>
-                </Col>
-
-                <Divider
-                  style={{
-                    background: "##FFC20E",
-                    borderradius: "3px",
-                    height: "3px"
-                  }}
-                ></Divider>
-                <Row gutter={24}>
-                  <Col span={12}>
-                    You are good at managing your emotional wellbeing; however,
-                    there are areas which need your immediate attention. Little
-                    changes can lead to a much better and productive lifestyle.
-                  </Col>
-                  <Col span={6} offset={2}>
-                    <Progress
-                      type="circle"
-                      percent={75}
-                      strokeColor="#0F0"
-                      width="100px"
-                      style={{ margin: "20px" }}
-                    />
-                  </Col>
-                  <Divider></Divider>
-                </Row>
-                {/* first  */}
-                {/* <SummaryCard /> */}
-              </Row>
+          <Row gutter={24}>
+            <Col span={14} offset={1}>
+              <Divider style={{ marginLeft: "-7.3%" }}></Divider>
             </Col>
           </Row>
-          <Row gutter={24} style={{ marginTop: "2%" }}>
-            {/* Mental Card */}
-            <Col span={10} offset={1}>
-              <Row gutter={[12, 24]}>
-                <Col span={12}>
-                  <h1>Mental Wellness</h1>
-                </Col>
-                <Divider
-                  style={{
-                    background: "##FFC20E",
-                    borderradius: "3px",
-                    height: "3px"
-                  }}
-                ></Divider>
-                <Row gutter={24}>
-                  <Col span={12}>
-                    You are good at managing your emotional wellbeing; however,
-                    there are areas which need your immediate attention. Little
-                    changes can lead to a much better and productive lifestyle.
-                  </Col>
-                  <Col span={6} offset={2}>
-                    <Progress
-                      type="circle"
-                      percent={75}
-                      strokeColor="#0F0"
-                      width="100px"
-                      style={{ margin: "20px" }}
-                    />
-                  </Col>
-                  <Divider></Divider>
-                </Row>
-                {/* first  */}
-                {/* <SummaryCard /> */}
-              </Row>
+          <Row>
+            <Col span={3} offset={1}>
+              {/* TO DO charts */}
+              {/* <ProCharts /> */}
             </Col>
-
-            {/* Social Wellness start here */}
-            <Col span={10} offset={2}>
-              <Row gutter={[12, 24]}>
-                <Col span={12}>
-                  <h1>Social Wellness</h1>
-                </Col>
-                <Divider
-                  style={{
-                    background: "##FFC20E",
-                    borderradius: "3px",
-                    height: "3px"
-                  }}
-                ></Divider>
-                <Row gutter={24}>
-                  <Col span={12}>
-                    You are good at managing your emotional wellbeing; however,
-                    there are areas which need your immediate attention. Little
-                    changes can lead to a much better and productive lifestyle.
-                  </Col>
-                  <Col span={12}>
-                    <Progress
-                      type="circle"
-                      percent={75}
-                      strokeColor="#00F"
-                      width="100px"
-                      style={{ margin: "20px" }}
-                    />
-                  </Col>
-                  <Divider></Divider>
-                </Row>
-                {/* first  */}
-                {/* <SummaryCard /> */}
-              </Row>
+            <Col span={12}>
+              {anArr.map(brand => (
+                <p>{brand}</p>
+              ))}
             </Col>
           </Row>
         </div>
-      </Layout>
-      <div style={{ marginBottom: "5%" }}></div>
+      </div>
+    </Layout>
+  </div>
+);
+
+const PhysicalWell = () => <div></div>;
+
+const PageTwo = () => (
+  <div>
+    <Layout>
+      <Row gutter={24} style={{ marginTop: "2%" }}>
+        {/* Physical Card */}
+        <Col xs={{ span: 20, offset: 1 }} lg={{ span: 10, offset: 1 }}>
+          <Row gutter={[48, 48]}>
+            <Col xs={{ span: 4 }} lg={{ span: 2 }}></Col>
+            <Col span={12}>
+              <h1 className="font-weight-sixteen">Physical Wellness</h1>
+              <Col span={6}>
+                <Progress
+                  type="circle"
+                  percent={PhysicalScore}
+                  strokeColor="#1da336"
+                  strokeWidth="7"
+                  width="100px"
+                  style={{ margin: "0px 10px 10px 30px" }}
+                />
+              </Col>
+            </Col>
+
+            <Divider
+              style={{
+                background: "##FFC20E",
+                borderradius: "3px",
+                height: "3px",
+                marginTop: "5%"
+              }}
+            ></Divider>
+            <Row gutter={24}>
+              <Col
+                xs={{ span: 12 }}
+                lg={{ span: 18 }}
+                className="font-size-small"
+              >
+                {PhysicalArr.map(brand => (
+                  <p>{brand}</p>
+                ))}
+              </Col>
+
+              <Divider></Divider>
+            </Row>
+          </Row>
+        </Col>
+      </Row>
     </Layout>
   </div>
 );
@@ -249,15 +155,34 @@ class Summary extends React.Component {
       iconLoading: false
     };
   }
+  addNewlines = str => {
+    var result = "";
+    while (str.length > 0) {
+      result += str.substring(0, 200) + "<br />";
+      str = str.substring(200);
+    }
+    return result;
+  };
 
   print = () => {
-    const string = renderToString(<Prints />);
-    const pdf = new jsPDF("p", "mm", "a4");
+    OverAllText = "" + this.state.totalScore.totalWellnessText;
+    anArr = OverAllText.match(/.{1,106}/g);
+    PhysicalText = "" + this.state.totalScore.physicalWellnessText;
+    PhysicalScore = this.state.totalScore.physicalScore;
+    PhysicalArr = PhysicalText.match(/.{1,106}/g);
 
+    const string = renderToString(<Prints />);
+    const physical = renderToString(<PageTwo />);
+
+    const pdf = new jsPDF("p", "mm", "a4");
     pdf.fromHTML(string);
     pdf.addPage();
-    pdf.fromHTML(string);
+    pdf.fromHTML(physical);
     pdf.save("pdf");
+  };
+
+  showConsole = str => {
+    console.log(str);
   };
 
   componentDidMount() {
@@ -848,14 +773,7 @@ class Summary extends React.Component {
                               <div>
                                 <Row gutter={24}>
                                   <Col span={24}>
-                                    <h3>
-                                      {social.recommendationTitle}
-                                      {/* Sleep is essential for your physical
-                                      wellbeing. On-going sleep deficiency can
-                                      add to your stress and anxieties. Here are
-                                      a few tips that can help you get good
-                                      sleep. */}
-                                    </h3>
+                                    <h3>{social.recommendationTitle}</h3>
                                   </Col>
                                 </Row>
                                 <Row gutter={24}>
