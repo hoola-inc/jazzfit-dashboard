@@ -63,8 +63,9 @@ export default class Settings extends Component {
   }
 
   componentDidMount() {
-    const empId = localStorage.getItem("empID");
-    this.checkEmp(empId);
+    const empid = localStorage.getItem("empID");
+    this.setState({empId : empid});
+    this.checkEmp(empid);
   }
   handlePreview = file => {
     this.setState({
@@ -167,7 +168,7 @@ export default class Settings extends Component {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl =>
         this.setState({
-          imageUrl,
+          imageUrl:imageUrl,
           loading: false
         })
       );
@@ -180,13 +181,13 @@ export default class Settings extends Component {
     var fd = new FormData();
 
     fd.set("weight", this.state.weight);
-    if (this.state.fileList[0] >= 0) {
+    // if (this.state.fileList[0] >= 0) {
       fd.append(
         "empImage",
         this.state.fileList[0].originFileObj,
         this.state.fileList[0].originFileObj.name
       );
-    }
+    // }
     console.log("value of fd ", fd + "emp isd " + this.state.empID);
 
     try {

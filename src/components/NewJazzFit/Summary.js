@@ -43,6 +43,7 @@ let anArr = [];
 let PhysicalText = "";
 let PhysicalScore = 0;
 let PhysicalArr = [];
+let PhysicalDataArr = [];
 
 const Prints = () => (
   <div>
@@ -53,11 +54,15 @@ const Prints = () => (
             Summary {monthNames[new Date().getMonth()]} {new Date().getDate()} ,{" "}
             {new Date().getFullYear()}
           </Col>
+          <Divider>
+            _______________________________________________________________________________________________
+          </Divider>
         </Row>
+        <div style={{ marginTop: "64px" }}></div>
         <Row gutter={24}>
-          <Col span={6} style={{ padding: "0% 1%" }}>
+          {/* <Col span={6} style={{ padding: "0% 1%" }}>
             <h3> Employee Name : Adeel</h3> <h3> Department : Hoola Dev</h3>
-          </Col>
+          </Col> */}
         </Row>
         <div style={{ margin: "1% 4% 0% 4%" }} className=" box-shadow">
           <Row gutter={24}>
@@ -80,14 +85,15 @@ const Prints = () => (
                 <p>{brand}</p>
               ))}
             </Col>
+            <Divider>
+              _______________________________________________________________________________________________
+            </Divider>
           </Row>
         </div>
       </div>
     </Layout>
   </div>
 );
-
-const PhysicalWell = () => <div></div>;
 
 const PageTwo = () => (
   <div>
@@ -130,7 +136,61 @@ const PageTwo = () => (
                 ))}
               </Col>
 
-              <Divider></Divider>
+              <Divider>
+                _______________________________________________________________________________________________
+              </Divider>
+              {PhysicalDataArr.map((physical, index) => {
+                return (
+                  <div>
+                    <div>
+                      <div
+                        className="box-shadow"
+                        style={{
+                          marginTop: "20px",
+                          padding: "2% 0% 2% 2%"
+                        }}
+                      >
+                        <Row gutter={24}>
+                          <Col span={23}>
+                            <h1 className="font-weight-sixteen">
+                              {physical.question}
+                            </h1>
+                            <h1 className="font-weight-sixteen">
+                              ANS: {physical.answer}
+                            </h1>
+                            <Divider></Divider>
+                          </Col>
+                        </Row>
+                        {physical.recommendation.length === 0 ? (
+                          "Great Job"
+                        ) : (
+                          <div>
+                            <Row gutter={24}>
+                              <Col span={24}>
+                                <h3>Recommendations</h3>
+                                <h3>
+                                  {physical.recommendationTitle}
+                                  {/* Sleep is essential for your physical
+                                  wellbeing. On-going sleep deficiency can add
+                                  to your stress and anxieties. Here are a few
+                                  tips that can help you get good sleep. */}
+                                </h3>
+                                {physical.recommendation.map((data, index) => {
+                                  return (
+                                    <div>
+                                      <p>{data.detail}</p>
+                                    </div>
+                                  );
+                                })}
+                              </Col>
+                            </Row>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </Row>
           </Row>
         </Col>
@@ -139,6 +199,41 @@ const PageTwo = () => (
   </div>
 );
 
+const PageThree = () => (
+  <body>
+    <div className="pdf-container">
+      <div className="pdf-text">
+        <span style ={{ fontWeight: "600"}}>Physical Wellness</span>
+      </div>
+      <div className="pdf-para">
+        <div className="para">
+          <span>
+            You are not managing your physical wellbeing; certain aspects of
+            your life need to be addressed soon or your energy will further drop
+            which will likely lead to adverse consequences for your health and
+            social life. To improve your physical wellbeing, follow the
+            recommendations below.
+          </span>
+        </div>
+        <div className="img">
+          <span>IMAGE</span>
+        </div>
+      </div>
+      <div className="pdf-sleep">
+        <div className="sleep-heading">
+          <span>Sleep</span>
+        </div>
+        <div className="sleep-text">
+          <span>
+            Sleep is essential for your physical wellbeing. On-going sleep
+            deficiency can add to your stress and anxieties. Here are a few tips
+            that can help you get good sleep.
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+);
 class Summary extends React.Component {
   constructor(props) {
     super(props);
@@ -169,15 +264,23 @@ class Summary extends React.Component {
     anArr = OverAllText.match(/.{1,106}/g);
     PhysicalText = "" + this.state.totalScore.physicalWellnessText;
     PhysicalScore = this.state.totalScore.physicalScore;
-    PhysicalArr = PhysicalText.match(/.{1,106}/g);
-
+    PhysicalArr = PhysicalText.match(/.{1,100}/g);
+    PhysicalDataArr = this.state.physicalData;
     const string = renderToString(<Prints />);
     const physical = renderToString(<PageTwo />);
 
+    const pThree = renderToString(<PageThree />);
+
     const pdf = new jsPDF("p", "mm", "a4");
-    pdf.fromHTML(string);
+
+    // pdf.fromHTML(string);
+    pdf.addHTML(document.body,40,100,function() {
+      pdf.save('web.pdf');
+  });
     pdf.addPage();
     pdf.fromHTML(physical);
+    pdf.addPage();
+    pdf.fromHTML(pThree);
     pdf.save("pdf");
   };
 

@@ -95,22 +95,23 @@ export default class Questions extends Component {
       loading: false
     });
 
-    const myObject = {
-      empId: this.state.empId,
-      questionText: this.state.questionText,
-      answerText: this.state.answerText,
-      wellnessType: this.state.wellnessType,
-      answerWeightage: this.state.answerWeightage,
-      serialNumber : this.state.myarray.length,
-      totalAttempt: 1
-    };
-
-    this.setState({
-      myarray: this.state.myarray.concat(myObject)
-    });
+  
     console.log("my array", this.state.myarray);
 
     if (this.state.checked) {
+      const myObject = {
+        empId: this.state.empId,
+        questionText: this.state.questionText,
+        answerText: this.state.answerText,
+        wellnessType: this.state.wellnessType,
+        answerWeightage: this.state.answerWeightage,
+        serialNumber : this.state.myarray.length,
+        totalAttempt: 1
+      };
+  
+      this.setState({
+        myarray: this.state.myarray.concat(myObject)
+      });
       const ques = this.state.page + 1;
       if (ques < 6) {
         //console.log("Question Number", ques);
@@ -142,7 +143,7 @@ export default class Questions extends Component {
         );
       }
     } else {
-      message.warning("Answer submit is must");
+      message.warning("Make a Selection!");
     }
     // stArray[this.state.section].questions[this.state.page - 1].answers[this.onRadioClicked.id]._isSelected = false;
   };
@@ -618,18 +619,19 @@ const stArray = [
         question: "I exercise at least three days every week",
         answers: [
           {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
             answer: "No",
             weightage: 10,
             _isSelected: false,
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
+         
           {
             answer: "",
             weightage: 0,
@@ -742,18 +744,19 @@ const stArray = [
         question: "I mostly enjoy my work",
         answers: [
           {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
             answer: "No",
             weightage: 10,
             _isSelected: false,
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
+         
           {
             answer: "",
             weightage: 0,
@@ -802,15 +805,8 @@ const stArray = [
         question: "I easily lose my temper and become angry",
         answers: [
           {
-            answer: "Always",
-            weightage: 10,
-            _isSelected: false,
-            visiblility: true
-          },
-
-          {
-            answer: "Often",
-            weightage: 40,
+            answer: "Never",
+            weightage: 100,
             _isSelected: false,
             visiblility: true
           },
@@ -820,17 +816,33 @@ const stArray = [
             _isSelected: false,
             visiblility: true
           },
+          
           {
-            answer: "Never",
-            weightage: 100,
+            answer: "Often",
+            weightage: 40,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
+            answer: "Always",
+            weightage: 10,
             _isSelected: false,
             visiblility: true
           }
+
+          
+         
         ]
       },
       {
         question: "I like taking risks and doing new things",
         answers: [
+          {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
           {
             answer: "No",
             weightage: 10,
@@ -838,12 +850,7 @@ const stArray = [
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
+          
           {
             answer: "",
             weightage: 0,
@@ -896,18 +903,19 @@ const stArray = [
         question: "I care more about the long term goal than short term wins",
         answers: [
           {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
             answer: "No",
             weightage: 10,
             _isSelected: false,
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
+         
           {
             answer: "",
             weightage: 0,
@@ -956,6 +964,13 @@ const stArray = [
         question:
           "I take frequent breaks from my work throughout the day to think about other things",
         answers: [
+          
+          {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
           {
             answer: "No",
             weightage: 10,
@@ -963,12 +978,6 @@ const stArray = [
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
           {
             answer: "",
             weightage: 0,
@@ -1051,18 +1060,19 @@ const stArray = [
         question: "I don't spend enough time with my family",
         answers: [
           {
+            answer: "Yes",
+            weightage: 100,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
             answer: "No",
             weightage: 10,
             _isSelected: false,
             visiblility: true
           },
 
-          {
-            answer: "Yes",
-            weightage: 100,
-            _isSelected: false,
-            visiblility: true
-          },
+        
           {
             answer: "",
             weightage: 0,
@@ -1141,15 +1151,8 @@ const stArray = [
         question: "I find conflicts difficult to resolve",
         answers: [
           {
-            answer: "Always",
-            weightage: 10,
-            _isSelected: false,
-            visiblility: true
-          },
-
-          {
-            answer: "Often",
-            weightage: 40,
+            answer: "Never",
+            weightage: 100,
             _isSelected: false,
             visiblility: true
           },
@@ -1160,11 +1163,21 @@ const stArray = [
             visiblility: true
           },
           {
-            answer: "Never",
-            weightage: 100,
+            answer: "Often",
+            weightage: 40,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
+            answer: "Always",
+            weightage: 10,
             _isSelected: false,
             visiblility: true
           }
+
+          
+         
+        
         ]
       }
     ]

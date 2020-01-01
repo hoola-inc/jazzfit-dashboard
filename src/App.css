@@ -556,3 +556,34 @@ input:checked {
   box-shadow: none;
   outline: none;
 } 
+
+.pdf-text{
+  border-bottom: 2px solid yellow;
+  display: flex;
+  font-weight: 600;
+}  
+
+
+.pdf-para{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid grey;
+}
+
+.para{
+  display: flex;
+}
+
+
+.img{
+  background-color: tomato;
+}
+
+
+
+.pdf-sleep{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
