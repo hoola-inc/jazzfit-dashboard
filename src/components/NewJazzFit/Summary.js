@@ -289,6 +289,14 @@ class Summary extends React.Component {
       this.state.totalScore.physicalWellnessText,
       180
     );
+    this.state.physicalData.map(elemnt =>{
+      
+      pdf.text(10, 50, "Physical Wellness");
+      var overAllWellness = pdf.splitTextToSize(
+        this.state.totalScore.physicalWellnessText,
+        180
+      );
+      });
     pdf.text(10, 20, overAllWellness);
     // Emotional Wellness
     pdf.addPage();

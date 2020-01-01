@@ -1,5 +1,5 @@
 import React from "react";
-import { h1, Col, Row, Button, Divider, Input, Progress,Avatar } from "antd";
+import { h1, Col, Row, Button, Divider, Input, Progress, Avatar } from "antd";
 import { Radar, ChartCard } from "ant-design-pro/lib/Charts";
 import { Link } from "react-router-dom";
 import "../MyCSS/MyCss.css";
@@ -118,7 +118,7 @@ class Results extends React.Component {
               </h1>
             </Row>
 
-            <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
+            <Divider style={{ margin: "10px 0 10px 0" }}></Divider>
             <Row gutter={24}>
               <Col xs={{ span: 24 }} lg={{ span: 24 }}>
                 <div>
@@ -187,7 +187,7 @@ class Results extends React.Component {
                 className="box-border results-cards-col1"
               >
                 <Row gutter={24}>
-                  <Col span= {18}>
+                  <Col span={18}>
                     <h1
                       className="steps-headings"
                       style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
@@ -195,27 +195,31 @@ class Results extends React.Component {
                       Physical Score
                     </h1>
                   </Col>
-                  <Col span= {6} >
-                  <Avatar style={{marginTop:"15%"}} size="large" src={physical} />
+                  <Col span={6}>
+                    <Avatar
+                      style={{ marginTop: "15%" }}
+                      size="large"
+                      src={physical}
+                    />
                   </Col>
                 </Row>
 
-                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
+                <Divider style={{ margin: "10px 0 10px 0" }}></Divider>
                 <Row gutter={24}>
-                  <Col span={7}>
+                  <Col xs={{ span: 24 }} lg={{ span: 7 }}>
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.physicalScore}
                       strokeColor="#1da336"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="130%"
-                      style={{ marginLeft: "15%" }}
+                      width="100%"
+                      style={{ marginLeft: "10%" }}
                     />
                   </Col>
                   <Col
-                    span={16}
-                    offset={1}
+                    xs={{ span: 24 }}
+                    lg={{ span: 16, offset: 1 }}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -246,8 +250,8 @@ class Results extends React.Component {
                 lg={{ span: 11, offset: 1 }}
                 className="box-border results-cards-col2"
               >
-              <Row gutter={24}>
-                  <Col span= {18}>
+                <Row gutter={24}>
+                  <Col span={18}>
                     <h1
                       className="steps-headings"
                       style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
@@ -255,27 +259,31 @@ class Results extends React.Component {
                       Emotional Score
                     </h1>
                   </Col>
-                  <Col span= {6} >
-                  <Avatar style={{marginTop:"15%"}} size="large" src={emotional} />
+                  <Col span={6}>
+                    <Avatar
+                      style={{ marginTop: "15%" }}
+                      size="large"
+                      src={emotional}
+                    />
                   </Col>
                 </Row>
 
-                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
+                <Divider style={{ margin: "10px 0 10px 0" }}></Divider>
                 <Row gutter={24}>
-                  <Col span={7}>
+                  <Col xs={{ span: 24 }} lg={{ span: 7 }}>
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.emotionalScore}
                       strokeColor="#fff703"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="130%"
-                      style={{ marginLeft: "15%" }}
+                      width="100%"
+                      style={{ marginLeft: "10%" }}
                     />
                   </Col>
                   <Col
-                    span={16}
-                    offset={1}
+                    xs={{ span: 24 }}
+                    lg={{ span: 16, offset: 1 }}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -308,7 +316,7 @@ class Results extends React.Component {
                 className="box-border results-cards-col1"
               >
                 <Row gutter={24}>
-                  <Col span= {18}>
+                  <Col span={18}>
                     <h1
                       className="steps-headings"
                       style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
@@ -316,27 +324,31 @@ class Results extends React.Component {
                       Mental Score
                     </h1>
                   </Col>
-                  <Col span= {6} >
-                  <Avatar style={{marginTop:"15%"}} size="large" src={mental} />
+                  <Col span={6}>
+                    <Avatar
+                      style={{ marginTop: "15%" }}
+                      size="large"
+                      src={mental}
+                    />
                   </Col>
                 </Row>
 
-                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
+                <Divider style={{ margin: "10px 0 10px 0" }}></Divider>
                 <Row gutter={24}>
-                  <Col span={7} className="text-weight">
+                  <Col xs={{ span: 24 }} lg={{ span: 7 }}>
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.mentalScore}
                       strokeColor="#ff8903"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="130%"
-                      style={{ marginLeft: "15%" }}
+                      width="100%"
+                      style={{ marginLeft: "10%" }}
                     />
                   </Col>
                   <Col
-                    span={16}
-                    offset={1}
+                    xs={{ span: 24 }}
+                    lg={{ span: 16, offset: 1 }}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -378,7 +390,7 @@ class Results extends React.Component {
                 className="box-border results-cards-col2"
               >
                 <Row gutter={24}>
-                  <Col span= {18}>
+                  <Col span={18}>
                     <h1
                       className="steps-headings"
                       style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
@@ -386,27 +398,31 @@ class Results extends React.Component {
                       Social Score
                     </h1>
                   </Col>
-                  <Col span= {6} >
-                  <Avatar style={{marginTop:"15%"}} size="large" src={social} />
+                  <Col span={6}>
+                    <Avatar
+                      style={{ marginTop: "15%" }}
+                      size="large"
+                      src={social}
+                    />
                   </Col>
                 </Row>
 
-                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
+                <Divider style={{ margin: "10px 0 10px 0" }}></Divider>
                 <Row gutter={24}>
-                  <Col span={7} className="text-weight">
+                  <Col xs={{ span: 24 }} lg={{ span: 7 }}>
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.socialScore}
                       strokeColor="#00F"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="130%"
-                      style={{ marginLeft: "15%" }}
+                      width="100%"
+                      style={{ marginLeft: "10%" }}
                     />
                   </Col>
                   <Col
-                    span={16}
-                    offset={1}
+                    xs={{ span: 24 }}
+                    lg={{ span: 16, offset: 1 }}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
