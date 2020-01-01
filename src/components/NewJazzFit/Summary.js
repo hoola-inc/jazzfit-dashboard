@@ -289,11 +289,11 @@ class Summary extends React.Component {
       this.state.totalScore.physicalWellnessText,
       180
     );
-    this.state.physicalData.map(elemnt =>{
-      
-      pdf.text(10, 50, "Physical Wellness");
-      var overAllWellness = pdf.splitTextToSize(
-        this.state.totalScore.physicalWellnessText,
+    this.state.physicalData.map((physical, index) =>{
+      const i = index +1
+      pdf.text(10, i * 55, physical.question);
+      var element = pdf.splitTextToSize(
+        physical.question,
         180
       );
       });

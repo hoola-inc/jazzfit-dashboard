@@ -86,6 +86,15 @@ class Results extends React.Component {
       });
   }
 
+  renderSwitch(param) {
+    switch(param) {
+      case 'foo':
+        return 'bar';
+      default:
+        return 'foo';
+    }
+  }
+
   render() {
     return (
       <div>
@@ -153,7 +162,7 @@ class Results extends React.Component {
                 className="font-weight-fourteen"
                 style={{ padding: "5% 10% 7% 5%", textAlign: "center" }}
               >
-                You are in the 87th percentile and your score ranks 22nd.
+                You are in the {this.state.totalScore.totalScore} percentile.
               </Col>
             </Row>
             <Row gutter={24}>
