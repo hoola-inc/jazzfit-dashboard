@@ -203,7 +203,7 @@ const PageThree = () => (
   <body>
     <div className="pdf-container">
       <div className="pdf-text">
-        <span style ={{ fontWeight: "600"}}>Physical Wellness</span>
+        <span style={{ fontWeight: "600" }}>Physical Wellness</span>
       </div>
       <div className="pdf-para">
         <div className="para">
@@ -260,28 +260,62 @@ class Summary extends React.Component {
   };
 
   print = () => {
-    OverAllText = "" + this.state.totalScore.totalWellnessText;
-    anArr = OverAllText.match(/.{1,106}/g);
-    PhysicalText = "" + this.state.totalScore.physicalWellnessText;
-    PhysicalScore = this.state.totalScore.physicalScore;
-    PhysicalArr = PhysicalText.match(/.{1,100}/g);
-    PhysicalDataArr = this.state.physicalData;
-    const string = renderToString(<Prints />);
-    const physical = renderToString(<PageTwo />);
+    this.enterIconLoading();
+    this.setState({ iconLoading: true });
+    // OverAllText = "" + this.state.totalScore.totalWellnessText;
+    // anArr = OverAllText.match(/.{1,106}/g);
+    // PhysicalText = "" + this.state.totalScore.physicalWellnessText;
+    // PhysicalScore = this.state.totalScore.physicalScore;
+    // PhysicalArr = PhysicalText.match(/.{1,100}/g);
+    // PhysicalDataArr = this.state.physicalData;
+    // const string = renderToString(<Prints />);
+    // const physical = renderToString(<PageTwo />);
 
-    const pThree = renderToString(<PageThree />);
+    // const pThree = renderToString(<PageThree />);
 
     const pdf = new jsPDF("p", "mm", "a4");
 
-    // pdf.fromHTML(string);
-    pdf.addHTML(document.body,40,100,function() {
-      pdf.save('web.pdf');
-  });
+    // OverAll Wellness
+    pdf.text(10, 10, "OverAll Wellness");
+    var overAllWellness = pdf.splitTextToSize(
+      this.state.totalScore.totalWellnessText,
+      180
+    );
+    pdf.text(10, 20, overAllWellness);
+    // Physical Wellness
     pdf.addPage();
-    pdf.fromHTML(physical);
+    pdf.text(10, 10, "Physical Wellness");
+    var overAllWellness = pdf.splitTextToSize(
+      this.state.totalScore.physicalWellnessText,
+      180
+    );
+    pdf.text(10, 20, overAllWellness);
+    // Emotional Wellness
     pdf.addPage();
-    pdf.fromHTML(pThree);
+    pdf.text(10, 10, "Emotional Wellness");
+    var overAllWellness = pdf.splitTextToSize(
+      this.state.totalScore.emotionalWellnessText,
+      180
+    );
+    pdf.text(10, 20, overAllWellness);
+    // Mental Wellness
+    pdf.addPage();
+    pdf.text(10, 10, "Mental Wellness");
+    var overAllWellness = pdf.splitTextToSize(
+      this.state.totalScore.mentalWellnessText,
+      180
+    );
+    pdf.text(10, 20, overAllWellness);
+    // Social Wellness
+    pdf.addPage();
+    pdf.text(10, 10, "Social Wellness");
+    var overAllWellness = pdf.splitTextToSize(
+      this.state.totalScore.socialWellnessText,
+      180
+    );
+    pdf.text(10, 20, overAllWellness);
     pdf.save("pdf");
+    this.setState({ iconLoading: false });
   };
 
   showConsole = str => {
@@ -405,9 +439,9 @@ class Summary extends React.Component {
         >
           <div ref="theChild" style={{ background: "#fff" }}>
             <Row gutter={24}>
-              <Button type="primary" onClick={this.print}>
+              {/* <Button type="primary" onClick={this.print}>
                 print
-              </Button>
+              </Button> */}
               <Col
                 span={2}
                 offset={1}
@@ -436,7 +470,7 @@ class Summary extends React.Component {
                   </h1>
                   <Button
                     type="primary"
-                    onClick={this._exportPdf}
+                    onClick={this.print}
                     icon="download"
                     loading={this.state.iconLoading}
                     ghost

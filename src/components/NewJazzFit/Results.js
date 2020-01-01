@@ -1,5 +1,5 @@
 import React from "react";
-import { h1, Col, Row, Button, Divider, Input, Progress } from "antd";
+import { h1, Col, Row, Button, Divider, Input, Progress,Avatar } from "antd";
 import { Radar, ChartCard } from "ant-design-pro/lib/Charts";
 import { Link } from "react-router-dom";
 import "../MyCSS/MyCss.css";
@@ -7,6 +7,10 @@ import { resolveMx } from "dns";
 import ProCharts from "../charts/ProCharts";
 import SvgChart from "../charts/SvgChart";
 import axios from "axios";
+import physical from "../drawables/physical.png";
+import mental from "../drawables/mental.png";
+import emotional from "../drawables/emotional.png";
+import social from "../drawables/social.png";
 const radarOriginData = [
   {
     name: "Survey 1",
@@ -88,7 +92,7 @@ class Results extends React.Component {
         <Row>
           <Col xs={{ span: 24 }} lg={{ span: 24 }}>
             <h1 style={{ textAlign: "start" }}>
-              Following are your comprehensive wellness matrics.Click on any
+              Following are your comprehensive wellness metrics. Click on any
               score to read more.
             </h1>
           </Col>
@@ -114,7 +118,7 @@ class Results extends React.Component {
               </h1>
             </Row>
 
-            <Divider></Divider>
+            <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
             <Row gutter={24}>
               <Col xs={{ span: 24 }} lg={{ span: 24 }}>
                 <div>
@@ -182,16 +186,21 @@ class Results extends React.Component {
                 lg={{ span: 11 }}
                 className="box-border results-cards-col1"
               >
-                <Row>
-                  <h1
-                    className="steps-headings"
-                    style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
-                  >
-                    Physical Score
-                  </h1>
+                <Row gutter={24}>
+                  <Col span= {18}>
+                    <h1
+                      className="steps-headings"
+                      style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
+                    >
+                      Physical Score
+                    </h1>
+                  </Col>
+                  <Col span= {6} >
+                  <Avatar style={{marginTop:"15%"}} size="large" src={physical} />
+                  </Col>
                 </Row>
 
-                <Divider></Divider>
+                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
                 <Row gutter={24}>
                   <Col span={7}>
                     <Progress
@@ -205,7 +214,8 @@ class Results extends React.Component {
                     />
                   </Col>
                   <Col
-                    span={16} offset ={1}
+                    span={16}
+                    offset={1}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -236,16 +246,21 @@ class Results extends React.Component {
                 lg={{ span: 11, offset: 1 }}
                 className="box-border results-cards-col2"
               >
-                <Row>
-                  <h1
-                    className="steps-headings"
-                    style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
-                  >
-                    Emotional Score
-                  </h1>
+              <Row gutter={24}>
+                  <Col span= {18}>
+                    <h1
+                      className="steps-headings"
+                      style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
+                    >
+                      Emotional Score
+                    </h1>
+                  </Col>
+                  <Col span= {6} >
+                  <Avatar style={{marginTop:"15%"}} size="large" src={emotional} />
+                  </Col>
                 </Row>
 
-                <Divider></Divider>
+                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
                 <Row gutter={24}>
                   <Col span={7}>
                     <Progress
@@ -259,7 +274,8 @@ class Results extends React.Component {
                     />
                   </Col>
                   <Col
-                    span={16} offset ={1}
+                    span={16}
+                    offset={1}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -291,16 +307,21 @@ class Results extends React.Component {
                 lg={{ span: 11 }}
                 className="box-border results-cards-col1"
               >
-                <Row>
-                  <h1
-                    className="steps-headings"
-                    style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
-                  >
-                    Mental Score
-                  </h1>
+                <Row gutter={24}>
+                  <Col span= {18}>
+                    <h1
+                      className="steps-headings"
+                      style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
+                    >
+                      Mental Score
+                    </h1>
+                  </Col>
+                  <Col span= {6} >
+                  <Avatar style={{marginTop:"15%"}} size="large" src={mental} />
+                  </Col>
                 </Row>
 
-                <Divider></Divider>
+                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
                 <Row gutter={24}>
                   <Col span={7} className="text-weight">
                     <Progress
@@ -314,7 +335,8 @@ class Results extends React.Component {
                     />
                   </Col>
                   <Col
-                    span={16} offset ={1}
+                    span={16}
+                    offset={1}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",
@@ -355,16 +377,21 @@ class Results extends React.Component {
                 lg={{ span: 11 }}
                 className="box-border results-cards-col2"
               >
-                <Row className="text-weight">
-                  <h1
-                    className="steps-headings"
-                    style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
-                  >
-                    Social Score
-                  </h1>
+                <Row gutter={24}>
+                  <Col span= {18}>
+                    <h1
+                      className="steps-headings"
+                      style={{ textAlign: "start", padding: "5% 0% 0% 3%" }}
+                    >
+                      Social Score
+                    </h1>
+                  </Col>
+                  <Col span= {6} >
+                  <Avatar style={{marginTop:"15%"}} size="large" src={social} />
+                  </Col>
                 </Row>
 
-                <Divider></Divider>
+                <Divider style = {{margin:"10px 0 10px 0"}}></Divider>
                 <Row gutter={24}>
                   <Col span={7} className="text-weight">
                     <Progress
@@ -378,7 +405,8 @@ class Results extends React.Component {
                     />
                   </Col>
                   <Col
-                    span={16} offset ={1}
+                    span={16}
+                    offset={1}
                     className="font-size-ten"
                     style={{
                       paddingLeft: "5%",

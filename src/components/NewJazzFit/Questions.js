@@ -96,7 +96,7 @@ export default class Questions extends Component {
     });
 
   
-    console.log("my array", this.state.myarray);
+    
 
     if (this.state.checked) {
       const myObject = {
@@ -112,6 +112,7 @@ export default class Questions extends Component {
       this.setState({
         myarray: this.state.myarray.concat(myObject)
       });
+      console.log("my array", this.state.myarray.length);
       const ques = this.state.page + 1;
       if (ques < 6) {
         //console.log("Question Number", ques);
