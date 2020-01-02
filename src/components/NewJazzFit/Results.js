@@ -66,7 +66,8 @@ class Results extends React.Component {
               headers: headers
             })
             .then(response => {
-              console.log(response.data);
+              // console.log(response.data);
+              console.log('Total ::: ', response.data.data[0]);
               if (response.data.status) {
                 this.setState({
                   totalScore: response.data.data[0]
@@ -87,7 +88,7 @@ class Results extends React.Component {
   }
 
   renderSwitch(param) {
-    switch(param) {
+    switch (param) {
       case 'foo':
         return 'bar';
       default:
@@ -222,7 +223,6 @@ class Results extends React.Component {
                       strokeColor="#1da336"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="100%"
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -286,7 +286,7 @@ class Results extends React.Component {
                       strokeColor="#fff703"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="100%"
+                      // width="100%"
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -351,7 +351,7 @@ class Results extends React.Component {
                       strokeColor="#ff8903"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="100%"
+                      // width="100%"
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -425,7 +425,7 @@ class Results extends React.Component {
                       strokeColor="#00F"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      width="100%"
+                      // width="100%"
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
