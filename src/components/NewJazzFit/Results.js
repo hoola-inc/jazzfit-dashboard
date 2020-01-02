@@ -220,9 +220,10 @@ class Results extends React.Component {
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.physicalScore}
-                      strokeColor="#1da336"
+                      strokeColor="#bfd632"
                       strokeLinecap="square"
                       strokeWidth="9"
+                      width={100}
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -283,10 +284,10 @@ class Results extends React.Component {
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.emotionalScore}
-                      strokeColor="#fff703"
+                      strokeColor="#ef4323"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      // width="100%"
+                      width={100}
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -348,10 +349,10 @@ class Results extends React.Component {
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.mentalScore}
-                      strokeColor="#ff8903"
+                      strokeColor="#834291"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      // width="100%"
+                      width = {100}
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
@@ -422,10 +423,10 @@ class Results extends React.Component {
                     <Progress
                       type="circle"
                       percent={this.state.totalScore.socialScore}
-                      strokeColor="#00F"
+                      strokeColor="#18aeef"
                       strokeLinecap="square"
                       strokeWidth="9"
-                      // width="100%"
+                      width={100}
                       style={{ marginLeft: "10%" }}
                     />
                   </Col>
