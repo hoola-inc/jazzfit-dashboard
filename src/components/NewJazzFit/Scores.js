@@ -44,7 +44,8 @@ class Scores extends React.Component {
       totalScoresTypeArr: [],
       section: "",
       jwtToken: "",
-      empId: ""
+      empId: "",
+      color: ""
     };
   }
 
@@ -93,8 +94,9 @@ class Scores extends React.Component {
       );
       if (recommendations.data.status) {
         const recommendationsArr = recommendations.data.data;
-        this.setState({ recommendationsArr: recommendationsArr });
+        this.setState({ recommendationsArr: recommendationsArr, color: recommendationsArr[0].color });
         console.log("Recommendations ", this.state.recommendationsArr);
+        console.log('color ::: ', this.state.recommendationsArr[0].color);
       }
     } catch (error) {
       message.error("bad request recommendations");
@@ -114,6 +116,7 @@ class Scores extends React.Component {
         this.setState({ totalScoreArr: totalScoreArr });
 
         console.log("total score array", this.state.totalScoreArr);
+        console.log("Section ::: ", this.state.section);
       }
     } catch (error) {
       message.error("bad request total score");
@@ -130,7 +133,7 @@ class Scores extends React.Component {
         });
     });
     console.log(
-      "" + this.state.section + " ::: ",
+      "i am here ... ::: " + this.state.section + " ::: ",
       this.state.recommendationsTypeArr
     );
   };
@@ -162,12 +165,13 @@ class Scores extends React.Component {
                   <Col xs={{ span: 24 }} lg={{ span: 4 }}>
                     <Progress
                       type="circle"
-                      percent={
-                        this.state.totalScoreArr[this.state.section + "Score"]
-                      }
-                      strokeColor="#00F"
+
+                      strokeColor={this.state.color}
+
+                      percent={ this.state.totalScoreArr[this.state.section + "Score"] }
+                      
                       strokeWidth="9"
-                      width="100px"
+                      width={100}
                       style={{ padding: "0% 0% 5% 15%" }}
                     />
                   </Col>
@@ -183,9 +187,7 @@ class Scores extends React.Component {
                     >
                       <h1>
                         {
-                          this.state.totalScoreArr[
-                            this.state.section + "WellnessText"
-                          ]
+                          this.state.totalScoreArr[this.state.section + "WellnessText"]
                         }
                       </h1>
                     </Col>
@@ -214,7 +216,7 @@ class Scores extends React.Component {
                           <Col xs={{ span: 12 }} lg={{ span: 4, offset: 1 }}>
                             <h1
                               className="text-weight"
-                              style={{ color: "#FFCB05" }}
+                              style={{ color: item.color }}
                             >
                               {item.answer}
                             </h1>
@@ -226,13 +228,13 @@ class Scores extends React.Component {
                           </Col>
                           <Col xs={{ span: 12 }} lg={{ span: 4, offset: 1 }}>
                             <h1 className="text-style">
-                              #{this.state.section} Wellness
+                              #{this.state.section} wellness
                             </h1>
                           </Col>
 
                           <Divider
                             style={{
-                              background: "#69C0FF",
+                              background: item.color,
                               borderradius: "3px",
                               height: "3px"
                             }}
@@ -246,13 +248,13 @@ class Scores extends React.Component {
                           <Divider></Divider>
                           {this.state.recommendationsArr[arrIndex]
                             .recommendation.length > 0 ? (
-                            <Row gutter={[12, 24]}>
-                              <Col span={6}>Recommendations</Col>
-                              <Divider></Divider>
-                            </Row>
-                          ) : null}
+                              <Row gutter={[12, 24]}>
+                                <Col span={6}>Recommendations</Col>
+                                <Divider></Divider>
+                              </Row>
+                            ) : null}
 
-                         
+
                           {/* first  */}
                           {this.state.recommendationsArr[
                             arrIndex
@@ -270,7 +272,7 @@ class Scores extends React.Component {
                                             type="right"
                                             rotate={isActive ? -90 : 90}
                                             style={{
-                                              backgroundColor: "#d4424e",
+                                              backgroundColor: item.color,
                                               color: "#fff",
                                               width: "500",
                                               height: "500",

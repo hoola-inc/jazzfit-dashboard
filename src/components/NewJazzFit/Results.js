@@ -244,6 +244,7 @@ class Results extends React.Component {
                           pathname: `/scores${"/physical"}`
                         }}
                         target="_blank"
+                        style={{color: "#bfd632"}}
                       >
                         {/* <Col span={6} offset={6} style={{ padding: "0 0 5% 0" }}> */}
                         Read More
@@ -308,6 +309,7 @@ class Results extends React.Component {
                           pathname: `/scores${"/emotional"}`
                         }}
                         target="_blank"
+                        style={{color: "#ef4323"}}
                       >
                         {/* <Col span={6} offset={6} style={{ padding: "0 0 5% 0" }}> */}
                         Read More
@@ -373,6 +375,7 @@ class Results extends React.Component {
                           pathname: `/scores${"/mental"}`
                         }}
                         target="_blank"
+                        style={{color: "#834291"}}
                       >
                         {/* <Col span={6} offset={6} style={{ padding: "0 0 5% 0" }}> */}
                         Read More
@@ -447,6 +450,7 @@ class Results extends React.Component {
                           pathname: `/scores${"/social"}`
                         }}
                         target="_blank"
+                        style={{color: "#18aeef"}}
                       >
                         {/* <Col span={24} offset={2} style={{ padding: "0 0 5% 0" }}> */}
                         Read More

@@ -111,7 +111,7 @@ const PageTwo = () => (
                   percent={PhysicalScore}
                   strokeColor="#1da336"
                   strokeWidth="7"
-                  width="100px"
+                  width={100}
                   style={{ margin: "0px 10px 10px 30px" }}
                 />
               </Col>
@@ -158,34 +158,34 @@ const PageTwo = () => (
                             <h1 className="font-weight-sixteen">
                               ANS: {physical.answer}
                             </h1>
-                            <Divider></Divider>
+                            <Divider style={{background: "#bfd632"}}></Divider>
                           </Col>
                         </Row>
                         {physical.recommendation.length === 0 ? (
                           "Great Job"
                         ) : (
-                          <div>
-                            <Row gutter={24}>
-                              <Col span={24}>
-                                <h3>Recommendations</h3>
-                                <h3>
-                                  {physical.recommendationTitle}
-                                  {/* Sleep is essential for your physical
+                            <div>
+                              <Row gutter={24}>
+                                <Col span={24}>
+                                  <h3>Recommendations</h3>
+                                  <h3>
+                                    {physical.recommendationTitle}
+                                    {/* Sleep is essential for your physical
                                   wellbeing. On-going sleep deficiency can add
                                   to your stress and anxieties. Here are a few
                                   tips that can help you get good sleep. */}
-                                </h3>
-                                {physical.recommendation.map((data, index) => {
-                                  return (
-                                    <div>
-                                      <p>{data.detail}</p>
-                                    </div>
-                                  );
-                                })}
-                              </Col>
-                            </Row>
-                          </div>
-                        )}
+                                  </h3>
+                                  {physical.recommendation.map((data, index) => {
+                                    return (
+                                      <div>
+                                        <p>{data.detail}</p>
+                                      </div>
+                                    );
+                                  })}
+                                </Col>
+                              </Row>
+                            </div>
+                          )}
                       </div>
                     </div>
                   </div>
@@ -289,14 +289,14 @@ class Summary extends React.Component {
       this.state.totalScore.physicalWellnessText,
       180
     );
-    this.state.physicalData.map((physical, index) =>{
-      const i = index +1
+    this.state.physicalData.map((physical, index) => {
+      const i = index + 1
       pdf.text(10, i * 55, physical.question);
       var element = pdf.splitTextToSize(
         physical.question,
         180
       );
-      });
+    });
     pdf.text(10, 20, overAllWellness);
     // Emotional Wellness
     pdf.addPage();
@@ -548,7 +548,7 @@ class Summary extends React.Component {
 
                   <Divider
                     style={{
-                      background: "##FFC20E",
+                      background: "#bfd632",
                       borderradius: "3px",
                       height: "3px",
                       marginTop: "5%"
@@ -566,13 +566,13 @@ class Summary extends React.Component {
                       <Progress
                         type="circle"
                         percent={this.state.totalScore.physicalScore}
-                        strokeColor="#1da336"
+                        strokeColor="#bfd632"
                         strokeWidth="7"
-                        width="100px"
+                        width={100}
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider></Divider>
+                    <Divider style={{background: "#bfd632"}}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.physicalData.map((physical, index) => {
@@ -591,47 +591,47 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {physical.question}
                                 </h1>
-                                <Divider></Divider>
+                                <Divider style={{background: "#bfd632"}}></Divider>
                               </Col>
                             </Row>
                             {physical.recommendation.length === 0 ? (
                               "Great Job"
                             ) : (
-                              <div>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <h3>
-                                      {physical.recommendationTitle}
-                                      {/* Sleep is essential for your physical
+                                <div>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <h3>
+                                        {physical.recommendationTitle}
+                                        {/* Sleep is essential for your physical
                                   wellbeing. On-going sleep deficiency can add
                                   to your stress and anxieties. Here are a few
                                   tips that can help you get good sleep. */}
-                                    </h3>
-                                  </Col>
-                                </Row>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <Collapse bordered={false}>
-                                      <Panel
-                                        showArrow={false}
-                                        header="Read More"
-                                        type="link"
-                                      >
-                                        {physical.recommendation.map(
-                                          (data, index) => {
-                                            return (
-                                              <div>
-                                                <p>{data.detail}</p>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </Panel>
-                                    </Collapse>
-                                  </Col>
-                                </Row>
-                              </div>
-                            )}
+                                      </h3>
+                                    </Col>
+                                  </Row>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <Collapse bordered={false}>
+                                        <Panel
+                                          showArrow={false}
+                                          header="Read More"
+                                          type="link"
+                                        >
+                                          {physical.recommendation.map(
+                                            (data, index) => {
+                                              return (
+                                                <div>
+                                                  <p>{data.detail}</p>
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </Panel>
+                                      </Collapse>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
@@ -653,7 +653,7 @@ class Summary extends React.Component {
 
                   <Divider
                     style={{
-                      background: "##FFC20E",
+                      background: "#ef4323",
                       borderradius: "3px",
                       height: "3px",
                       marginTop: "5%"
@@ -671,13 +671,13 @@ class Summary extends React.Component {
                       <Progress
                         type="circle"
                         percent={this.state.totalScore.emotionalScore}
-                        strokeColor="#fff703"
+                        strokeColor="#ef4323"
                         strokeWidth="7"
-                        width="100px"
+                        width={100}
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider></Divider>
+                    <Divider style={{background: "#ef4323"}}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.emotionalData.map((emotional, index) => {
@@ -696,48 +696,48 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {emotional.question}
                                 </h1>
-                                <Divider></Divider>
+                                <Divider style={{background: "#ef4323"}}></Divider>
                               </Col>
                             </Row>
                             {emotional.recommendation.length === 0 ? (
                               "Great Job"
                             ) : (
-                              <div>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <h3>
-                                      {emotional.recommendationTitle}
-                                      {/* Sleep is essential for your physical
+                                <div>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <h3>
+                                        {emotional.recommendationTitle}
+                                        {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
                                       a few tips that can help you get good
                                       sleep. */}
-                                    </h3>
-                                  </Col>
-                                </Row>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <Collapse bordered={false}>
-                                      <Panel
-                                        showArrow={false}
-                                        header="Read More"
-                                        type="link"
-                                      >
-                                        {emotional.recommendation.map(
-                                          (data, index) => {
-                                            return (
-                                              <div>
-                                                <p>{data.detail}</p>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </Panel>
-                                    </Collapse>
-                                  </Col>
-                                </Row>
-                              </div>
-                            )}
+                                      </h3>
+                                    </Col>
+                                  </Row>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <Collapse bordered={false}>
+                                        <Panel
+                                          showArrow={false}
+                                          header="Read More"
+                                          type="link"
+                                        >
+                                          {emotional.recommendation.map(
+                                            (data, index) => {
+                                              return (
+                                                <div>
+                                                  <p>{data.detail}</p>
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </Panel>
+                                      </Collapse>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
@@ -760,7 +760,7 @@ class Summary extends React.Component {
 
                   <Divider
                     style={{
-                      background: "##FFC20E",
+                      background: "#834291",
                       borderradius: "3px",
                       height: "3px",
                       marginTop: "5%"
@@ -778,13 +778,13 @@ class Summary extends React.Component {
                       <Progress
                         type="circle"
                         percent={this.state.totalScore.mentalScore}
-                        strokeColor="#ff8903"
+                        strokeColor="#834291"
                         strokeWidth="7"
-                        width="100px"
+                        width={100}
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider></Divider>
+                    <Divider style={{background: "#834291"}}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.mentalData.map((mental, index) => {
@@ -803,48 +803,48 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {mental.question}
                                 </h1>
-                                <Divider></Divider>
+                                <Divider style={{background: "#834291"}}></Divider>
                               </Col>
                             </Row>
                             {mental.recommendation.length === 0 ? (
                               "Great Job"
                             ) : (
-                              <div>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <h3>
-                                      {mental.recommendationTitle}
-                                      {/* Sleep is essential for your physical
+                                <div>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <h3>
+                                        {mental.recommendationTitle}
+                                        {/* Sleep is essential for your physical
                                       wellbeing. On-going sleep deficiency can
                                       add to your stress and anxieties. Here are
                                       a few tips that can help you get good
                                       sleep. */}
-                                    </h3>
-                                  </Col>
-                                </Row>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <Collapse bordered={false}>
-                                      <Panel
-                                        showArrow={false}
-                                        header="Read More"
-                                        type="link"
-                                      >
-                                        {mental.recommendation.map(
-                                          (data, index) => {
-                                            return (
-                                              <div>
-                                                <p>{data.detail}</p>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </Panel>
-                                    </Collapse>
-                                  </Col>
-                                </Row>
-                              </div>
-                            )}
+                                      </h3>
+                                    </Col>
+                                  </Row>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <Collapse bordered={false}>
+                                        <Panel
+                                          showArrow={false}
+                                          header="Read More"
+                                          type="link"
+                                        >
+                                          {mental.recommendation.map(
+                                            (data, index) => {
+                                              return (
+                                                <div>
+                                                  <p>{data.detail}</p>
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </Panel>
+                                      </Collapse>
+                                    </Col>
+                                  </Row>
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
@@ -866,7 +866,7 @@ class Summary extends React.Component {
 
                   <Divider
                     style={{
-                      background: "##FFC20E",
+                      background: "#18aeef",
                       borderradius: "3px",
                       height: "3px",
                       marginTop: "5%"
@@ -884,13 +884,13 @@ class Summary extends React.Component {
                       <Progress
                         type="circle"
                         percent={this.state.totalScore.socialScore}
-                        strokeColor="#00F"
+                        strokeColor="#18aeef"
                         strokeWidth="7"
-                        width="100px"
+                        width={100}
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider></Divider>
+                    <Divider style={{background: "#18aeef"}}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.socialData.map((social, index) => {
@@ -909,42 +909,42 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {social.question}
                                 </h1>
-                                <Divider></Divider>
+                                <Divider style={{background: "#18aeef"}}></Divider>
                               </Col>
                             </Row>
                             {social.recommendation.length === 0 ? (
                               "Great Job"
                             ) : (
-                              <div>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <h3>{social.recommendationTitle}</h3>
-                                  </Col>
-                                </Row>
-                                <Row gutter={24}>
-                                  <Col span={24}>
-                                    <Collapse bordered={false}>
-                                      <Panel
-                                        showArrow={false}
-                                        header="Read More"
-                                        type="link"
-                                      >
-                                        {social.recommendation.map(
-                                          (data, index) => {
-                                            return (
-                                              <div>
-                                                <p>{data.detail}</p>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </Panel>
-                                    </Collapse>
-                                    {/* <Button type="link">Read More</Button> */}
-                                  </Col>
-                                </Row>
-                              </div>
-                            )}
+                                <div>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <h3>{social.recommendationTitle}</h3>
+                                    </Col>
+                                  </Row>
+                                  <Row gutter={24}>
+                                    <Col span={24}>
+                                      <Collapse bordered={false}>
+                                        <Panel
+                                          showArrow={false}
+                                          header="Read More"
+                                          type="link"
+                                        >
+                                          {social.recommendation.map(
+                                            (data, index) => {
+                                              return (
+                                                <div>
+                                                  <p>{data.detail}</p>
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </Panel>
+                                      </Collapse>
+                                      {/* <Button type="link">Read More</Button> */}
+                                    </Col>
+                                  </Row>
+                                </div>
+                              )}
                           </div>
                         </div>
                       </div>
