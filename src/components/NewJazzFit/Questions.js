@@ -95,8 +95,8 @@ export default class Questions extends Component {
       loading: false
     });
 
-  
-    
+
+
 
     if (this.state.checked) {
       const myObject = {
@@ -105,10 +105,10 @@ export default class Questions extends Component {
         answerText: this.state.answerText,
         wellnessType: this.state.wellnessType,
         answerWeightage: this.state.answerWeightage,
-        serialNumber : this.state.myarray.length,
+        serialNumber: this.state.myarray.length,
         totalAttempt: 1
       };
-  
+
       this.setState({
         myarray: this.state.myarray.concat(myObject)
       });
@@ -173,7 +173,7 @@ export default class Questions extends Component {
             this.setState({
               section: 0,
               page: 1,
-              myarray : this.state.myarray.splice(0,this.state.myarray.length)
+              myarray: this.state.myarray.splice(0, this.state.myarray.length)
             });
           }
         })
@@ -188,7 +188,7 @@ export default class Questions extends Component {
           this.setState({
             section: 0,
             page: 1,
-            myarray : this.state.myarray.splice(0,this.state.myarray.length)
+            myarray: this.state.myarray.splice(0, this.state.myarray.length)
           });
         });
     } else {
@@ -200,7 +200,7 @@ export default class Questions extends Component {
       this.setState({
         section: 0,
         page: 1,
-        myarray : this.state.myarray.splice(0,this.state.myarray.length)
+        myarray: this.state.myarray.splice(0, this.state.myarray.length)
       });
       // console.log("array ", this.state.myarray);
       // this.enterIconLoading();
@@ -388,133 +388,133 @@ export default class Questions extends Component {
                       {stArray[this.state.section].questions[
                         this.state.page - 1
                       ].answers[0].visiblility ? (
-                        <div id="custom-radio-btn">
-                          <label className="_radio_btn" for="1">
-                            <div className="_btn_content">
-                              <span className="_btn_icon">
-                                <Icon type="right" />
-                              </span>
-                              <span className="_btn_text">
-                                {/* {testArray[this.state.page].answers[0].answer} */}
-                                {
+                          <div id="custom-radio-btn">
+                            <label className="_radio_btn" for="1">
+                              <div className="_btn_content">
+                                <span className="_btn_icon">
+                                  <Icon type="right" />
+                                </span>
+                                <span className="_btn_text">
+                                  {/* {testArray[this.state.page].answers[0].answer} */}
+                                  {
+                                    stArray[this.state.section].questions[
+                                      this.state.page - 1
+                                    ].answers[0].answer
+                                  }
+                                </span>
+                              </div>
+                              <input
+                                type="radio"
+                                name="ans1"
+                                id="1"
+                                onChange={this.onRadioClicked}
+                                checked={
                                   stArray[this.state.section].questions[
                                     this.state.page - 1
-                                  ].answers[0].answer
+                                  ].answers[0]._isSelected
                                 }
-                              </span>
-                            </div>
-                            <input
-                              type="radio"
-                              name="ans1"
-                              id="1"
-                              onChange={this.onRadioClicked}
-                              checked={
-                                stArray[this.state.section].questions[
-                                  this.state.page - 1
-                                ].answers[0]._isSelected
-                              }
-                            />
-                          </label>
-                        </div>
-                      ) : null}
+                              />
+                            </label>
+                          </div>
+                        ) : null}
 
                       {stArray[this.state.section].questions[
                         this.state.page - 1
                       ].answers[1].visiblility ? (
-                        <div id="custom-radio-btn">
-                          <label className="_radio_btn" for="2">
-                            <div className="_btn_content">
-                              <span className="_btn_icon">
-                                <Icon type="right" />
-                              </span>
-                              <span className="_btn_text">
-                                {/* {testArray[this.state.page].answers[1].answer} */}
-                                {
+                          <div id="custom-radio-btn">
+                            <label className="_radio_btn" for="2">
+                              <div className="_btn_content">
+                                <span className="_btn_icon">
+                                  <Icon type="right" />
+                                </span>
+                                <span className="_btn_text">
+                                  {/* {testArray[this.state.page].answers[1].answer} */}
+                                  {
+                                    stArray[this.state.section].questions[
+                                      this.state.page - 1
+                                    ].answers[1].answer
+                                  }
+                                </span>
+                              </div>
+                              <input
+                                type="radio"
+                                name="ans1"
+                                id="2"
+                                onChange={this.onRadioClicked}
+                                checked={
                                   stArray[this.state.section].questions[
                                     this.state.page - 1
-                                  ].answers[1].answer
+                                  ].answers[1]._isSelected
                                 }
-                              </span>
-                            </div>
-                            <input
-                              type="radio"
-                              name="ans1"
-                              id="2"
-                              onChange={this.onRadioClicked}
-                              checked={
-                                stArray[this.state.section].questions[
-                                  this.state.page - 1
-                                ].answers[1]._isSelected
-                              }
-                            />
-                          </label>
-                        </div>
-                      ) : null}
+                              />
+                            </label>
+                          </div>
+                        ) : null}
                       {/*  */}
                       {stArray[this.state.section].questions[
                         this.state.page - 1
                       ].answers[2].visiblility ? (
-                        <div id="custom-radio-btn">
-                          <label className="_radio_btn" for="3">
-                            <div className="_btn_content">
-                              <span className="_btn_icon">
-                                <Icon type="right" />
-                              </span>
-                              <span className="_btn_text">
-                                {/* {testArray[this.state.page].answers[2].answer} */}
-                                {
+                          <div id="custom-radio-btn">
+                            <label className="_radio_btn" for="3">
+                              <div className="_btn_content">
+                                <span className="_btn_icon">
+                                  <Icon type="right" />
+                                </span>
+                                <span className="_btn_text">
+                                  {/* {testArray[this.state.page].answers[2].answer} */}
+                                  {
+                                    stArray[this.state.section].questions[
+                                      this.state.page - 1
+                                    ].answers[2].answer
+                                  }
+                                </span>
+                              </div>
+                              <input
+                                type="radio"
+                                name="ans1"
+                                id="3"
+                                onChange={this.onRadioClicked}
+                                checked={
                                   stArray[this.state.section].questions[
                                     this.state.page - 1
-                                  ].answers[2].answer
+                                  ].answers[2]._isSelected
                                 }
-                              </span>
-                            </div>
-                            <input
-                              type="radio"
-                              name="ans1"
-                              id="3"
-                              onChange={this.onRadioClicked}
-                              checked={
-                                stArray[this.state.section].questions[
-                                  this.state.page - 1
-                                ].answers[2]._isSelected
-                              }
-                            />
-                          </label>
-                        </div>
-                      ) : null}
+                              />
+                            </label>
+                          </div>
+                        ) : null}
                       {/*  */}
                       {stArray[this.state.section].questions[
                         this.state.page - 1
                       ].answers[3].visiblility ? (
-                        <div id="custom-radio-btn">
-                          <label className="_radio_btn" for="4">
-                            <div className="_btn_content">
-                              <span className="_btn_icon">
-                                <Icon type="right" />
-                              </span>
-                              <span className="_btn_text">
-                                {
+                          <div id="custom-radio-btn">
+                            <label className="_radio_btn" for="4">
+                              <div className="_btn_content">
+                                <span className="_btn_icon">
+                                  <Icon type="right" />
+                                </span>
+                                <span className="_btn_text">
+                                  {
+                                    stArray[this.state.section].questions[
+                                      this.state.page - 1
+                                    ].answers[3].answer
+                                  }
+                                </span>
+                              </div>
+                              <input
+                                type="radio"
+                                name="ans1"
+                                id="4"
+                                onChange={this.onRadioClicked}
+                                checked={
                                   stArray[this.state.section].questions[
                                     this.state.page - 1
-                                  ].answers[3].answer
+                                  ].answers[3]._isSelected
                                 }
-                              </span>
-                            </div>
-                            <input
-                              type="radio"
-                              name="ans1"
-                              id="4"
-                              onChange={this.onRadioClicked}
-                              checked={
-                                stArray[this.state.section].questions[
-                                  this.state.page - 1
-                                ].answers[3]._isSelected
-                              }
-                            />
-                          </label>
-                        </div>
-                      ) : null}
+                              />
+                            </label>
+                          </div>
+                        ) : null}
                       {/* test end */}
                     </div>
                     <Row gutter={24}>
@@ -531,9 +531,9 @@ export default class Questions extends Component {
                             style={{}}
                             loading={this.state.iconLoading}
                             onClick={this.onSectionChanged}
-                            // onClick={ () => {
-                            //   this.props.myNext1(1)
-                            //   this.onSectionChanged()}}
+                          // onClick={ () => {
+                          //   this.props.myNext1(1)
+                          //   this.onSectionChanged()}}
                           >
                             {this.state.myarray.length > 19
                               ? "Finish"
@@ -632,7 +632,7 @@ const stArray = [
             visiblility: true
           },
 
-         
+
           {
             answer: "",
             weightage: 0,
@@ -717,13 +717,13 @@ const stArray = [
         answers: [
           {
             answer: "Yes",
-            weightage: 100,
+            weightage: 10,
             _isSelected: false,
             visiblility: true
           },
           {
             answer: "No",
-            weightage: 10,
+            weightage: 100,
             _isSelected: false,
             visiblility: true
           },
@@ -757,7 +757,7 @@ const stArray = [
             visiblility: true
           },
 
-         
+
           {
             answer: "",
             weightage: 0,
@@ -777,14 +777,14 @@ const stArray = [
         answers: [
           {
             answer: "Yes",
-            weightage: 100,
+            weightage: 10,
             _isSelected: false,
             visiblility: true
           },
 
           {
             answer: "No",
-            weightage: 10,
+            weightage: 100,
             _isSelected: false,
             visiblility: true
           },
@@ -817,7 +817,7 @@ const stArray = [
             _isSelected: false,
             visiblility: true
           },
-          
+
           {
             answer: "Often",
             weightage: 40,
@@ -831,8 +831,8 @@ const stArray = [
             visiblility: true
           }
 
-          
-         
+
+
         ]
       },
       {
@@ -851,7 +851,7 @@ const stArray = [
             visiblility: true
           },
 
-          
+
           {
             answer: "",
             weightage: 0,
@@ -876,25 +876,25 @@ const stArray = [
         answers: [
           {
             answer: "Never",
-            weightage: 10,
+            weightage: 100,
             _isSelected: false,
             visiblility: true
           },
           {
             answer: "Sometimes",
-            weightage: 40,
-            _isSelected: false,
-            visiblility: true
-          },
-          {
-            answer: "Often",
             weightage: 60,
             _isSelected: false,
             visiblility: true
           },
           {
+            answer: "Often",
+            weightage: 40,
+            _isSelected: false,
+            visiblility: true
+          },
+          {
             answer: "Always",
-            weightage: 100,
+            weightage: 10,
             _isSelected: false,
             visiblility: true
           }
@@ -916,7 +916,7 @@ const stArray = [
             visiblility: true
           },
 
-         
+
           {
             answer: "",
             weightage: 0,
@@ -965,7 +965,7 @@ const stArray = [
         question:
           "I take frequent breaks from my work throughout the day to think about other things",
         answers: [
-          
+
           {
             answer: "Yes",
             weightage: 100,
@@ -1073,7 +1073,7 @@ const stArray = [
             visiblility: true
           },
 
-        
+
           {
             answer: "",
             weightage: 0,
@@ -1176,9 +1176,9 @@ const stArray = [
             visiblility: true
           }
 
-          
-         
-        
+
+
+
         ]
       }
     ]
