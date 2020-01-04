@@ -138,7 +138,8 @@ class Results extends React.Component {
                         physical: this.state.totalScore.physicalScore,
                         emotional: this.state.totalScore.emotionalScore,
                         social: this.state.totalScore.socialScore,
-                        mental: this.state.totalScore.mentalScore
+                        mental: this.state.totalScore.mentalScore,
+                        totalScore: this.state.totalScore.totalScore
                       }
                     ]}
                   />

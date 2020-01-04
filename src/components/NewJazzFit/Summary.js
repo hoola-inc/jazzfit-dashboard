@@ -24,6 +24,9 @@ import physical from "../drawables/physical.png";
 import mental from "../drawables/mental.png";
 import emotional from "../drawables/emotional.png";
 import social from "../drawables/social.png";
+import PDFDocument from './gen-pdf-test';
+import { PDFDownloadLink } from '@react-pdf/renderer'
+
 const { Panel } = Collapse;
 const monthNames = [
   "January",
@@ -65,7 +68,7 @@ const Prints = () => (
             <h3> Employee Name : Adeel</h3> <h3> Department : Hoola Dev</h3>
           </Col> */}
         </Row>
-        <div style={{ margin: "1% 4% 0% 4%" }} className=" box-shadow">
+        <div style={{ margin: "1% 4% 0% 4%" }} className="box-shadow">
           <Row gutter={24}>
             <Col span={12} offset={1}>
               <h1 style={{ marginTop: "1.2%" }}> OverAll Score </h1>
@@ -248,7 +251,8 @@ class Summary extends React.Component {
       mentalData: [],
       physicalScore: 0,
       loading: false,
-      iconLoading: false
+      iconLoading: false,
+      template: null
     };
   }
   addNewlines = str => {
@@ -261,70 +265,75 @@ class Summary extends React.Component {
   };
 
   print = () => {
-    this.enterIconLoading();
-    this.setState({ iconLoading: true });
-    // OverAllText = "" + this.state.totalScore.totalWellnessText;
-    // anArr = OverAllText.match(/.{1,106}/g);
-    // PhysicalText = "" + this.state.totalScore.physicalWellnessText;
-    // PhysicalScore = this.state.totalScore.physicalScore;
-    // PhysicalArr = PhysicalText.match(/.{1,100}/g);
-    // PhysicalDataArr = this.state.physicalData;
-    // const string = renderToString(<Prints />);
-    // const physical = renderToString(<PageTwo />);
 
-    // const pThree = renderToString(<PageThree />);
 
-    const pdf = new jsPDF("p", "mm", "a4");
 
-    // OverAll Wellness
-    pdf.text(10, 10, "OverAll Wellness");
-    var overAllWellness = pdf.splitTextToSize(
-      this.state.totalScore.totalWellnessText,
-      180
-    );
-    pdf.text(10, 20, overAllWellness);
-    // Physical Wellness
-    pdf.addPage();
-    pdf.text(10, 10, "Physical Wellness");
-    var overAllWellness = pdf.splitTextToSize(
-      this.state.totalScore.physicalWellnessText,
-      180
-    );
-    this.state.physicalData.map((physical, index) => {
-      const i = index + 1
-      pdf.text(10, i * 55, physical.question);
-      var element = pdf.splitTextToSize(
-        physical.question,
-        180
-      );
-    });
-    pdf.text(10, 20, overAllWellness);
-    // Emotional Wellness
-    pdf.addPage();
-    pdf.text(10, 10, "Emotional Wellness");
-    var overAllWellness = pdf.splitTextToSize(
-      this.state.totalScore.emotionalWellnessText,
-      180
-    );
-    pdf.text(10, 20, overAllWellness);
-    // Mental Wellness
-    pdf.addPage();
-    pdf.text(10, 10, "Mental Wellness");
-    var overAllWellness = pdf.splitTextToSize(
-      this.state.totalScore.mentalWellnessText,
-      180
-    );
-    pdf.text(10, 20, overAllWellness);
-    // Social Wellness
-    pdf.addPage();
-    pdf.text(10, 10, "Social Wellness");
-    var overAllWellness = pdf.splitTextToSize(
-      this.state.totalScore.socialWellnessText,
-      180
-    );
-    pdf.text(10, 20, overAllWellness);
-    pdf.save("pdf");
-    this.setState({ iconLoading: false });
+
+
+    // this.enterIconLoading();
+    // this.setState({ iconLoading: true });
+    // // OverAllText = "" + this.state.totalScore.totalWellnessText;
+    // // anArr = OverAllText.match(/.{1,106}/g);
+    // // PhysicalText = "" + this.state.totalScore.physicalWellnessText;
+    // // PhysicalScore = this.state.totalScore.physicalScore;
+    // // PhysicalArr = PhysicalText.match(/.{1,100}/g);
+    // // PhysicalDataArr = this.state.physicalData;
+    // // const string = renderToString(<Prints />);
+    // // const physical = renderToString(<PageTwo />);
+
+    // // const pThree = renderToString(<PageThree />);
+
+    // const pdf = new jsPDF("p", "mm", "a4");
+
+    // // OverAll Wellness
+    // pdf.text(10, 10, "OverAll Wellness!");
+    // var overAllWellness = pdf.splitTextToSize(
+    //   this.state.template,
+    //   180
+    // );
+    // // pdf.text(10, 20, overAllWellness);
+    // // // Physical Wellness
+    // // pdf.addPage();
+    // // pdf.text(10, 10, "Physical Wellness");
+    // // var overAllWellness = pdf.splitTextToSize(
+    // //   this.state.totalScore.physicalWellnessText,
+    // //   180
+    // // );
+    // // this.state.physicalData.map((physical, index) => {
+    // //   const i = index + 1
+    // //   pdf.text(10, i * 55, physical.question);
+    // //   var element = pdf.splitTextToSize(
+    // //     physical.question,
+    // //     180
+    // //   );
+    // // });
+    // // pdf.text(10, 20, overAllWellness);
+    // // // Emotional Wellness
+    // // pdf.addPage();
+    // // pdf.text(10, 10, "Emotional Wellness");
+    // // var overAllWellness = pdf.splitTextToSize(
+    // //   this.state.totalScore.emotionalWellnessText,
+    // //   180
+    // // );
+    // // pdf.text(10, 20, overAllWellness);
+    // // // Mental Wellness
+    // // pdf.addPage();
+    // // pdf.text(10, 10, "Mental Wellness");
+    // // var overAllWellness = pdf.splitTextToSize(
+    // //   this.state.totalScore.mentalWellnessText,
+    // //   180
+    // // );
+    // // pdf.text(10, 20, overAllWellness);
+    // // // Social Wellness
+    // // pdf.addPage();
+    // // pdf.text(10, 10, "Social Wellness");
+    // // var overAllWellness = pdf.splitTextToSize(
+    // //   this.state.totalScore.socialWellnessText,
+    // //   180
+    // // );
+    // pdf.text(10, 20, overAllWellness);
+    // pdf.save("pdf");
+    // this.setState({ iconLoading: false });
   };
 
   showConsole = str => {
@@ -332,6 +341,14 @@ class Summary extends React.Component {
   };
 
   componentDidMount() {
+    this.setState({
+      template: (
+        <>
+          <div>HASNAIN ALI</div>
+        </>
+      )
+    });
+
     const empid = localStorage.getItem("empID");
     console.log("emp id", empid);
 
@@ -349,11 +366,12 @@ class Summary extends React.Component {
               headers: headers
             })
             .then(response => {
-              console.log("totalscor ", response.data);
+              
               if (response.data.status) {
                 this.setState({
                   totalScore: response.data.data[0]
                 });
+                console.log("totalscore   :::   ", this.state.totalScore);
               }
             })
             .catch(error => {
@@ -398,6 +416,7 @@ class Summary extends React.Component {
                   recomendations: response.data.data[0],
                   physicalScore: this.state.totalScore.physicalScore
                 });
+                console.log('YO ::: ', this.state.totalScore);
               }
             })
             .catch(error => {
@@ -411,6 +430,8 @@ class Summary extends React.Component {
       .catch(error => {
         console.log(error);
       });
+
+      
   }
 
   enterIconLoading = () => {
@@ -422,7 +443,7 @@ class Summary extends React.Component {
     this.setState({ iconLoading: true });
 
     html2canvas(document.querySelector("#root")).then(canvas => {
-      // document.body.appendChild(canvas); // if you want see your screenshot in body.
+      document.body.appendChild(canvas); // if you want see your screenshot in body.
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "em", "a4");
       let width = pdf.internal.pageSize.getWidth();
@@ -486,6 +507,7 @@ class Summary extends React.Component {
                   >
                     Generate PDF
                   </Button>
+
                 </Col>
               </Row>
               <Row gutter={24}>
@@ -501,7 +523,8 @@ class Summary extends React.Component {
                         physical: this.state.totalScore.physicalScore,
                         emotional: this.state.totalScore.emotionalScore,
                         social: this.state.totalScore.socialScore,
-                        mental: this.state.totalScore.mentalScore
+                        mental: this.state.totalScore.mentalScore,
+                        totalScore: this.state.totalScore.totalScore
                       }
                     ]}
                   />
