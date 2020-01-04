@@ -53,7 +53,7 @@ class Questionnaire extends React.Component {
             <Collapse >
               <Panel className="text-weight" disabled showArrow={false} header="A few questions about your physical lifestyle"  >
               </Panel>
-              
+
             </Collapse>
           </Col>
           <Col span={6} pull={18}>
@@ -67,9 +67,9 @@ class Questionnaire extends React.Component {
           </Col>
           <Col span={6}>
             <Collapse >
-              <Panel header="Answer 1"  extra={genExtra()}>
+              <Panel header="Answer 1" extra={genExtra()}>
               </Panel>
-              
+
             </Collapse>
             {/* <Button
               block
@@ -82,10 +82,10 @@ class Questionnaire extends React.Component {
             </Button> */}
           </Col>
           <Col span={6}>
-          <Collapse >
-              <Panel header="Answer 2"  extra={genExtra()}>
+            <Collapse >
+              <Panel header="Answer 2" extra={genExtra()}>
               </Panel>
-              
+
             </Collapse>
             {/* <Button
               block
@@ -102,10 +102,10 @@ class Questionnaire extends React.Component {
         <Row gutter={(24, 24)}>
           <Col span={6}></Col>
           <Col span={6}>
-          <Collapse >
-              <Panel header="Answer 3"  extra={genExtra()}>
+            <Collapse >
+              <Panel header="Answer 3" extra={genExtra()}>
               </Panel>
-              
+
             </Collapse>
             {/* <Button
               block
@@ -118,10 +118,10 @@ class Questionnaire extends React.Component {
             </Button> */}
           </Col>
           <Col span={6}>
-          <Collapse >
-              <Panel header="Answer 4"  extra={genExtra()}>
+            <Collapse >
+              <Panel header="Answer 4" extra={genExtra()}>
               </Panel>
-              
+
             </Collapse>
             {/* <Button
               block

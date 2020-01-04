@@ -22,13 +22,13 @@ class SvgChart extends React.Component {
         }
       ],
       captions: {
-        physical: "physical",
-        mental: "mental",
-        emotional: "emotional",
-        social: "social"
+        physical: "Physical",
+        mental: "Mental",
+        emotional: "Emotional",
+        social: "Social"
       },
       physical: 0,
-      mental: 0,       
+      mental: 0,
       emotional: 0,
       social: 0
     };
@@ -39,23 +39,23 @@ class SvgChart extends React.Component {
     setTimeout(() => {
       console.log("prosps value ", this.props.radareData);
       this.setState({
-            radarOriginData: this.props.radareData
-         
+        radarOriginData: this.props.radareData
+
       });
       this.populateGraph();
     }, 3000);
   }
 
   populateGraph = () => {
-      console.log('value of radarOrigin',this.state.radarOriginData[0].physical);
+    console.log('value of radarOrigin', this.state.radarOriginData[0].physical);
     this.setState({
       data: [
         {
           data: {
-            physical: this.state.radarOriginData[0].physical/100,
-            mental: this.state.radarOriginData[0].mental/100,
-            emotional: this.state.radarOriginData[0].emotional/100,
-            social: this.state.radarOriginData[0].social/100
+            physical: this.state.radarOriginData[0].physical / 100,
+            mental: this.state.radarOriginData[0].mental / 100,
+            emotional: this.state.radarOriginData[0].emotional / 100,
+            social: this.state.radarOriginData[0].social / 100
           },
           meta: { color: "red" }
         }

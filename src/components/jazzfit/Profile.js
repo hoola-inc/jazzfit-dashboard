@@ -66,19 +66,19 @@ class Profile extends React.Component {
                 <Link to="/score">
                   <span>Scores</span>
                 </Link>
-                
+
               </Menu.Item>
               <Menu.Item key="analytics">
                 <Link to="/analytics">
                   <span>Analytics</span>
                 </Link>
-                
+
               </Menu.Item>
               <Menu.Item key="documentation">
                 <Link to="/documentation">
                   <span>Documentation</span>
                 </Link>
-                
+
               </Menu.Item>
             </SubMenu>
             {/* <SubMenu

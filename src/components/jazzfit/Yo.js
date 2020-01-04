@@ -13,17 +13,17 @@ class Yo extends Component {
   render() {
     return (
       <div>
-        
-        <Row gutter = {16}>
-            <Col span = {4}>
+
+        <Row gutter={16}>
+          <Col span={4}>
             <Sidebar></Sidebar>
-            </Col>
-            <Col span = {8}>
-                <FormTest />
-            </Col>
+          </Col>
+          <Col span={8}>
+            <FormTest />
+          </Col>
 
         </Row>
-       
+
       </div>
     );
   }

@@ -59,7 +59,7 @@ class PersonalDetails extends React.Component {
           jwtToken: response.data.data
         });
       })
-      .catch(error => {});
+      .catch(error => { });
   }
 
   // onChange(e) {
@@ -86,7 +86,7 @@ class PersonalDetails extends React.Component {
     if (e.target.name === "" || re.test(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }
-  
+
   };
   onempIdChange = e => {
     e.preventDefault();
@@ -94,7 +94,7 @@ class PersonalDetails extends React.Component {
     if (e.target.name === "" || re.test(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }
-    console.log (";;;;;;;;;",this.state.userId +"    e cvalue "+e.target.value)
+    console.log(";;;;;;;;;", this.state.userId + "    e cvalue " + e.target.value)
   };
   onheightChange = e => {
     e.preventDefault();
@@ -136,7 +136,7 @@ class PersonalDetails extends React.Component {
       .then(response => {
         if (response.data.status) {
           console.log('::::::::::::::::::::::::   ', this.state.userId);
-          console.log("totalAttempt",response.data.data[0].totalAttempt);
+          console.log("totalAttempt", response.data.data[0].totalAttempt);
           if (response.data.data[0].totalAttempt === 0) {
             localStorage.setItem("empID", this.state.userId);
             Swal.fire(
@@ -178,7 +178,7 @@ class PersonalDetails extends React.Component {
                 localStorage.setItem("empID", response.data.data.empId);
                 localStorage.setItem("totalAttempt", 0);
                 this.props.myNext1();
-              
+
                 this.setState({
                   iconLoading: false,
                   loading: false
@@ -444,8 +444,8 @@ class PersonalDetails extends React.Component {
                     ]
                   })(
                     <Input
-                      prefix={<Icon type="mail" style={{ paddingTop : "9px" }}/>}
-                     
+                      prefix={<Icon type="mail" style={{ paddingTop: "9px" }} />}
+
                       placeholder="Enter Email Address"
                       name="email"
                       size="large"
@@ -475,7 +475,7 @@ class PersonalDetails extends React.Component {
                     <Input
                       type="text"
                       size="large"
-                      placeholder="e.g 5.10"
+                      placeholder="6.1 feet.inch"
                       name="height"
                       value={this.state.height}
                       onChange={this.onheightChange}
@@ -494,10 +494,10 @@ class PersonalDetails extends React.Component {
                   <Col xs={{ span: 24 }} lg={{ span: 8 }}>
                     <Input
                       type="text"
-                      
+
                       size="large"
                       value={this.state.weight}
-                      placeholder="e.g 67kg"
+                      placeholder="70 kg"
                       name="weight"
                       onChange={this.onweightChange}
                     ></Input>
@@ -511,7 +511,7 @@ class PersonalDetails extends React.Component {
                 type="primary"
                 icon="arrow-right"
                 size="large"
-                className ="firstScreenButton"
+                className="firstScreenButton"
                 loading={this.state.iconLoading}
                 onClick={() => {
                   this.enterIconLoading();

@@ -12,7 +12,8 @@ import {
   Divider,
   Avatar,
   Progress,
-  Collapse
+  Collapse,
+  Icon
 } from "antd";
 import SummaryCard from "./ReportCards/SummaryCard";
 import ProCharts from "../charts/ProCharts";
@@ -158,7 +159,7 @@ const PageTwo = () => (
                             <h1 className="font-weight-sixteen">
                               ANS: {physical.answer}
                             </h1>
-                            <Divider style={{background: "#bfd632"}}></Divider>
+                            <Divider style={{ background: "#bfd632" }}></Divider>
                           </Col>
                         </Row>
                         {physical.recommendation.length === 0 ? (
@@ -572,7 +573,7 @@ class Summary extends React.Component {
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider style={{background: "#bfd632"}}></Divider>
+                    <Divider style={{ background: "#bfd632" }}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.physicalData.map((physical, index) => {
@@ -591,7 +592,7 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {physical.question}
                                 </h1>
-                                <Divider style={{background: "#bfd632"}}></Divider>
+                                <Divider style={{ background: "#bfd632" }}></Divider>
                               </Col>
                             </Row>
                             {physical.recommendation.length === 0 ? (
@@ -611,11 +612,28 @@ class Summary extends React.Component {
                                   </Row>
                                   <Row gutter={24}>
                                     <Col span={24}>
-                                      <Collapse bordered={false}>
+                                      <Collapse
+                                        bordered={false}
+                                        expandIconPosition="right"
+                                        expandIcon={({ isActive }) => (
+                                          <Icon
+                                            type="right"
+                                            rotate={isActive ? -90 : 90}
+                                            style={{
+                                              backgroundColor: "#bfd632",
+                                              color: "#fff",
+                                              width: "500",
+                                              height: "500",
+                                              borderRadius: 100 / 2,
+                                              width: " 20px",
+                                              height: "20px",
+                                              paddingTop: "0.5%"
+                                            }}
+                                          />
+                                        )}
+                                      >
                                         <Panel
-                                          showArrow={false}
                                           header="Read More"
-                                          type="link"
                                         >
                                           {physical.recommendation.map(
                                             (data, index) => {
@@ -677,7 +695,7 @@ class Summary extends React.Component {
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider style={{background: "#ef4323"}}></Divider>
+                    <Divider style={{ background: "#ef4323" }}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.emotionalData.map((emotional, index) => {
@@ -696,7 +714,7 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {emotional.question}
                                 </h1>
-                                <Divider style={{background: "#ef4323"}}></Divider>
+                                <Divider style={{ background: "#ef4323" }}></Divider>
                               </Col>
                             </Row>
                             {emotional.recommendation.length === 0 ? (
@@ -717,9 +735,26 @@ class Summary extends React.Component {
                                   </Row>
                                   <Row gutter={24}>
                                     <Col span={24}>
-                                      <Collapse bordered={false}>
+                                      <Collapse
+                                        bordered={false}
+                                        expandIconPosition="right"
+                                        expandIcon={({ isActive }) => (
+                                          <Icon
+                                            type="right"
+                                            rotate={isActive ? -90 : 90}
+                                            style={{
+                                              backgroundColor: "#ef4323",
+                                              color: "#fff",
+                                              width: "500",
+                                              height: "500",
+                                              borderRadius: 100 / 2,
+                                              width: " 20px",
+                                              height: "20px",
+                                              paddingTop: "0.5%"
+                                            }}
+                                          />
+                                        )}>
                                         <Panel
-                                          showArrow={false}
                                           header="Read More"
                                           type="link"
                                         >
@@ -784,7 +819,7 @@ class Summary extends React.Component {
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider style={{background: "#834291"}}></Divider>
+                    <Divider style={{ background: "#834291" }}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.mentalData.map((mental, index) => {
@@ -803,7 +838,7 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {mental.question}
                                 </h1>
-                                <Divider style={{background: "#834291"}}></Divider>
+                                <Divider style={{ background: "#834291" }}></Divider>
                               </Col>
                             </Row>
                             {mental.recommendation.length === 0 ? (
@@ -824,9 +859,27 @@ class Summary extends React.Component {
                                   </Row>
                                   <Row gutter={24}>
                                     <Col span={24}>
-                                      <Collapse bordered={false}>
+                                      <Collapse
+                                        bordered={false}
+                                        expandIconPosition="right"
+                                        expandIcon={({ isActive }) => (
+                                          <Icon
+                                            type="right"
+                                            rotate={isActive ? -90 : 90}
+                                            style={{
+                                              backgroundColor: "#834291",
+                                              color: "#fff",
+                                              width: "500",
+                                              height: "500",
+                                              borderRadius: 100 / 2,
+                                              width: " 20px",
+                                              height: "20px",
+                                              paddingTop: "0.5%"
+                                            }}
+                                          />
+                                        )}
+                                      >
                                         <Panel
-                                          showArrow={false}
                                           header="Read More"
                                           type="link"
                                         >
@@ -890,7 +943,7 @@ class Summary extends React.Component {
                         style={{ margin: "0px 10px 10px 30px" }}
                       />
                     </Col>
-                    <Divider style={{background: "#18aeef"}}></Divider>
+                    <Divider style={{ background: "#18aeef" }}></Divider>
                   </Row>
                   {/* first  */}
                   {this.state.socialData.map((social, index) => {
@@ -909,7 +962,7 @@ class Summary extends React.Component {
                                 <h1 className="font-weight-sixteen">
                                   {social.question}
                                 </h1>
-                                <Divider style={{background: "#18aeef"}}></Divider>
+                                <Divider style={{ background: "#18aeef" }}></Divider>
                               </Col>
                             </Row>
                             {social.recommendation.length === 0 ? (
@@ -923,9 +976,26 @@ class Summary extends React.Component {
                                   </Row>
                                   <Row gutter={24}>
                                     <Col span={24}>
-                                      <Collapse bordered={false}>
+                                      <Collapse
+                                        bordered={false}
+                                        expandIconPosition="right"
+                                        expandIcon={({ isActive }) => (
+                                          <Icon
+                                            type="right"
+                                            rotate={isActive ? -90 : 90}
+                                            style={{
+                                              backgroundColor: "#18aeef",
+                                              color: "#fff",
+                                              width: "500",
+                                              height: "500",
+                                              borderRadius: 100 / 2,
+                                              width: " 20px",
+                                              height: "20px",
+                                              paddingTop: "0.5%"
+                                            }}
+                                          />
+                                        )}>
                                         <Panel
-                                          showArrow={false}
                                           header="Read More"
                                           type="link"
                                         >

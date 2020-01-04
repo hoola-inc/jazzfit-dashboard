@@ -1,5 +1,5 @@
 import React from "react";
-import {  } from "antd";
+import { } from "antd";
 
 
 
@@ -12,9 +12,9 @@ class test extends React.Component {
     };
   }
 
- 
+
   render() {
-    
+
     return (
       <div>
         <h4>jhasdgf sdjkfh lasdkjfh alskdjh laksdj flksdjfhlaksjdf aklsdfh lkasdj fhlkas dfklajsdh flkasdh fklasjdfh kljsad f</h4>

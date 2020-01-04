@@ -1,7 +1,7 @@
 import React from "react";
 // import { Steps, Button, message, h1 } from "antd";
 import Tests from './Tests';
-import {Steps, Form, Input, Row, Col, Button, DatePicker, Icon, message } from "antd";
+import { Steps, Form, Input, Row, Col, Button, DatePicker, Icon, message } from "antd";
 import axios from "axios";
 import PersonalDetails from "./PersonalDetails";
 import Questionnaire from "./Questionnaire";
@@ -13,44 +13,44 @@ const { Step } = Steps;
 
 let Titles = [
   (
-  <div>
-    <h3>Personal Details</h3>
-    <p className="steps-tags">Some general information <br/> about you.</p>
-  </div>
+    <div>
+      <h3>Personal Details</h3>
+      <p className="steps-tags">Some general information <br /> about you.</p>
+    </div>
   ),
   (
-  <div>
-    <h3>Questionnaire</h3>
-    <h4 className="steps-tags">Follow-up questions about <br/>your lifestyle.</h4>
-  </div>
+    <div>
+      <h3>Questionnaire</h3>
+      <h4 className="steps-tags">Follow-up questions about <br />your lifestyle.</h4>
+    </div>
   ),
   (
-  <div>
-    <h3>Results</h3>
-    <p className="steps-tags"> Detailed wellness report <br/> based on you answers.</p>
-  </div>
+    <div>
+      <h3>Results</h3>
+      <p className="steps-tags"> Detailed wellness report <br /> based on you answers.</p>
+    </div>
   )
 ];
 
 let firstContent = (
-  <div style={{backgroundColor: '#fff', padding: 50, marginBottom: 20}}>
-      <PersonalDetails />
+  <div style={{ backgroundColor: '#fff', padding: 50, marginBottom: 20 }}>
+    <PersonalDetails />
   </div>
- 
-  );
-  let secondContent = (
-    <div style={{backgroundColor: '#fff', padding: 50, marginBottom: 20}}>
-        <Questionnaire/>
-    </div>
-   
-    );
-    let lastContent = (
-      <div style={{backgroundColor: '#fff', padding: 50, marginBottom: 20}}>
-          <PostForm/>
-      </div>
-     
-      );
-  
+
+);
+let secondContent = (
+  <div style={{ backgroundColor: '#fff', padding: 50, marginBottom: 20 }}>
+    <Questionnaire />
+  </div>
+
+);
+let lastContent = (
+  <div style={{ backgroundColor: '#fff', padding: 50, marginBottom: 20 }}>
+    <PostForm />
+  </div>
+
+);
+
 
 const steps = [
   {
@@ -91,12 +91,12 @@ class JazzSteps extends React.Component {
     return (
       <div>
         <div >
-          <h1 style={{ fontWeight: "bold",margin: "0 0 1% 0", fontSize: 40}}>Welcome , Danyal</h1>
+          <h1 style={{ fontWeight: "bold", margin: "0 0 1% 0", fontSize: 40 }}>Welcome , Danyal</h1>
           <h3 className="steps-tags" style={{ margin: "0 0 1% 0", fontSize: 20 }}>
             Your Wellness Journey begins here. Follow the steps below to proceed.
           </h3>
         </div>
-        <Steps current={current} style={{ marginTop:50 }}>
+        <Steps current={current} style={{ marginTop: 50 }}>
           {steps.map(item => (
             <Step key={item.title} title={item.title} />
           ))}
@@ -127,7 +127,7 @@ class JazzSteps extends React.Component {
             </Button>
           )}
         </div>
-        
+
       </div>
     );
   }
