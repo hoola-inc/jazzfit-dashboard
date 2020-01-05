@@ -265,7 +265,19 @@ class Summary extends React.Component {
       physicalScore: 0,
       loading: false,
       iconLoading: false,
-      template: null
+      template: null,
+
+      // pdf states
+      totalWellnessTextForPdf: null,
+      physicalWellnessTextForPdf: '',
+      mentalWellnessTextForPdf: '',
+      emotionalWellnessTextForPdf: '',
+      socialWellnessTextForPdf: '',
+      mentalScoreForPdf: 0,
+      totalScoreForPdf: 0,
+      emotionalScoreForPdf: 0,
+      physicalScoreForPdf: 0,
+      socialScoreForPdf: 0
     };
   }
   addNewlines = str => {
@@ -282,13 +294,8 @@ class Summary extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      template: (
-        <>
-          <div>HASNAIN ALI</div>
-        </>
-      )
-    });
+
+
 
     const empid = localStorage.getItem("empID");
     console.log("emp id", empid);
@@ -311,9 +318,23 @@ class Summary extends React.Component {
               if (response.data.status) {
                 this.setState({
                   totalScore: response.data.data[0],
-                  totalWellnessTextPdf: response.data.data[0].totalWellnessText
+
+
+                  totalWellnessTextForPdf: response.data.data[0].totalWellnessText,
+                  physicalWellnessTextForPdf: response.data.data[0].physicalWellnessText,
+                  mentalWellnessTextForPdf: response.data.data[0].mentalWellnessText,
+                  socialWellnessTextForPdf: response.data.data[0].socialWellnessText,
+                  emotionalWellnessTextForPdf: response.data.data[0].emotionalWellnessText,
+
+                  totalScoreForPdf: response.data.data[0].totalScore,
+                  emotionalScoreForPdf: response.data.data[0].emotionalScore,
+                  physicalScoreForPdf: response.data.data[0].physicalScore,
+                  socialScoreForPdf: response.data.data[0].socialScore,
+                  mentalScoreForPdf: response.data.data[0].mentalScore
+
+
                 });
-                console.log("totalscore   :::   ", this.state.totalWellnessTextPdf);
+                console.log("totalWellnessText   :::   ", this.state.totalScore);
               }
             })
             .catch(error => {
@@ -329,7 +350,7 @@ class Summary extends React.Component {
               if (response.data.status) {
                 response.data.data.map(data => {
                   if (data.wellnessType === "physical") {
-                    console.log("ddata .wellner tuyp ", data);
+                    console.log("data wellness type => ", data);
                     this.setState({
                       physicalData: this.state.physicalData.concat(data)
                     });
@@ -376,6 +397,48 @@ class Summary extends React.Component {
 
   }
 
+
+
+
+
+
+
+
+
+
+
+  enterIconLoading = () => {
+    this.setState({ iconLoading: true });
+  };
+
+  // _exportPdf = () => {
+  //   this.enterIconLoading();
+  //   this.setState({ iconLoading: true });
+
+  //   html2canvas(document.querySelector("#root")).then(canvas => {
+  //     document.body.appendChild(canvas); // if you want see your screenshot in body.
+  //     const imgData = canvas.toDataURL("image/png");
+  //     const pdf = new jsPDF("p", "em", "a4");
+  //     let width = pdf.internal.pageSize.getWidth();
+
+  //     pdf.setFontSize(40);
+  //     // pdf.text("Octonyan loves jsPDF", 35, 25);
+  //     // pdf.text('Foo', 55, 55);
+
+  //     // pdf.addImage('examples/images/Octonyan.jpg', 'JPEG', 15, 40, 180, 180);
+  //     const height = pdf.internal.pageSize.getHeight();
+  //     pdf.addImage(imgData, "PNG", 0, 0, width, height / 1.8);
+  //     const today = new Date().toISOString().slice(0, 10);
+  //     pdf.save(`${today}-total-score.pdf`);
+  //     this.setState({ iconLoading: false });
+  //   });
+  // };
+
+
+
+
+
+
   Quixote = () => (
     <Document>
       <Page style={this.pdfStyle.body}>
@@ -386,8 +449,35 @@ class Summary extends React.Component {
         <Text style={this.pdfStyle.title}>
           Total Score Summary
         </Text>
-        <Text>
-          
+        <Text style={this.pdfStyle.text}>
+          {
+            this.state.totalWellnessTextForPdf
+          }
+        </Text>
+
+        <Text style={this.pdfStyle.title}> Physical Wellness (Score: {this.state.physicalScoreForPdf}) </Text>
+
+        <Text style={this.pdfStyle.text}>
+          {this.state.physicalWellnessTextForPdf}
+        </Text>
+
+
+        <Text style={this.pdfStyle.title}> Mental Wellness (Score: {this.state.mentalScoreForPdf})</Text>
+
+        <Text style={this.pdfStyle.text}>
+          {this.state.mentalWellnessTextForPdf}
+        </Text>
+
+        <Text style={this.pdfStyle.title}> Social Wellness (Score: {this.state.socialScoreForPdf})</Text>
+
+        <Text style={this.pdfStyle.text}>
+          {this.state.socialWellnessTextForPdf}
+        </Text>
+
+        <Text style={this.pdfStyle.title}> Emotional Wellness (Score: {this.state.emotionalScoreForPdf})</Text>
+
+        <Text style={this.pdfStyle.text}>
+          {this.state.emotionalWellnessTextForPdf}
         </Text>
 
       </Page>
@@ -434,34 +524,9 @@ class Summary extends React.Component {
 
 
 
-
-  enterIconLoading = () => {
-    this.setState({ iconLoading: true });
-  };
-
-  _exportPdf = () => {
-    this.enterIconLoading();
-    this.setState({ iconLoading: true });
-
-    html2canvas(document.querySelector("#root")).then(canvas => {
-      document.body.appendChild(canvas); // if you want see your screenshot in body.
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "em", "a4");
-      let width = pdf.internal.pageSize.getWidth();
-
-      pdf.setFontSize(40);
-      // pdf.text("Octonyan loves jsPDF", 35, 25);
-      // pdf.text('Foo', 55, 55);
-
-      // pdf.addImage('examples/images/Octonyan.jpg', 'JPEG', 15, 40, 180, 180);
-      const height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "PNG", 0, 0, width, height / 1.8);
-      const today = new Date().toISOString().slice(0, 10);
-      pdf.save(`${today}-total-score.pdf`);
-      this.setState({ iconLoading: false });
-    });
-  };
   render() {
+
+
     return (
       <Layout className="App">
         <Header />
@@ -509,9 +574,15 @@ class Summary extends React.Component {
                     Generate PDF
                   </Button> */}
 
-                  <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf">
-                    {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-                  </PDFDownloadLink>
+                  {(this.state.totalWellnessTextForPdf) ?
+                    (
+                      <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf">
+                        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+                      </PDFDownloadLink>
+                    ) :
+                    (
+                      null
+                    )}
 
                 </Col>
               </Row>
