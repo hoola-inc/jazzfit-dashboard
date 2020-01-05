@@ -19,13 +19,26 @@ import SummaryCard from "./ReportCards/SummaryCard";
 import ProCharts from "../charts/ProCharts";
 import SvgChart from "../charts/SvgChart";
 import { renderToString } from "react-dom/server";
-import PDF, { Text, AddPage, Line, Image, Table, Html } from "jspdf-react";
+// import PDF, { Text, AddPage, Line, Image, Table, Html } from "jspdf-react";
 import physical from "../drawables/physical.png";
 import mental from "../drawables/mental.png";
 import emotional from "../drawables/emotional.png";
 import social from "../drawables/social.png";
-import PDFDocument from './gen-pdf-test';
-import { PDFDownloadLink } from '@react-pdf/renderer'
+import jazzfitLogo from "../drawables/fitlogo.png";
+// import PDFDocument from './gen-pdf-test';
+import {
+  Font,
+  Text,
+  Document,
+  Page,
+  Image,
+  StyleSheet,
+  PDFViewer,
+  PDFDownloadLink
+} from "@react-pdf/renderer";
+
+
+
 
 const { Panel } = Collapse;
 const monthNames = [
@@ -264,78 +277,6 @@ class Summary extends React.Component {
     return result;
   };
 
-  print = () => {
-
-
-
-
-
-    // this.enterIconLoading();
-    // this.setState({ iconLoading: true });
-    // // OverAllText = "" + this.state.totalScore.totalWellnessText;
-    // // anArr = OverAllText.match(/.{1,106}/g);
-    // // PhysicalText = "" + this.state.totalScore.physicalWellnessText;
-    // // PhysicalScore = this.state.totalScore.physicalScore;
-    // // PhysicalArr = PhysicalText.match(/.{1,100}/g);
-    // // PhysicalDataArr = this.state.physicalData;
-    // // const string = renderToString(<Prints />);
-    // // const physical = renderToString(<PageTwo />);
-
-    // // const pThree = renderToString(<PageThree />);
-
-    // const pdf = new jsPDF("p", "mm", "a4");
-
-    // // OverAll Wellness
-    // pdf.text(10, 10, "OverAll Wellness!");
-    // var overAllWellness = pdf.splitTextToSize(
-    //   this.state.template,
-    //   180
-    // );
-    // // pdf.text(10, 20, overAllWellness);
-    // // // Physical Wellness
-    // // pdf.addPage();
-    // // pdf.text(10, 10, "Physical Wellness");
-    // // var overAllWellness = pdf.splitTextToSize(
-    // //   this.state.totalScore.physicalWellnessText,
-    // //   180
-    // // );
-    // // this.state.physicalData.map((physical, index) => {
-    // //   const i = index + 1
-    // //   pdf.text(10, i * 55, physical.question);
-    // //   var element = pdf.splitTextToSize(
-    // //     physical.question,
-    // //     180
-    // //   );
-    // // });
-    // // pdf.text(10, 20, overAllWellness);
-    // // // Emotional Wellness
-    // // pdf.addPage();
-    // // pdf.text(10, 10, "Emotional Wellness");
-    // // var overAllWellness = pdf.splitTextToSize(
-    // //   this.state.totalScore.emotionalWellnessText,
-    // //   180
-    // // );
-    // // pdf.text(10, 20, overAllWellness);
-    // // // Mental Wellness
-    // // pdf.addPage();
-    // // pdf.text(10, 10, "Mental Wellness");
-    // // var overAllWellness = pdf.splitTextToSize(
-    // //   this.state.totalScore.mentalWellnessText,
-    // //   180
-    // // );
-    // // pdf.text(10, 20, overAllWellness);
-    // // // Social Wellness
-    // // pdf.addPage();
-    // // pdf.text(10, 10, "Social Wellness");
-    // // var overAllWellness = pdf.splitTextToSize(
-    // //   this.state.totalScore.socialWellnessText,
-    // //   180
-    // // );
-    // pdf.text(10, 20, overAllWellness);
-    // pdf.save("pdf");
-    // this.setState({ iconLoading: false });
-  };
-
   showConsole = str => {
     console.log(str);
   };
@@ -366,12 +307,13 @@ class Summary extends React.Component {
               headers: headers
             })
             .then(response => {
-              
+
               if (response.data.status) {
                 this.setState({
-                  totalScore: response.data.data[0]
+                  totalScore: response.data.data[0],
+                  totalWellnessTextPdf: response.data.data[0].totalWellnessText
                 });
-                console.log("totalscore   :::   ", this.state.totalScore);
+                console.log("totalscore   :::   ", this.state.totalWellnessTextPdf);
               }
             })
             .catch(error => {
@@ -416,7 +358,7 @@ class Summary extends React.Component {
                   recomendations: response.data.data[0],
                   physicalScore: this.state.totalScore.physicalScore
                 });
-                console.log('YO ::: ', this.state.totalScore);
+                console.log('YO ::: ', this.state.socialData);
               }
             })
             .catch(error => {
@@ -431,8 +373,67 @@ class Summary extends React.Component {
         console.log(error);
       });
 
-      
+
   }
+
+  Quixote = () => (
+    <Document>
+      <Page style={this.pdfStyle.body}>
+        <Image
+          style={this.pdfStyle.image}
+          src={jazzfitLogo}
+        />
+        <Text style={this.pdfStyle.title}>
+          Total Score Summary
+        </Text>
+        <Text>
+          
+        </Text>
+
+      </Page>
+    </Document>
+  );
+
+
+  Fonts = Font.register({
+    family: 'Oswald',
+    src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf'
+  });
+
+  pdfStyle = StyleSheet.create({
+    body: {
+      paddingTop: 35,
+      paddingBottom: 65,
+      paddingHorizontal: 35,
+    },
+    title: {
+      fontSize: 24,
+      textAlign: 'center',
+      fontFamily: 'Oswald',
+      color: 'red'
+    },
+    text: {
+      margin: 12,
+      fontSize: 14,
+      textAlign: 'justify',
+      fontFamily: 'Times-Roman'
+    },
+    image: {
+      width: '40px',
+      height: '40px',
+      marginVertical: 15,
+      marginHorizontal: 230
+    }
+  });
+
+
+
+
+
+
+
+
+
 
   enterIconLoading = () => {
     this.setState({ iconLoading: true });
@@ -498,7 +499,7 @@ class Summary extends React.Component {
                   >
                     OverAll Score
                   </h1>
-                  <Button
+                  {/* <Button
                     type="primary"
                     onClick={this.print}
                     icon="download"
@@ -506,7 +507,11 @@ class Summary extends React.Component {
                     ghost
                   >
                     Generate PDF
-                  </Button>
+                  </Button> */}
+
+                  <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf">
+                    {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+                  </PDFDownloadLink>
 
                 </Col>
               </Row>
@@ -548,7 +553,7 @@ class Summary extends React.Component {
                   {this.state.totalScore.totalWellnessText}
                 </Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <Col
                   xs={{ span: 20, offset: 1 }}
                   lg={{ span: 2, offset: 1 }}
@@ -556,7 +561,7 @@ class Summary extends React.Component {
                 >
                   You are in the 87th percentile and your score ranks 22nd.
                 </Col>
-              </Row>
+              </Row> */}
             </div>
             {/* Summary Cards */}
             <Row gutter={24} style={{ marginTop: "2%" }}>
@@ -1050,7 +1055,7 @@ class Summary extends React.Component {
           </div>
         </Layout>
         <div style={{ marginBottom: "5%" }}></div>
-      </Layout>
+      </Layout >
     );
   }
 }

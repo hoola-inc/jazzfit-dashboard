@@ -9,7 +9,6 @@ import Step3 from "./components/xdemic/AddPersonToSchool";
 import AddCourses from "./components/xdemic/AddCourses";
 import ModalTest from './components/xdemic/ModalTest';
 import NewModalTest from './components/xdemic/NewModalTest';
-import Foo from './components/NewJazzFit/gen-pdf-test';
 import './App.css';
 
 class App extends React.Component {
@@ -31,7 +30,6 @@ class App extends React.Component {
             <Route path="/summary" component={Summary} />
             <Route path="/scores/:id" component={Scores} />
             <Route path="/settings" component={Settings} />
-            <Route path="/pdf" component={Foo} />
             {/* <Route path="/test" component={Sidebar} /> */}
           </Switch>
         </BrowserRouter>
