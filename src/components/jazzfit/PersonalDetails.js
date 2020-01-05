@@ -98,7 +98,7 @@ class PersonalDetails extends React.Component {
   };
   onheightChange = e => {
     e.preventDefault();
-    const re = /^[1-9.]{0,3}$/;
+    const re = /^[1-9.]{0,4}$/;
     if (e.target.name === "" || re.test(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }
@@ -106,7 +106,7 @@ class PersonalDetails extends React.Component {
 
   onweightChange = e => {
     e.preventDefault();
-    const re = /^[0-9]{0,3}$/;
+    const re = /^[0-9]{0,4}$/;
     if (e.target.name === "" || re.test(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }

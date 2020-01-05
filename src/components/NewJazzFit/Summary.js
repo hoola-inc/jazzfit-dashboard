@@ -446,39 +446,48 @@ class Summary extends React.Component {
           style={this.pdfStyle.image}
           src={jazzfitLogo}
         />
-        <Text style={this.pdfStyle.title}>
-          Total Score Summary
+        <Text style={this.pdfStyle.topTitle}>
+          Wellness Summary
         </Text>
+
+        <Text style={this.pdfStyle.title}> Total Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.totalScoreForPdf}</Text>
         <Text style={this.pdfStyle.text}>
-          {
-            this.state.totalWellnessTextForPdf
-          }
+          {this.state.totalWellnessTextForPdf}
         </Text>
 
-        <Text style={this.pdfStyle.title}> Physical Wellness (Score: {this.state.physicalScoreForPdf}) </Text>
-
+        <Text style={this.pdfStyle.title}> Physical Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
         <Text style={this.pdfStyle.text}>
           {this.state.physicalWellnessTextForPdf}
         </Text>
 
 
-        <Text style={this.pdfStyle.title}> Mental Wellness (Score: {this.state.mentalScoreForPdf})</Text>
+        <Text style={this.pdfStyle.title}> Mental Wellness </Text>
+
+        <Text style={this.pdfStyle.score}> Score: {this.state.mentalScoreForPdf} </Text>
 
         <Text style={this.pdfStyle.text}>
           {this.state.mentalWellnessTextForPdf}
         </Text>
 
-        <Text style={this.pdfStyle.title}> Social Wellness (Score: {this.state.socialScoreForPdf})</Text>
+        <Text style={this.pdfStyle.title}> Social Wellness </Text>
+
+        <Text style={this.pdfStyle.score}>Score: {this.state.socialScoreForPdf}</Text>
 
         <Text style={this.pdfStyle.text}>
           {this.state.socialWellnessTextForPdf}
         </Text>
 
-        <Text style={this.pdfStyle.title}> Emotional Wellness (Score: {this.state.emotionalScoreForPdf})</Text>
-
+        <Text style={this.pdfStyle.title}> Emotional Wellness </Text>
+        <Text style={this.pdfStyle.score}> Score: {this.state.emotionalScoreForPdf} </Text>
         <Text style={this.pdfStyle.text}>
           {this.state.emotionalWellnessTextForPdf}
         </Text>
+
+        <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
 
       </Page>
     </Document>
@@ -496,30 +505,57 @@ class Summary extends React.Component {
       paddingBottom: 65,
       paddingHorizontal: 35,
     },
-    title: {
-      fontSize: 24,
+    topTitle: {
+      fontSize: 18,
       textAlign: 'center',
       fontFamily: 'Oswald',
-      color: 'red'
+      color: 'crimson',
+      marginBottom: '80px'
+    },
+    title: {
+      fontSize: 16,
+      textAlign: 'left',
+      fontFamily: 'Oswald',
+      color: 'crimson'
     },
     text: {
+      marginBottom: '50px',
       margin: 12,
-      fontSize: 14,
+      fontSize: 12,
       textAlign: 'justify',
-      fontFamily: 'Times-Roman'
+      fontFamily: 'Times-Roman',
+      color: '#959595'
     },
     image: {
       width: '40px',
       height: '40px',
       marginVertical: 15,
-      marginHorizontal: 230
-    }
+      marginHorizontal: 240
+    },
+    score: {
+      textAlign: 'right',
+      fontSize: 8,
+      color: 'crimson',
+      position: 'relative',
+      top: '-15px',
+      marginRight: '20px'
+    },
+    totalScore: {
+      textAlign: 'center',
+      fontSize: 8,
+      color: 'crimson',
+      marginBottom: '50px'
+    },
+    pageNumber: {
+      position: 'absolute',
+      fontSize: 12,
+      bottom: 30,
+      left: 0,
+      right: 0,
+      textAlign: 'center',
+      color: 'grey',
+    },
   });
-
-
-
-
-
 
 
 
@@ -557,7 +593,7 @@ class Summary extends React.Component {
             </Row>
             <div style={{ margin: "1% 4% 0% 4%" }} className=" box-shadow">
               <Row gutter={24}>
-                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                <Col xs={{ span: 24 }} lg={{ span: 24 }}>
                   <h1
                     style={{ marginTop: "1.2%", padding: "3% 0% 0% 5%" }}
                     className="font-weight-sixteen"
@@ -576,8 +612,8 @@ class Summary extends React.Component {
 
                   {(this.state.totalWellnessTextForPdf) ?
                     (
-                      <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf">
-                        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+                      <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf" style={{ display: 'block', textAlign: 'right' }}>
+                        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download pdf!')}
                       </PDFDownloadLink>
                     ) :
                     (
@@ -596,6 +632,7 @@ class Summary extends React.Component {
                   <SvgChart
                     radareData={[
                       {
+                        color: 'crimson',
                         physical: this.state.totalScore.physicalScore,
                         emotional: this.state.totalScore.emotionalScore,
                         social: this.state.totalScore.socialScore,
