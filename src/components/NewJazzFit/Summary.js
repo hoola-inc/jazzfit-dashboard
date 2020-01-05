@@ -179,7 +179,7 @@ const PageTwo = () => (
                           </Col>
                         </Row>
                         {physical.recommendation.length === 0 ? (
-                          "Great Job"
+                          ""
                         ) : (
                             <div>
                               <Row gutter={24}>
@@ -732,7 +732,7 @@ class Summary extends React.Component {
                               </Col>
                             </Row>
                             {physical.recommendation.length === 0 ? (
-                              "Great Job"
+                              ""
                             ) : (
                                 <div>
                                   <Row gutter={24}>
@@ -854,7 +854,7 @@ class Summary extends React.Component {
                               </Col>
                             </Row>
                             {emotional.recommendation.length === 0 ? (
-                              "Great Job"
+                              ""
                             ) : (
                                 <div>
                                   <Row gutter={24}>
@@ -978,7 +978,7 @@ class Summary extends React.Component {
                               </Col>
                             </Row>
                             {mental.recommendation.length === 0 ? (
-                              "Great Job"
+                              ""
                             ) : (
                                 <div>
                                   <Row gutter={24}>
@@ -1102,7 +1102,7 @@ class Summary extends React.Component {
                               </Col>
                             </Row>
                             {social.recommendation.length === 0 ? (
-                              "Great Job"
+                              ""
                             ) : (
                                 <div>
                                   <Row gutter={24}>

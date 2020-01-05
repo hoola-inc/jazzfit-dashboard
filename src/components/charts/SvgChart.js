@@ -59,7 +59,7 @@ class SvgChart extends React.Component {
             mental: this.state.radarOriginData[0].mental / 100,
             emotional: this.state.radarOriginData[0].emotional / 100,
             social: this.state.radarOriginData[0].social / 100,
-            total: this.state.radarOriginData[0].totalScore / 25
+            total: this.state.radarOriginData[0].totalScore / 100
           },
           meta: { color: "red" }
         }
