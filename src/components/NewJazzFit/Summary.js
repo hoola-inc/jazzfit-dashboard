@@ -42,18 +42,18 @@ import {
 
 const { Panel } = Collapse;
 const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  "January ",
+  "February ",
+  "March ",
+  "April ",
+  "May ",
+  "June ",
+  "July ",
+  "August ",
+  "September ",
+  "October ",
+  "November ",
+  "December "
 ];
 let OverAllText = "";
 let anArr = [];
@@ -277,7 +277,12 @@ class Summary extends React.Component {
       totalScoreForPdf: 0,
       emotionalScoreForPdf: 0,
       physicalScoreForPdf: 0,
-      socialScoreForPdf: 0
+      socialScoreForPdf: 0,
+
+      physicalQuestionOne: '',
+      physicalAnswerOne: '',
+      physicalRecommendationTitle: [],
+      physicalRecommendationDetail: []
     };
   }
   addNewlines = str => {
@@ -330,7 +335,9 @@ class Summary extends React.Component {
                   emotionalScoreForPdf: response.data.data[0].emotionalScore,
                   physicalScoreForPdf: response.data.data[0].physicalScore,
                   socialScoreForPdf: response.data.data[0].socialScore,
-                  mentalScoreForPdf: response.data.data[0].mentalScore
+                  mentalScoreForPdf: response.data.data[0].mentalScore,
+
+
 
 
                 });
@@ -350,10 +357,18 @@ class Summary extends React.Component {
               if (response.data.status) {
                 response.data.data.map(data => {
                   if (data.wellnessType === "physical") {
-                    console.log("data wellness type => ", data);
+                    console.log("physical wellness type => ", data);
                     this.setState({
                       physicalData: this.state.physicalData.concat(data)
                     });
+
+                    this.setState({
+                      physicalQuestionOne: data.question,
+                      physicalAnswerOne: data.answer,
+                      physicalRecommendationTitle: this.state.physicalRecommendationTitle.concat(data.title),
+                      physicalRecommendationDetail: this.state.physicalRecommendationDetail.concat(data.detail)
+                    });
+                    console.log('Recommendations ::: ', this.state.physicalRecommendationTitle);
                   }
                   if (data.wellnessType === "emotional") {
                     console.log("ddata .wellner tuyp ", data);
@@ -485,6 +500,28 @@ class Summary extends React.Component {
           {this.state.emotionalWellnessTextForPdf}
         </Text>
 
+
+        <Text style={this.pdfStyle.topTitleNextPage}> Wellness Recommendations </Text>
+        <Text style={this.pdfStyle.title}> Physical Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
+        <Text style={this.pdfStyle.title}> Question </Text>
+        <Text style={this.pdfStyle.text}> {this.state.physicalQuestionOne} </Text>
+        <Text style={this.pdfStyle.title}> Answer </Text>
+        <Text style={this.pdfStyle.text}>{this.state.physicalAnswerOne}</Text>
+
+
+        {
+          this.state.physicalRecommendationTitle.map((data, index) => {
+            return (
+              <Text>
+                {data}
+              </Text>
+            )
+          })
+        }
+
+
+
         <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
           `${pageNumber} / ${totalPages}`
         )} fixed />
@@ -512,6 +549,14 @@ class Summary extends React.Component {
       color: 'crimson',
       marginBottom: '80px'
     },
+    topTitleNextPage: {
+      fontSize: 18,
+      textAlign: 'center',
+      fontFamily: 'Oswald',
+      color: 'crimson',
+      marginBottom: '80px',
+      marginTop: '100px'
+    },
     title: {
       fontSize: 16,
       textAlign: 'left',
@@ -534,7 +579,7 @@ class Summary extends React.Component {
     },
     score: {
       textAlign: 'right',
-      fontSize: 8,
+      fontSize: 12,
       color: 'crimson',
       position: 'relative',
       top: '-15px',
@@ -555,6 +600,14 @@ class Summary extends React.Component {
       textAlign: 'center',
       color: 'grey',
     },
+    recomendations: {
+      marginBottom: '50px',
+      margin: 12,
+      fontSize: 12,
+      textAlign: 'justify',
+      fontFamily: 'Times-Roman',
+      color: '#959595'
+    }
   });
 
 
@@ -580,7 +633,7 @@ class Summary extends React.Component {
                 style={{ padding: "0% 1%" }}
                 className="font-weight-sixteen"
               >
-                Summary
+
               </Col>
               <Col
                 span={4}
@@ -598,7 +651,7 @@ class Summary extends React.Component {
                     style={{ marginTop: "1.2%", padding: "3% 0% 0% 5%" }}
                     className="font-weight-sixteen"
                   >
-                    OverAll Score
+                    Overall Score
                   </h1>
                   {/* <Button
                     type="primary"
@@ -612,7 +665,7 @@ class Summary extends React.Component {
 
                   {(this.state.totalWellnessTextForPdf) ?
                     (
-                      <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf" style={{ display: 'block', textAlign: 'right' }}>
+                      <PDFDownloadLink document={<this.Quixote />} fileName="total-summary.pdf" style={{ display: 'block', textAlign: 'right', position: 'relative', right: '175px', fontSize: '20px' }}>
                         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download pdf!')}
                       </PDFDownloadLink>
                     ) :
@@ -655,8 +708,9 @@ class Summary extends React.Component {
                 </Col>
                 <Col
                   xs={{ span: 20, offset: 1 }}
-                  lg={{ span: 12 }}
+                  lg={{ span: 12, offset: 4 }}
                   className="font-size-sixteen"
+                  style={{ marginTop: '75px' }}
                 >
                   {this.state.totalScore.totalWellnessText}
                 </Col>
@@ -732,7 +786,7 @@ class Summary extends React.Component {
                               </Col>
                             </Row>
                             {physical.recommendation.length === 0 ? (
-                              ""
+                              "Great Job"
                             ) : (
                                 <div>
                                   <Row gutter={24}>
@@ -770,6 +824,8 @@ class Summary extends React.Component {
                                       >
                                         <Panel
                                           header="Read More"
+                                          type="link"
+                                          style={{ fontWeight: 'bold' }}
                                         >
                                           {physical.recommendation.map(
                                             (data, index) => {
@@ -893,6 +949,7 @@ class Summary extends React.Component {
                                         <Panel
                                           header="Read More"
                                           type="link"
+                                          style={{ fontWeight: 'bold' }}
                                         >
                                           {emotional.recommendation.map(
                                             (data, index) => {
@@ -1018,6 +1075,7 @@ class Summary extends React.Component {
                                         <Panel
                                           header="Read More"
                                           type="link"
+                                          style={{ fontWeight: 'bold' }}
                                         >
                                           {mental.recommendation.map(
                                             (data, index) => {
@@ -1134,6 +1192,7 @@ class Summary extends React.Component {
                                         <Panel
                                           header="Read More"
                                           type="link"
+                                          style={{ fontWeight: 'bold' }}
                                         >
                                           {social.recommendation.map(
                                             (data, index) => {

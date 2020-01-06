@@ -66,7 +66,6 @@
   width: 20vw;
   min-width: 250px;
   margin: 0 10px 20px 0;
-  
 }
 #custom-radio-btn:hover {
   box-shadow: none !important;
@@ -138,10 +137,10 @@
   }
 }
 .welcomeText {
-   font-weight: bold;
-   margin: 0 0 1% 0;
-   font-size: 2em;
-   color: #808285;
+  font-weight: bold;
+  margin: 0 0 1% 0;
+  font-size: 2em;
+  color: #808285;
 }
 @media screen and (max-width: 600px) {
   .welcomeText {
@@ -152,35 +151,35 @@
   }
 }
 .wellnessText {
-  color : #808285;
+  color: #808285;
   margin: 0 0 1% 0;
   font-size: 1.5em;
 }
 @media screen and (max-width: 600px) {
- .wellnessText {
-   color : #808285;
-   margin: 0% 0 5% 0;
-   font-size: 0.8em;
- }
+  .wellnessText {
+    color: #808285;
+    margin: 0% 0 5% 0;
+    font-size: 0.8em;
+  }
 }
 
 .proceedbutton {
-  width :40%;
+  width: 40%;
 }
 @media screen and (max-width: 600px) {
- .proceedbutton {
-  width :100%; 
- }
+  .proceedbutton {
+    width: 100%;
+  }
 }
 .genderbutton {
-  margin : 1% 0.5% 1% 0.5%;
-  width :30%;
+  margin: 1% 0.5% 1% 0.5%;
+  width: 30%;
 }
 @media screen and (max-width: 600px) {
- .genderbutton {
-    margin : 1% 0.5% 1% 0.5%;
-    width :30%; 
- }
+  .genderbutton {
+    margin: 1% 0.5% 1% 0.5%;
+    width: 30%;
+  }
 }
 
 .topbar {
@@ -264,110 +263,104 @@
   }
 }
 
-.results-cards-col2{
+.results-cards-col2 {
   padding-left: 0px;
   padding-right: 0px;
   margin-left: 2%;
   min-height: 310px;
 }
 @media screen and (max-width: 600px) {
-  .results-cards-col2{
+  .results-cards-col2 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 5%;
-    margin-left :0%;
+    margin-left: 0%;
     min-height: 330px;
-
   }
 }
 @media screen and (max-width: 750px) {
-  .results-cards-col2{
+  .results-cards-col2 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 2%;
-    margin-left :1%;
+    margin-left: 1%;
     min-height: 360px;
-
   }
 }
 @media screen and (min-width: 1080px) {
-  .results-cards-col2{
+  .results-cards-col2 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 0%;
-    margin-left :1.2%;
+    margin-left: 1.2%;
     min-height: 400px;
-
   }
 }
 
-.results-cards-col1{
+.results-cards-col1 {
   padding-left: 0px;
   padding-right: 0px;
   margin-left: 5%;
   min-height: 310px;
 }
 @media screen and (max-width: 600px) {
-  .results-cards-col1{
+  .results-cards-col1 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 5%;
-    margin-left :0%;  
-    min-height: 310px;  
+    margin-left: 0%;
+    min-height: 310px;
   }
 }
 @media screen and (max-width: 750px) {
-  .results-cards-col1{
+  .results-cards-col1 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: -5%;
-    margin-left :1%;
-    min-height: 310px;    
+    margin-left: 1%;
+    min-height: 310px;
   }
 }
 @media screen and (min-width: 1080px) {
-  .results-cards-col1{
+  .results-cards-col1 {
     padding-left: 0px;
     padding-right: 0px;
     margin-top: 0%;
-    margin-left :1.2%;
+    margin-left: 1.2%;
     min-height: 400px;
-
   }
 }
 
-.firstScreenButton{
-  width :40% ;
+.firstScreenButton {
+  width: 40%;
 }
 @media screen and (max-width: 600px) {
-  .firstScreenButton{
-    width :100% ;
+  .firstScreenButton {
+    width: 100%;
   }
 }
 @media screen and (max-width: 750px) {
-  .firstScreenButton{
-    width :100% ;   
+  .firstScreenButton {
+    width: 100%;
   }
 }
 @media screen and (min-width: 1080px) {
-  .firstScreenButton{
-    width :60% ;
-
+  .firstScreenButton {
+    width: 60%;
   }
 }
 
-.totalscorescards{
-margin : 5% 5% 0% 5%;
+.totalscorescards {
+  margin: 5% 5% 0% 5%;
 }
 @media screen and (max-width: 600px) {
-  .totalscorescards{
- margin : 15% 5% 0% 5%;    
+  .totalscorescards {
+    margin: 15% 5% 0% 5%;
   }
 }
 @media screen and (max-width: 750px) {
-  .totalscorescards{
-  margin : 15% 5% 0% 5%;  
-   
+  .totalscorescards {
+    margin: 15% 5% 0% 5%;
   }
 }
 ._nav_list {
@@ -502,15 +495,15 @@ margin : 5% 5% 0% 5%;
   width: 100%;
   background-color: #fff;
 }
-.navbar-side-items{
-display: flex;
-flex-direction: row-reverse;
+.navbar-side-items {
+  display: flex;
+  flex-direction: row-reverse;
 }
 .avatar {
   line-height: 40%;
   float: right;
   margin: -1% 1% 0% 1%;
-  padding:10px;
+  padding: 10px;
 }
 .settings-heading {
   font-family: Lato;
@@ -524,10 +517,9 @@ flex-direction: row-reverse;
   background-color: #ffffff;
 }
 
-.currensectionp{
+.currensectionp {
   color: #c4161c;
 }
-
 
 input {
   -webkit-appearance: none;
@@ -555,35 +547,40 @@ input:checked {
   padding: 0; /* 2 */
   box-shadow: none;
   outline: none;
-} 
+}
 
-.pdf-text{
+.pdf-text {
   border-bottom: 2px solid yellow;
   display: flex;
   font-weight: 600;
-}  
+}
 
-
-.pdf-para{
+.pdf-para {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   border-bottom: 1px solid grey;
 }
 
-.para{
+.para {
   display: flex;
 }
 
-
-.img{
+.img {
   background-color: tomato;
 }
 
-
-
-.pdf-sleep{
+.pdf-sleep {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+}
+
+.score-text {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+  color: #808285;
+  text-align: justify;
 }

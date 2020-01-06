@@ -204,7 +204,7 @@ class Scores extends React.Component {
                       <Col xs={{ span: 24 }} lg={{ span: 11, offset: 1 }}>
                         <Row>
                           <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                            <h1 className="font-weight-sixteen">
+                            <h1 className="score-text">
                               Question {arrIndex + 1}: {item.question}
                             </h1>
                           </Col>
@@ -240,17 +240,17 @@ class Scores extends React.Component {
                             }}
                           ></Divider>
                           <Row gutter={24}>
-                            <Col span={24} style={{ paddingRight: "15%" }}>
+                            <Col span={24} style={{ paddingRight: "15%", fontWeight: 'bold', marginBottom: '15px' }}>
                               {item.recommendationTitle}
                             </Col>
                           </Row>
 
-                          <Divider></Divider>
+                          {/* <Divider></Divider> */}
                           {this.state.recommendationsArr[arrIndex]
                             .recommendation.length > 0 ? (
                               <Row gutter={[12, 24]}>
-                                <Col span={6}>Recommendations</Col>
-                                <Divider></Divider>
+                                <Col span={6} style={{fontWeight: 'bold', color: `${this.state.color}`}}>Recommendations</Col>
+                                <Divider style={{background: item.color}}></Divider>
                               </Row>
                             ) : null}
 
