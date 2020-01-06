@@ -40,7 +40,7 @@ export default class MyDoc extends Component {
     )
 
     DownloadPdf = () => {
-        console.log('hit download pddf')
+        // console.log('hit download pddf')
         return (
             <div>
                 thahkskshk

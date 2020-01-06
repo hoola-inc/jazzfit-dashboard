@@ -37,11 +37,11 @@ export default class ProCharts extends Component {
 
     setTimeout(
       () => {
-        console.log("prosps value ", this.props.radareData);
+        // console.log("prosps value ", this.props.radareData);
         this.setState({
           radarOriginData: this.props.radareData
         });
-        console.log("hit before  loop state ", this.state.radarOriginData);
+        // console.log("hit before  loop state ", this.state.radarOriginData);
         // this.populateGraph();
       },
       3000
@@ -54,9 +54,9 @@ export default class ProCharts extends Component {
 
   populateGraph = () => {
     const myObj = [];
-    console.log("hit before  loop");
+    // console.log("hit before  loop");
     this.state.radarOriginData.forEach(item => {
-      console.log("hit for loop");
+      // console.log("hit for loop");
       Object.keys(item).forEach(key => {
         if (key !== "name") {
           myObj.push({

@@ -31,7 +31,7 @@ const size = "large";
 const logo = require("../drawables/image1.png");
 
 function NextState() {
-  console.log("I m next state function");
+  // console.log("I m next state function");
 }
 class JazzMain extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class JazzMain extends React.Component {
   
 
   componentWillMount() {
-    console.log("this is compent mount", this.state.current);
+    // console.log("this is compent mount", this.state.current);
     this.setState({
       section: 0
     });
@@ -146,7 +146,7 @@ class JazzMain extends React.Component {
     </div>
   );
   myNext = () => {
-    console.log("value of d ");
+    // console.log("value of d ");
     const e = this.state.current + 1;
     this.setState({
       current: e
@@ -154,12 +154,12 @@ class JazzMain extends React.Component {
   };
 
   onChangeColor = e => {
-    console.log("value of e ", e);
+    // console.log("value of e ", e);
     this.cSection = e;
     this.setState({
       section: e
     });
-    console.log("value of section state ", this.state.section);
+    // console.log("value of section state ", this.state.section);
     return e;
   };
 
@@ -172,15 +172,15 @@ class JazzMain extends React.Component {
     this.setState({
       current: current1
     });
-    console.log("next current value", this.state.current);
+    // console.log("next current value", this.state.current);
   };
 
   changeTitle() {
     if (this.state.current !== 0) {
-      console.log("change title state", this.Titles[this.state.current]);
+      // console.log("change title state", this.Titles[this.state.current]);
       return `dadaadad`;
     } else {
-      console.log("change title state", this.Titles[this.state.current]);
+      // console.log("change title state", this.Titles[this.state.current]);
       return "dududuudu";
     }
   }

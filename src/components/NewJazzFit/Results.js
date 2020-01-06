@@ -50,12 +50,12 @@ class Results extends React.Component {
 
   componentDidMount() {
     const empid = localStorage.getItem("empID");
-    console.log("emp id", empid);
+    // console.log("emp id", empid);
 
     axios
       .get("https://jazzfit-api.herokuapp.com/refreshtoken/" + empid)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.status === true) {
           const headers = {
             "Content-Type": "application/json",
@@ -66,8 +66,8 @@ class Results extends React.Component {
               headers: headers
             })
             .then(response => {
-              // console.log(response.data);
-              console.log('Total ::: ', response.data.data[0]);
+              // // console.log(response.data);
+              // console.log('Total ::: ', response.data.data[0]);
               if (response.data.status) {
                 this.setState({
                   totalScore: response.data.data[0]
@@ -75,7 +75,7 @@ class Results extends React.Component {
               }
             })
             .catch(error => {
-              console.log(error.message);
+              // console.log(error.message);
             });
           this.setState({
             jwtToken: response.data.data
@@ -83,7 +83,7 @@ class Results extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
   }
 

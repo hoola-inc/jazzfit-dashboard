@@ -15,10 +15,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function ontChange(value) {
-  console.log("changed", value);
+  // console.log("changed", value);
 }
 function onChange(date, dateString) {
-  console.log(date, dateString);
+  // console.log(date, dateString);
 }
 
 const dateFormat = "YYYY-MM-DD";
@@ -54,7 +54,7 @@ class PersonalDetails extends React.Component {
         "https://jazzfit-api.herokuapp.com/refreshtoken/" + this.state.userId
       )
       .then(response => {
-        console.log("token", response.data.data);
+        // console.log("token", response.data.data);
         this.setState({
           jwtToken: response.data.data
         });
@@ -65,10 +65,10 @@ class PersonalDetails extends React.Component {
   // onChange(e) {
   //   const re = /^\d*\.?\d*$/;
   //   if(re.test(e.target.value)) {
-  //     console.log('done...');
+  //     // console.log('done...');
   //     this.setState({ [e.target.name]: e.target.value });
   //   } else {
-  //     console.log('lol...');
+  //     // console.log('lol...');
   //   }
   // }
   onChange(e) {
@@ -94,7 +94,7 @@ class PersonalDetails extends React.Component {
     if (e.target.name === "" || re.test(e.target.value)) {
       this.setState({ [e.target.name]: e.target.value });
     }
-    console.log(";;;;;;;;;", this.state.userId + "    e cvalue " + e.target.value)
+    // console.log(";;;;;;;;;", this.state.userId + "    e cvalue " + e.target.value)
   };
   onheightChange = e => {
     e.preventDefault();
@@ -130,13 +130,13 @@ class PersonalDetails extends React.Component {
   submitHandler = () => {
     // e.preventDefault();
     this.componentMount();
-    console.log("token", this.state.jwtToken + "empId " + this.state.userId);
+    // console.log("token", this.state.jwtToken + "empId " + this.state.userId);
     axios
       .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.userId)
       .then(response => {
         if (response.data.status) {
-          console.log('::::::::::::::::::::::::   ', this.state.userId);
-          console.log("totalAttempt", response.data.data[0].totalAttempt);
+          // console.log('::::::::::::::::::::::::   ', this.state.userId);
+          // console.log("totalAttempt", response.data.data[0].totalAttempt);
           if (response.data.data[0].totalAttempt === 0) {
             localStorage.setItem("empID", this.state.userId);
             Swal.fire(
@@ -163,15 +163,15 @@ class PersonalDetails extends React.Component {
             gender: this.state.gender,
             totalAttempt: 0
           };
-          console.log("this is submit calling", myData);
+          // console.log("this is submit calling", myData);
           axios({
             method: "post",
             url: "https://jazzfit-api.herokuapp.com/emp/",
             data: myData
           })
             .then(response => {
-              console.log(response.data.jwtToken);
-              console.log("response.data.success is: ", response.data.status);
+              // console.log(response.data.jwtToken);
+              // console.log("response.data.success is: ", response.data.status);
 
               if (response.data.status === true) {
                 message.success("user added successfully");
@@ -186,7 +186,7 @@ class PersonalDetails extends React.Component {
               }
             })
             .catch(error => {
-              console.log(error.message);
+              // console.log(error.message);
               Swal.fire("Ooppss!", "Something went wrong try again!", "error");
             });
           this.setState({
@@ -196,7 +196,7 @@ class PersonalDetails extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
         Swal.fire("Ooppss!", "Something went wrong try again!", "error");
         this.setState({
           iconLoading: false,
@@ -215,7 +215,7 @@ class PersonalDetails extends React.Component {
 
   onButtonclick = e => {
     e.preventDefault();
-    console.log("value of button ", e.currentTarget.value);
+    // console.log("value of button ", e.currentTarget.value);
     this.setState({
       gender: e.currentTarget.value
     });

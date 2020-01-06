@@ -49,18 +49,18 @@ export default class Questions extends Component {
     };
   }
   componentDidMount() {
-    //console.log("HIT!");
+    //// console.log("HIT!");
     const empid = localStorage.getItem("empID");
-    //console.log("local storage emp id", empid);
+    //// console.log("local storage emp id", empid);
     this.setState({
       empId: parseInt(empid, 10)
     });
-    //console.log("state emp id", this.state.empId);
+    //// console.log("state emp id", this.state.empId);
 
     axios
       .get("https://jazzfit-api.herokuapp.com/refreshtoken/" + empid)
       .then(response => {
-        //console.log("reesponse toke m ",response);
+        //// console.log("reesponse toke m ",response);
         if (response.data.status === true) {
           const headers = {
             "Content-Type": "application/json",
@@ -71,10 +71,10 @@ export default class Questions extends Component {
               headers: headers
             })
             .then(response => {
-              //console.log(response.data.data);
+              //// console.log(response.data.data);
             })
             .catch(error => {
-              //console.log(error);
+              //// console.log(error);
             });
           this.setState({
             jwtToken: response.data.data
@@ -82,7 +82,7 @@ export default class Questions extends Component {
         }
       })
       .catch(error => {
-        //console.log(error);
+        //// console.log(error);
       });
   }
 
@@ -112,10 +112,10 @@ export default class Questions extends Component {
       this.setState({
         myarray: this.state.myarray.concat(myObject)
       });
-      console.log("my array", this.state.myarray.length);
+      // console.log("my array", this.state.myarray.length);
       const ques = this.state.page + 1;
       if (ques < 6) {
-        //console.log("Question Number", ques);
+        //// console.log("Question Number", ques);
         this.setState({
           page: ques,
           checked: false
@@ -161,7 +161,7 @@ export default class Questions extends Component {
           headers: headers
         })
         .then(response => {
-          //console.log("response ", response);
+          //// console.log("response ", response);
           if (response.status === 200) {
             this.onPatchAttempt();
           } else {
@@ -178,7 +178,7 @@ export default class Questions extends Component {
           }
         })
         .catch(error => {
-          //console.log("error", error.message);
+          //// console.log("error", error.message);
           this.state.myarray.splice(this.state.myarray.length - 1, 1);
           Swal.fire(
             "",
@@ -202,7 +202,7 @@ export default class Questions extends Component {
         page: 1,
         myarray: this.state.myarray.splice(0, this.state.myarray.length)
       });
-      // console.log("array ", this.state.myarray);
+      // // console.log("array ", this.state.myarray);
       // this.enterIconLoading();
       // this.onSectionChanged();
     }
@@ -225,7 +225,7 @@ export default class Questions extends Component {
       }
     } catch (error) {
       message.error("bad request");
-      console.log("image response error", error);
+      // console.log("image response error", error);
     }
   };
   onRadioClicked = e => {
@@ -244,8 +244,8 @@ export default class Questions extends Component {
         ].weightage
     });
 
-    //console.log("Array length ", this.state.myarray.length);
-    //console.log(
+    //// console.log("Array length ", this.state.myarray.length);
+    //// console.log(
     //   "Radio Clicked ",
     //   e.currentTarget.id +
     //     " Section :" +

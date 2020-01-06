@@ -68,7 +68,7 @@ class AddNewStudentModal extends React.Component {
                 }
             })
             .catch(err => {
-                console.log('An Error occured while sending Email ::: ', err.message);
+                // console.log('An Error occured while sending Email ::: ', err.message);
                 Swal.fire('Error', err.message, 'error');
                 this.setState({ loading: false });
                 this.handle.onCancel();
@@ -79,7 +79,7 @@ class AddNewStudentModal extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                // console.log('Received values of form: ', values);
             }
         });
     };

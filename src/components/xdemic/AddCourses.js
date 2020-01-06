@@ -17,11 +17,11 @@ class AddCourses extends React.Component {
     this.state = {};
   }
   handleButtonClick(e) {
-    console.log("click left button", e);
+    // console.log("click left button", e);
   }
 
   handleMenuClick(e) {
-    console.log("click", e);
+    // console.log("click", e);
   }
   menu = (
     <Menu onClick={this.handleMenuClick}>

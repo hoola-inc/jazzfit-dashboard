@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     });
 
     
-      console.log("hi this props ", this.props.match.params.id);
+      // console.log("hi this props ", this.props.match.params.id);
     }, 3000);
   }
 

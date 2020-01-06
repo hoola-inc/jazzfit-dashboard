@@ -153,7 +153,7 @@ export default class Settings extends Component {
     // but the structure is a bit different that the original file
     // the original file is located at the `originFileObj` key of each of this files
     // so `event.target.files[0]` is actually fileList[0].originFileObj
-    console.log("fileList", fileList[0].originFileObj.name);
+    // console.log("fileList", fileList[0].originFileObj.name);
 
     // you store them in state, so that you can make a http req with them later
     this.setState({ fileList, imageUrl: fileList[0].originFileObj });
@@ -188,7 +188,7 @@ export default class Settings extends Component {
         this.state.fileList[0].originFileObj.name
       );
     // }
-    console.log("value of fd ", fd + "emp isd " + this.state.empID);
+    // console.log("value of fd ", fd + "emp isd " + this.state.empID);
 
     try {
       const headers = {
@@ -203,11 +203,11 @@ export default class Settings extends Component {
       });
       if (response.data.status) {
         message.success("updated");
-        console.log("image response", response);
+        // console.log("image response", response);
       }
     } catch (error) {
       message.error("bad request");
-      console.log("image response error", error);
+      // console.log("image response error", error);
     }
   };
 

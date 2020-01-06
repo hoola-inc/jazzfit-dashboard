@@ -277,12 +277,7 @@ class Summary extends React.Component {
       totalScoreForPdf: 0,
       emotionalScoreForPdf: 0,
       physicalScoreForPdf: 0,
-      socialScoreForPdf: 0,
-
-      physicalQuestionOne: '',
-      physicalAnswerOne: '',
-      physicalRecommendationTitle: [],
-      physicalRecommendationDetail: []
+      socialScoreForPdf: 0
     };
   }
   addNewlines = str => {
@@ -295,7 +290,7 @@ class Summary extends React.Component {
   };
 
   showConsole = str => {
-    // console.log(str);
+    // // console.log(str);
   };
 
   componentDidMount() {
@@ -303,12 +298,12 @@ class Summary extends React.Component {
 
 
     const empid = localStorage.getItem("empID");
-    // console.log("emp id", empid);
+    // // console.log("emp id", empid);
 
     axios
       .get("https://jazzfit-api.herokuapp.com/refreshtoken/" + empid)
       .then(response => {
-        // console.log(response);
+        // // console.log(response);
         if (response.data.status === true) {
           const headers = {
             "Content-Type": "application/json",
@@ -341,11 +336,11 @@ class Summary extends React.Component {
 
 
                 });
-                // console.log("totalWellnessText   :::   ", this.state.totalScore);
+                // // console.log("totalWellnessText   :::   ", this.state.totalScore);
               }
             })
             .catch(error => {
-              // console.log(error.message);
+              // // console.log(error.message);
             });
           // rescomendatioan
           axios
@@ -353,37 +348,30 @@ class Summary extends React.Component {
               headers: headers
             })
             .then(response => {
-              // console.log("recomendations ", response.data);
+              // // console.log("recomendations ", response.data);
               if (response.data.status) {
                 response.data.data.map(data => {
                   if (data.wellnessType === "physical") {
-                    // console.log("physical wellness type => ", data);
+                    // // console.log("physical wellness type => ", data);
                     this.setState({
                       physicalData: this.state.physicalData.concat(data)
                     });
-
-                    this.setState({
-                      physicalQuestionOne: data.question,
-                      physicalAnswerOne: data.answer,
-                      physicalRecommendationTitle: this.state.physicalRecommendationTitle.concat(data.recommendation.title),
-                      physicalRecommendationDetail: this.state.physicalRecommendationDetail.concat(data.detail)
-                    });
-                    console.log('Recommendations HAHAHA ::: ', this.state.physicalData);
+                    // console.log('Recommendations HAHAHA ::: ', this.state.physicalData);
                   }
                   if (data.wellnessType === "emotional") {
-                    // console.log("ddata .wellner tuyp ", data);
+                    // // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       emotionalData: this.state.emotionalData.concat(data)
                     });
                   }
                   if (data.wellnessType === "social") {
-                    // console.log("ddata .wellner tuyp ", data);
+                    // // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       socialData: this.state.socialData.concat(data)
                     });
                   }
                   if (data.wellnessType === "mental") {
-                    // console.log("ddata .wellner tuyp ", data);
+                    // // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       mentalData: this.state.mentalData.concat(data)
                     });
@@ -394,11 +382,11 @@ class Summary extends React.Component {
                   recomendations: response.data.data[0],
                   physicalScore: this.state.totalScore.physicalScore
                 });
-                // console.log('YO ::: ', this.state.socialData);
+                // // console.log('YO ::: ', this.state.socialData);
               }
             })
             .catch(error => {
-              // console.log(error.message);
+              // // console.log(error.message);
             });
           this.setState({
             jwtToken: response.data.data
@@ -406,7 +394,7 @@ class Summary extends React.Component {
         }
       })
       .catch(error => {
-        // console.log(error);
+        // // console.log(error);
       });
 
 
@@ -502,54 +490,147 @@ class Summary extends React.Component {
 
 
         <Text style={this.pdfStyle.topTitleNextPage}> Wellness Recommendations </Text>
-        <Text style={this.pdfStyle.title}> Physical Wellness </Text>
+        <Text style={this.pdfStyle.wellnessTitle}> Physical Wellness </Text>
         <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
-        <Text style={this.pdfStyle.title}> Question </Text>
-        <Text style={this.pdfStyle.text}> {this.state.physicalQuestionOne} </Text>
-        <Text style={this.pdfStyle.title}> Answer </Text>
-        <Text style={this.pdfStyle.text}>{this.state.physicalAnswerOne}</Text>
 
 
         {
           this.state.physicalData.map((data, index) => {
             return (
               <>
-              <Text style={this.pdfStyle.title}> Question </Text>
-                <Text>
+                <Text style={this.pdfStyle.questionTitle}> Question {index + 1} </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.question}
+                </Text>
+                <Text style={this.pdfStyle.questionTitle}> Answer </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.answer}
+                </Text>
+                <Text style={this.pdfStyle.title}> Recommendations </Text>
                 {
-                  data.question
-                }
-              </Text>
-              <Text style={this.pdfStyle.title}> Answer </Text>
-              <Text>
-              {
-                data.answer
-              }
-            </Text>
-              {
-                data.recommendation.map((recom, index) => {
-                  return (
-                    <>
-                      <Text>
-                      {
-                        recom.title
-                      }
-                    </Text>
-                    <Text>
-                      {
-                        recom.detail
-                      }
-                    </Text>
-                  
-                    </>
+                  data.recommendation.map((recom, i) => {
+                    return (
+                      <>
+                        <Text style={this.pdfStyle.text}>
+                          {i + 1} {": "}{recom.title} {recom.detail}
+                        </Text>
+
+                      </>
                     )
-                })
-              }
+                  })
+                }
+                <Text style={this.pdfStyle.textRecommendation}></Text>
               </>
             )
           })
         }
 
+
+
+        <Text style={this.pdfStyle.wellnessTitle}> Emotional Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
+
+
+        {
+          this.state.emotionalData.map((data, index) => {
+            return (
+              <>
+                <Text style={this.pdfStyle.questionTitle}> Question {index + 1} </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.question}
+                </Text>
+                <Text style={this.pdfStyle.questionTitle}> Answer </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.answer}
+                </Text>
+                <Text style={this.pdfStyle.title}> Recommendations </Text>
+                {
+                  data.recommendation.map((recom, i) => {
+                    return (
+                      <>
+                        <Text style={this.pdfStyle.text}>
+                          {i + 1} {": "}{recom.title} {recom.detail}
+                        </Text>
+
+                      </>
+                    )
+                  })
+                }
+                <Text style={this.pdfStyle.textRecommendation}></Text>
+              </>
+            )
+          })
+        }
+
+        <Text style={this.pdfStyle.wellnessTitle}> Social Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
+
+
+        {
+          this.state.socialData.map((data, index) => {
+            return (
+              <>
+                <Text style={this.pdfStyle.questionTitle}> Question {index + 1} </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.question}
+                </Text>
+                <Text style={this.pdfStyle.questionTitle}> Answer </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.answer}
+                </Text>
+                <Text style={this.pdfStyle.title}> Recommendations </Text>
+                {
+                  data.recommendation.map((recom, i) => {
+                    return (
+                      <>
+                        <Text style={this.pdfStyle.text}>
+                          {i + 1} {": "}{recom.title} {recom.detail}
+                        </Text>
+
+                      </>
+                    )
+                  })
+                }
+                <Text style={this.pdfStyle.textRecommendation}></Text>
+              </>
+            )
+          })
+        }
+
+        <Text style={this.pdfStyle.wellnessTitle}> Mental Wellness </Text>
+        <Text style={this.pdfStyle.score}>Score: {this.state.physicalScoreForPdf}</Text>
+
+
+        {
+          this.state.mentalData.map((data, index) => {
+            return (
+              <>
+                <Text style={this.pdfStyle.questionTitle}> Question {index + 1} </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.question}
+                </Text>
+                <Text style={this.pdfStyle.questionTitle}> Answer </Text>
+                <Text style={this.pdfStyle.textQuestion}>
+                  {data.answer}
+                </Text>
+                <Text style={this.pdfStyle.title}> Recommendations </Text>
+                {
+                  data.recommendation.map((recom, i) => {
+                    return (
+                      <>
+                        <Text style={this.pdfStyle.text}>
+                          {i + 1} {": "}{recom.title} {recom.detail}
+                        </Text>
+
+                      </>
+                    )
+                  })
+                }
+                <Text style={this.pdfStyle.textRecommendation}></Text>
+              </>
+            )
+          })
+        }
 
 
         <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
@@ -589,6 +670,12 @@ class Summary extends React.Component {
     },
     title: {
       fontSize: 16,
+      textAlign: 'left',
+      fontFamily: 'Oswald',
+      color: 'crimson'
+    },
+    recommendationTitle: {
+      fontSize: 14,
       textAlign: 'left',
       fontFamily: 'Oswald',
       color: 'crimson'
@@ -637,6 +724,31 @@ class Summary extends React.Component {
       textAlign: 'justify',
       fontFamily: 'Times-Roman',
       color: '#959595'
+    },
+    underScore: {
+      color: 'crimson'
+    },
+    questionTitle: {
+      fontSize: 14,
+      textAlign: 'left',
+      fontFamily: 'Oswald',
+      color: 'crimson'
+    },
+    textQuestion: {
+      fontSize: 12,
+      marginLeft: 12,
+      textAlign: 'justify',
+      fontFamily: 'Times-Roman',
+      color: '#959595'
+    },
+    textRecommendation: {
+      marginBottom: '24px'
+    },
+    wellnessTitle: {
+      fontSize: 18,
+      textAlign: 'left',
+      fontFamily: 'Oswald',
+      color: 'crimson'
     }
   });
 

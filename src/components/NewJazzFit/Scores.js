@@ -59,7 +59,7 @@ class Scores extends React.Component {
     });
 
     setTimeout(() => {
-      console.log("hi this props ", this.props.match.params.id);
+      // console.log("hi this props ", this.props.match.params.id);
     }, 3000);
   }
 
@@ -95,12 +95,12 @@ class Scores extends React.Component {
       if (recommendations.data.status) {
         const recommendationsArr = recommendations.data.data;
         this.setState({ recommendationsArr: recommendationsArr, color: recommendationsArr[0].color });
-        console.log("Recommendations ", this.state.recommendationsArr);
-        console.log('color ::: ', this.state.recommendationsArr[0].color);
+        // console.log("Recommendations ", this.state.recommendationsArr);
+        // console.log('color ::: ', this.state.recommendationsArr[0].color);
       }
     } catch (error) {
       message.error("bad request recommendations");
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -115,8 +115,8 @@ class Scores extends React.Component {
         const totalScoreArr = totalScoreData.data.data[0];
         this.setState({ totalScoreArr: totalScoreArr });
 
-        console.log("total score array", this.state.totalScoreArr);
-        console.log("Section ::: ", this.state.section);
+        // console.log("total score array", this.state.totalScoreArr);
+        // console.log("Section ::: ", this.state.section);
       }
     } catch (error) {
       message.error("bad request total score");
@@ -132,10 +132,10 @@ class Scores extends React.Component {
           )
         });
     });
-    console.log(
-      "i am here ... ::: " + this.state.section + " ::: ",
-      this.state.recommendationsTypeArr
-    );
+    //  console.log(
+    //   "i am here ... ::: " + this.state.section + " ::: ",
+    //   this.state.recommendationsTypeArr
+    // );
   };
 
   render() {

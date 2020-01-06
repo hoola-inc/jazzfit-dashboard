@@ -31,14 +31,14 @@ class UserModal extends React.Component {
   };
 
   //   handleOk = e => {
-  //     console.log(e);
+  //     // console.log(e);
   //     this.setState({
   //       visible: false
   //     });
   //   };
 
   //   handleCancel = e => {
-  //     console.log(e);
+  //     // console.log(e);
   //     this.setState({
   //       visible: false
   //     });
@@ -53,11 +53,11 @@ class UserModal extends React.Component {
   };
   submitHandler = e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     axios
       .post("http://localhost:9000/product", this.state)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response) {
           // message.info("Data Submitted Successfully");
           Swal.fire('Sucess', 'Data submitted successfully', 'success');
@@ -65,7 +65,7 @@ class UserModal extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
     // if(true) {
     //   message.success('Data Submited successfully');

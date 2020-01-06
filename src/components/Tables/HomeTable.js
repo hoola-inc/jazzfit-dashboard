@@ -59,8 +59,8 @@ const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     
     
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-      console.log(`Myselected row: ${selectedRows[0]._id}`);
+      // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      // console.log(`Myselected row: ${selectedRows[0]._id}`);
     axios.delete(`http://localhost:9000/product/${selectedRows[0]._id}`) 
     
    },
@@ -117,10 +117,10 @@ class HomeTable extends React.Component {
             dataArray: getProducts.data.data
           })
         } else {
-          console.log(' internal server error ');
+          // console.log(' internal server error ');
         }
       } else {
-        console.log(' API call error ');
+        // console.log(' API call error ');
       }
     } catch (error) {}
   };

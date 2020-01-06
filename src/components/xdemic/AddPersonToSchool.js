@@ -26,18 +26,18 @@ const { SubMenu } = Menu;
 
 //Upload props end here
 function onChange(date, dateString) {
-  console.log(date, dateString);
+  // console.log(date, dateString);
 }
 
 
 // rowSelection Table start
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
-    console.log(
-      `selectedRowKeys: ${selectedRowKeys}`,
-      "selectedRows: ",
-      selectedRows
-    );
+    //  console.log(
+    //   `selectedRowKeys: ${selectedRowKeys}`,
+    //   "selectedRows: ",
+    //   selectedRows
+    // );
   },
   getCheckboxProps: record => ({
     disabled: record.name === "Disabled User", // Column configuration not to be checked
@@ -67,7 +67,7 @@ class AddPersonToSchool extends Component {
     axios
       .get("https://xdemic-api.herokuapp.com/persons")
       .then(res => {
-        console.log(res);
+        // console.log(res);
         if (res.data.status) {
           this.setState({ loading: false });
           this.setState({
@@ -81,7 +81,7 @@ class AddPersonToSchool extends Component {
         }
       })
       .catch(err => {
-        console.log("An Error occured while sending Email ::: ", err.message);
+        // console.log("An Error occured while sending Email ::: ", err.message);
         Swal.fire("Error", err.message, "error");
         // this.setState({ loading: false });
         // this.handle.onCancel();
@@ -107,9 +107,9 @@ class AddPersonToSchool extends Component {
         const data = [];
         // const tags = response.data.data[0].tags
         //handle success
-        console.log(response);
+        // console.log(response);
         data.push(response.data.data);
-        console.log("UPDATED RECORD::", data);
+        // console.log("UPDATED RECORD::", data);
         this.setState({
           uploading: false,
           showmodal:false,
@@ -118,7 +118,7 @@ class AddPersonToSchool extends Component {
       })
       .catch(response => {
         //handle error
-        console.log(response);
+        // console.log(response);
         message.error("shit fuck");
         this.setState({
           uploading: false
@@ -213,7 +213,7 @@ class AddPersonToSchool extends Component {
 
   // CSV Modal functions end here
   csvShowImage = () => {
-    console.log("this is working");
+    // console.log("this is working");
     this.setState({
       csvdragger: false,
       csvdragresult: true

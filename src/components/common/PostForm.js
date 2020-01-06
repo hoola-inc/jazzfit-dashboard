@@ -17,7 +17,7 @@ class PostForm extends Component {
   };
   submitHandler = e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     
   };
 

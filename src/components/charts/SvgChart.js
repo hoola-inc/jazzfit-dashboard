@@ -40,7 +40,7 @@ class SvgChart extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      console.log("prosps value ", this.props.radareData);
+      // console.log("prosps value ", this.props.radareData);
       this.setState({
         radarOriginData: this.props.radareData
 
@@ -50,7 +50,7 @@ class SvgChart extends React.Component {
   }
 
   populateGraph = () => {
-    console.log('value of radarOrigin ::: ', this.state.radarOriginData[0]);
+    // console.log('value of radarOrigin ::: ', this.state.radarOriginData[0]);
     this.setState({
       data: [
         {
