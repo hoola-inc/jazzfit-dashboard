@@ -295,7 +295,7 @@ class Summary extends React.Component {
   };
 
   showConsole = str => {
-    console.log(str);
+    // console.log(str);
   };
 
   componentDidMount() {
@@ -303,12 +303,12 @@ class Summary extends React.Component {
 
 
     const empid = localStorage.getItem("empID");
-    console.log("emp id", empid);
+    // console.log("emp id", empid);
 
     axios
       .get("https://jazzfit-api.herokuapp.com/refreshtoken/" + empid)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data.status === true) {
           const headers = {
             "Content-Type": "application/json",
@@ -341,11 +341,11 @@ class Summary extends React.Component {
 
 
                 });
-                console.log("totalWellnessText   :::   ", this.state.totalScore);
+                // console.log("totalWellnessText   :::   ", this.state.totalScore);
               }
             })
             .catch(error => {
-              console.log(error.message);
+              // console.log(error.message);
             });
           // rescomendatioan
           axios
@@ -353,11 +353,11 @@ class Summary extends React.Component {
               headers: headers
             })
             .then(response => {
-              console.log("recomendations ", response.data);
+              // console.log("recomendations ", response.data);
               if (response.data.status) {
                 response.data.data.map(data => {
                   if (data.wellnessType === "physical") {
-                    console.log("physical wellness type => ", data);
+                    // console.log("physical wellness type => ", data);
                     this.setState({
                       physicalData: this.state.physicalData.concat(data)
                     });
@@ -365,25 +365,25 @@ class Summary extends React.Component {
                     this.setState({
                       physicalQuestionOne: data.question,
                       physicalAnswerOne: data.answer,
-                      physicalRecommendationTitle: this.state.physicalRecommendationTitle.concat(data.title),
+                      physicalRecommendationTitle: this.state.physicalRecommendationTitle.concat(data.recommendation.title),
                       physicalRecommendationDetail: this.state.physicalRecommendationDetail.concat(data.detail)
                     });
-                    console.log('Recommendations ::: ', this.state.physicalRecommendationTitle);
+                    console.log('Recommendations HAHAHA ::: ', this.state.physicalData);
                   }
                   if (data.wellnessType === "emotional") {
-                    console.log("ddata .wellner tuyp ", data);
+                    // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       emotionalData: this.state.emotionalData.concat(data)
                     });
                   }
                   if (data.wellnessType === "social") {
-                    console.log("ddata .wellner tuyp ", data);
+                    // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       socialData: this.state.socialData.concat(data)
                     });
                   }
                   if (data.wellnessType === "mental") {
-                    console.log("ddata .wellner tuyp ", data);
+                    // console.log("ddata .wellner tuyp ", data);
                     this.setState({
                       mentalData: this.state.mentalData.concat(data)
                     });
@@ -394,11 +394,11 @@ class Summary extends React.Component {
                   recomendations: response.data.data[0],
                   physicalScore: this.state.totalScore.physicalScore
                 });
-                console.log('YO ::: ', this.state.socialData);
+                // console.log('YO ::: ', this.state.socialData);
               }
             })
             .catch(error => {
-              console.log(error.message);
+              // console.log(error.message);
             });
           this.setState({
             jwtToken: response.data.data
@@ -406,7 +406,7 @@ class Summary extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
 
 
@@ -511,11 +511,41 @@ class Summary extends React.Component {
 
 
         {
-          this.state.physicalRecommendationTitle.map((data, index) => {
+          this.state.physicalData.map((data, index) => {
             return (
-              <Text>
-                {data}
+              <>
+              <Text style={this.pdfStyle.title}> Question </Text>
+                <Text>
+                {
+                  data.question
+                }
               </Text>
+              <Text style={this.pdfStyle.title}> Answer </Text>
+              <Text>
+              {
+                data.answer
+              }
+            </Text>
+              {
+                data.recommendation.map((recom, index) => {
+                  return (
+                    <>
+                      <Text>
+                      {
+                        recom.title
+                      }
+                    </Text>
+                    <Text>
+                      {
+                        recom.detail
+                      }
+                    </Text>
+                  
+                    </>
+                    )
+                })
+              }
+              </>
             )
           })
         }
