@@ -25,6 +25,7 @@ import mental from "../drawables/mental.png";
 import emotional from "../drawables/emotional.png";
 import social from "../drawables/social.png";
 import jazzfitLogo from "../drawables/fitlogo.png";
+import carnelianLogo from '../drawables/logo.png';
 // import PDFDocument from './gen-pdf-test';
 import {
   Font,
@@ -632,10 +633,24 @@ class Summary extends React.Component {
           })
         }
 
+        {/* <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
+          <Image
+            style={this.pdfStyle.image}
+            src={carnelianLogo}
+          />
+        )} fixed /> */}
 
-        <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
+        <Image
+          style={this.pdfStyle.imageBottom}
+          src={carnelianLogo}
+          fixed
+        />
+
+        <Text style={this.pdfStyle.footer} fixed> Powered By Carnelian </Text>
+
+        {/* <Text style={this.pdfStyle.pageNumber} render={({ pageNumber, totalPages }) => (
           `${pageNumber} / ${totalPages}`
-        )} fixed />
+        )} fixed /> */}
 
       </Page>
     </Document>
@@ -665,8 +680,8 @@ class Summary extends React.Component {
       textAlign: 'center',
       fontFamily: 'Oswald',
       color: 'crimson',
-      marginBottom: '80px',
-      marginTop: '100px'
+      marginBottom: '50px',
+      marginTop: '50px'
     },
     title: {
       fontSize: 16,
@@ -681,7 +696,7 @@ class Summary extends React.Component {
       color: 'crimson'
     },
     text: {
-      marginBottom: '50px',
+      marginBottom: 100,
       margin: 12,
       fontSize: 12,
       textAlign: 'justify',
@@ -693,6 +708,23 @@ class Summary extends React.Component {
       height: '40px',
       marginVertical: 15,
       marginHorizontal: 240
+    },
+    imageBottom: {
+      width: '40px',
+      height: '40px',
+      position: 'absolute',
+      bottom: 20,
+      left: 280,
+      right: 0
+    },
+    footer: {
+      position: 'absolute',
+      fontSize: 8,
+      bottom: 10,
+      left: 270,
+      right: 0,
+      fontFamily: 'Oswald',
+      color: 'crimson'
     },
     score: {
       textAlign: 'right',
@@ -711,7 +743,7 @@ class Summary extends React.Component {
     pageNumber: {
       position: 'absolute',
       fontSize: 12,
-      bottom: 30,
+      bottom: 20,
       left: 0,
       right: 0,
       textAlign: 'center',
@@ -739,10 +771,12 @@ class Summary extends React.Component {
       marginLeft: 12,
       textAlign: 'justify',
       fontFamily: 'Times-Roman',
-      color: '#959595'
+      color: '#959595',
+      marginBottom: '5px'
     },
     textRecommendation: {
-      marginBottom: '24px'
+      marginBottom: '24px',
+      marginBottom: '5px'
     },
     wellnessTitle: {
       fontSize: 18,
