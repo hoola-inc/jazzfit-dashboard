@@ -1,6 +1,7 @@
 import React from "react";
 import "../MyCSS/MyCss.css";
 import Header from "../common/HeaderLayout";
+import Footer from "../common/FooterLayout";
 import PersonalDetails from "../jazzfit/PersonalDetails";
 import Questionnaire from "../jazzfit/Questionnaire";
 import PostForm from "../common/PostForm";
@@ -25,7 +26,7 @@ import { ENGINE_METHOD_NONE } from "constants";
 import Results from "./Results";
 import Questions from "./Questions";
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 const { Step } = Steps;
 const size = "large";
 const logo = require("../drawables/image1.png");
@@ -461,6 +462,11 @@ class JazzMain extends React.Component {
             </Col>
           </Row>
         </Layout>
+        <Row gutter={24}>
+          <Col span={24}>
+            <Footer />
+          </Col>
+        </Row>
       </Layout>
     );
   }

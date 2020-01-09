@@ -10,7 +10,7 @@ import AddCourses from "./components/xdemic/AddCourses";
 import ModalTest from './components/xdemic/ModalTest';
 import NewModalTest from './components/xdemic/NewModalTest';
 import './App.css';
-
+import Footer from './components/common/FooterLayout';
 class App extends React.Component {
   state = {
     collapsed: false

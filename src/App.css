@@ -584,3 +584,15 @@ input:checked {
   color: #808285;
   text-align: justify;
 }
+.footerbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  flex-direction: row;
+}
+.footerbar p{
+  margin-left: 50px;
+  font-size: 14px;
+  font-weight: bold;
+}

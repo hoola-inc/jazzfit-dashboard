@@ -6,6 +6,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #ffffff;
   overflow-x: hidden;
+  overflow-y: scroll;
+
 }
 
 .btn-question {
