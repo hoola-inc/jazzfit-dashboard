@@ -16,6 +16,11 @@ import {
 } from "antd";
 import SummaryCard from "./ReportCards/SummaryCard";
 import ScoreCard from "./ReportCards/ScoreCard";
+const fitlogo = require("../drawables/logo.png");
+
+
+
+const { Footer } = Layout;
 
 const { Panel } = Collapse;
 const text = `
@@ -168,8 +173,8 @@ class Scores extends React.Component {
 
                       strokeColor={this.state.color}
 
-                      percent={ this.state.totalScoreArr[this.state.section + "Score"] }
-                      
+                      percent={this.state.totalScoreArr[this.state.section + "Score"]}
+
                       strokeWidth="9"
                       width={100}
                       style={{ padding: "0% 0% 5% 15%" }}
@@ -249,8 +254,8 @@ class Scores extends React.Component {
                           {this.state.recommendationsArr[arrIndex]
                             .recommendation.length > 0 ? (
                               <Row gutter={[12, 24]}>
-                                <Col span={6} style={{fontWeight: 'bold', color: `${this.state.color}`}}>Recommendations</Col>
-                                <Divider style={{background: item.color}}></Divider>
+                                <Col span={6} style={{ fontWeight: 'bold', color: `${this.state.color}` }}>Recommendations</Col>
+                                <Divider style={{ background: item.color }}></Divider>
                               </Row>
                             ) : null}
 
@@ -306,8 +311,25 @@ class Scores extends React.Component {
               </Row>
             </div>
           </div>
-          <div style={{ marginBottom: "15%" }}></div>
+          <div style={{ marginBottom: "5%" }}></div>
         </Layout>
+        <Footer style={{ textAlign: 'center' }}>
+          <div className="footerbar">
+            <div className="logoF">
+              <img
+                src={fitlogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginBottom: "10px"
+                }}
+              />
+            </div>
+            <div className="powerby">
+              <p>Powered by carnelian</p>
+            </div>
+          </div>
+        </Footer>
       </Layout>
     );
   }

@@ -596,3 +596,7 @@ input:checked {
   font-size: 14px;
   font-weight: bold;
 }
+
+.ant-layout {
+  background-color: white !important;
+}

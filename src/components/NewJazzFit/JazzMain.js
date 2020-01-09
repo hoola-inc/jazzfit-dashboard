@@ -1,7 +1,7 @@
 import React from "react";
 import "../MyCSS/MyCss.css";
 import Header from "../common/HeaderLayout";
-import Footer from "../common/FooterLayout";
+// import Footer from "../common/FooterLayout";
 import PersonalDetails from "../jazzfit/PersonalDetails";
 import Questionnaire from "../jazzfit/Questionnaire";
 import PostForm from "../common/PostForm";
@@ -25,8 +25,10 @@ import {
 import { ENGINE_METHOD_NONE } from "constants";
 import Results from "./Results";
 import Questions from "./Questions";
+const fitlogo = require("../drawables/logo.png");
 
-const { Content } = Layout;
+
+const { Content, Footer } = Layout;
 const { Step } = Steps;
 const size = "large";
 const logo = require("../drawables/image1.png");
@@ -41,11 +43,11 @@ class JazzMain extends React.Component {
       current: 0,
       test: 0,
       section: 0,
-      
+
     };
   }
 
-  
+
 
   componentWillMount() {
     // console.log("this is compent mount", this.state.current);
@@ -105,7 +107,7 @@ class JazzMain extends React.Component {
   //     <h5
   //       id="changeColor"
   //       className="steps-tags"
-      
+
   //     >
   //       Social
   //     </h5>
@@ -121,7 +123,7 @@ class JazzMain extends React.Component {
   firstContent = (
     <div
       className="content-style"
-      style={{ backgroundColor: "#fff", padding: "2% 10% -6% 0" }}
+      style={{ backgroundColor: "#fff", padding: "2% 10% -6% 0" , minHeight: "50vh"}}
     >
       <PersonalDetails myNext1={() => this.myNext()} />
     </div>
@@ -130,7 +132,7 @@ class JazzMain extends React.Component {
   secondContent = (
     <div
       className="content-style"
-      style={{ backgroundColor: "#fff", padding: "2% 10% -6% 0" }}
+      style={{ backgroundColor: "#fff", padding: "2% 10% -6% 0", minHeight: "50vh" }}
     >
       <Questions
         myNext1={() => this.myNext()}
@@ -141,7 +143,7 @@ class JazzMain extends React.Component {
   lastContent = (
     <div
       className="content-style"
-      style={{ backgroundColor: "#fff", padding: "2% 10%" }}
+      style={{ backgroundColor: "#fff", padding: "2% 10%",minHeight: "50vh" }}
     >
       <Results />
     </div>
@@ -190,7 +192,7 @@ class JazzMain extends React.Component {
     const current = this.state.current - 1;
     this.setState({ current });
   }
-  ChangeHandler = e => {};
+  ChangeHandler = e => { };
 
   // steps = [
   //   {
@@ -257,7 +259,7 @@ class JazzMain extends React.Component {
           id="changeColor"
           className="steps-tags"
           style={{
-            color: section === 0 ? "#c4161c" : "#a7a9ac",marginBottom :"1px"
+            color: section === 0 ? "#c4161c" : "#a7a9ac", marginBottom: "1px"
           }}
         >
           Physical
@@ -266,7 +268,7 @@ class JazzMain extends React.Component {
           id="changeColor"
           className="steps-tags"
           style={{
-            color: section === 1 ? "#c4161c" : "#a7a9ac",marginBottom :"1px"
+            color: section === 1 ? "#c4161c" : "#a7a9ac", marginBottom: "1px"
           }}
         >
           Emotional
@@ -275,7 +277,7 @@ class JazzMain extends React.Component {
           id="changeColor"
           className="steps-tags"
           style={{
-            color: section === 2 ? "#c4161c" : "#a7a9ac",marginBottom :"1px"
+            color: section === 2 ? "#c4161c" : "#a7a9ac", marginBottom: "1px"
           }}
         >
           Mental
@@ -284,7 +286,7 @@ class JazzMain extends React.Component {
           id="changeColor"
           className="steps-tags"
           style={{
-            color: section === 3 ? "#c4161c" : "#a7a9ac",marginBottom :"1px"
+            color: section === 3 ? "#c4161c" : "#a7a9ac", marginBottom: "1px"
           }}
         >
           Social
@@ -397,7 +399,7 @@ class JazzMain extends React.Component {
                               return (
                                 <Steps current={this.state.current}>
                                   {steps.map(item => (
-                                    <Step key={item.title} title={item.title}  />
+                                    <Step key={item.title} title={item.title} />
                                   ))}
                                 </Steps>
                               );
@@ -461,12 +463,26 @@ class JazzMain extends React.Component {
               </div>
             </Col>
           </Row>
+          <Footer style={{ textAlign: 'center' }}>
+            <div className="footerbar">
+              <div className="logoF">
+                <img
+                  src={fitlogo}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    marginBottom: "10px"
+                  }}
+                />
+              </div>
+              <div className="powerby">
+                <p>Powered by carnelian</p>
+              </div>
+            </div>
+          </Footer>
+
         </Layout>
-        <Row gutter={24}>
-          <Col span={24}>
-            <Footer />
-          </Col>
-        </Row>
+
       </Layout>
     );
   }

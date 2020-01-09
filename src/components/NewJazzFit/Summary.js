@@ -37,9 +37,11 @@ import {
   PDFViewer,
   PDFDownloadLink
 } from "@react-pdf/renderer";
+const fitlogo = require("../drawables/logo.png");
 
 
 
+const { Footer } = Layout;
 
 const { Panel } = Collapse;
 const monthNames = [
@@ -1396,8 +1398,26 @@ class Summary extends React.Component {
               </Col>
             </Row>
           </div>
+
         </Layout>
         <div style={{ marginBottom: "5%" }}></div>
+        <Footer style={{ textAlign: 'center' }}>
+          <div className="footerbar">
+            <div className="logoF">
+              <img
+                src={fitlogo}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  marginBottom: "10px"
+                }}
+              />
+            </div>
+            <div className="powerby">
+              <p>Powered by carnelian</p>
+            </div>
+          </div>
+        </Footer>
       </Layout >
     );
   }
