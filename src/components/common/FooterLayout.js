@@ -36,7 +36,7 @@ class FooterLayout extends React.Component {
           </Link>
         </div>
         <div className="powerby">
-          <p>Powered by carnelian</p>
+          <p>Powered by Carnelian</p>
         </div>
       </div>
     );

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.a75565d75e1b803e55d9b3f916afa1fb.js"
+  "/precache-manifest.fcd6ae28c4d79ce9f129f92353bfdc8e.js"
 );
 
 workbox.clientsClaim();

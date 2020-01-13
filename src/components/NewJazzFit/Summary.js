@@ -622,7 +622,7 @@ class Summary extends React.Component {
                     return (
                       <>
                         <Text style={this.pdfStyle.text}>
-                          {i + 1} {": "}{recom.title} {recom.detail}
+                          {i + 1} {": "} {recom.detail}
                         </Text>
 
                       </>
@@ -1414,7 +1414,7 @@ class Summary extends React.Component {
               />
             </div>
             <div className="powerby">
-              <p>Powered by carnelian</p>
+              <p>Powered by Carnelian</p>
             </div>
           </div>
         </Footer>
