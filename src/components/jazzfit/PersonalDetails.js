@@ -29,15 +29,15 @@ class PersonalDetails extends React.Component {
     this.myVideo = React.createRef();
     this.state = {
       value: "",
-      name: "",
-      userId: null,
-      department: "",
+      Emp_Name: "",
+      Emp_ID: null,
+      Department: "",
       height: "",
       weight: "",
-      email: "",
-      dateOfBirth: "12-12-2012",
+      Email: "",
+      DOB: "12-12-2012",
       confirmDirty: false,
-      gender: "",
+      Gender: "",
       totalAttempt: "",
       jwtToken: "",
       testArray: [],
@@ -51,7 +51,7 @@ class PersonalDetails extends React.Component {
   componentMount() {
     axios
       .get(
-        "https://jazzfit-api.herokuapp.com/refreshtoken/" + this.state.userId
+        "https://jazzfit-api.herokuapp.com/refreshtoken/" + this.state.Emp_ID
       )
       .then(response => {
         // console.log("token", response.data.data);
@@ -132,7 +132,7 @@ class PersonalDetails extends React.Component {
     this.componentMount();
     // console.log("token", this.state.jwtToken + "empId " + this.state.userId);
     axios
-      .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.userId)
+      .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.Emp_ID)
       .then(response => {
         if (response.data.status) {
           // console.log('::::::::::::::::::::::::   ', this.state.userId);
@@ -153,14 +153,14 @@ class PersonalDetails extends React.Component {
           }
         } else {
           const myData = {
-            empName: this.state.name,
-            empId: this.state.userId,
-            department: this.state.department,
+            Emp_Name: this.state.Emp_Name,
+            Emp_ID: this.state.Emp_ID,
+            Department: this.state.Department,
             height: this.state.height,
             weight: this.state.weight,
-            email: this.state.email,
-            dateOfBirth: "21/05/1988",
-            gender: this.state.gender,
+            Email: this.state.Email,
+            DOB: "21/05/1988",
+            Gender: this.state.Gender,
             totalAttempt: 0
           };
           // console.log("this is submit calling", myData);
@@ -175,6 +175,7 @@ class PersonalDetails extends React.Component {
 
               if (response.data.status === true) {
                 message.success("user added successfully");
+                
                 localStorage.setItem("empID", response.data.data.empId);
                 localStorage.setItem("totalAttempt", 0);
                 this.props.myNext1();
@@ -217,7 +218,7 @@ class PersonalDetails extends React.Component {
     e.preventDefault();
     // console.log("value of button ", e.currentTarget.value);
     this.setState({
-      gender: e.currentTarget.value
+      Gender: e.currentTarget.value
     });
   };
 
@@ -229,11 +230,11 @@ class PersonalDetails extends React.Component {
       ]
     };
     const {
-      name,
-      userId,
-      department,
-      email,
-      dateOfBirth,
+      Emp_Name,
+      Emp_ID,
+      Department,
+      Email,
+      DOB,
       height,
       weight
     } = this.state;
@@ -253,7 +254,7 @@ class PersonalDetails extends React.Component {
               style={{ textAlign: "start" }}
             >
               Please enter the required details to complete your profile{" "}
-              {this.state.name}
+              {/* {this.state.name} */}
             </h3>
           </Col>
         </Row>
@@ -269,7 +270,7 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("name", {
+                  {getFieldDecorator("Emp_Name", {
                     rules: [
                       {
                         required: true,
@@ -283,10 +284,10 @@ class PersonalDetails extends React.Component {
                     <Input
                       type="text"
                       size="large"
-                      name="name"
+                      name="Emp_Name"
                       ////disabled
                       placeholder="Danyal Shaikh"
-                      value={this.state.name}
+                      value={this.state.Emp_Name}
                       // {this.state.name}
                       onChange={this.ChangeHandler}
                       ref={this.myVideo}
@@ -302,7 +303,7 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("ID", {
+                  {getFieldDecorator("Emp_ID", {
                     rules: [
                       {
                         required: true,
@@ -316,11 +317,11 @@ class PersonalDetails extends React.Component {
                     <Input
                       type="text"
                       size="large"
-                      name="userId"
+                      name="Emp_ID"
                       ////disabled
                       placeholder="112225"
                       // {this.state.userId}
-                      value={this.state.userId}
+                      value={this.state.Emp_ID}
                       onChange={this.onempIdChange}
 
                     ></Input>
@@ -338,10 +339,10 @@ class PersonalDetails extends React.Component {
                   <Input
                     type="text"
                     size="large"
-                    name="department"
+                    name="Department"
                     //disabled
                     placeholder="Development"
-                    value={this.state.department}
+                    value={this.state.Department}
                     onChange={this.onDepartmentChange}
                   ></Input>
                 </Form.Item>
@@ -372,10 +373,10 @@ class PersonalDetails extends React.Component {
                   <Input
                     type="text"
                     size="large"
-                    name="dateOfBirth"
+                    name="DOB"
                     //disabled
                     placeholder="1965-05-15"
-                    value={this.state.dateOfBirth}
+                    value={this.state.DOB}
                     onChange={this.onChange}
                   ></Input>
                 </Form.Item>
@@ -432,7 +433,7 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("email", {
+                  {getFieldDecorator("Email", {
                     rules: [
                       {
                         type: "email",
@@ -447,12 +448,12 @@ class PersonalDetails extends React.Component {
                       prefix={<Icon type="mail" style={{ paddingTop: "9px" }} />}
 
                       placeholder="Enter Email Address"
-                      name="email"
+                      name="Email"
                       size="large"
                       //disabled
                       placeholder="dev@hoola.tech"
                       required
-                      value={this.state.email}
+                      value={this.state.Email}
                       onChange={this.onEmailChange}
                     ></Input>
                   )}
