@@ -125,7 +125,7 @@ class JazzMain extends React.Component {
       className="content-style"
       style={{ backgroundColor: "#fff", padding: "2% 10% -6% 0" , minHeight: "50vh"}}
     >
-      <PersonalDetails myNext1={() => this.myNext()} />
+      <PersonalDetails myNext1={() => this.myNext()} {...this.props}/>
     </div>
   );
   // myNext1 = {(d) =>this.myNext(d)}

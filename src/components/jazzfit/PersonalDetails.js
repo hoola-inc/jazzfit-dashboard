@@ -42,24 +42,52 @@ class PersonalDetails extends React.Component {
       jwtToken: "",
       testArray: [],
       iconLoading: false,
-      loading: false
+      loading: false,
+      empId: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
   }
 
-  componentMount() {
+  componentDidMount() {
+    const empId = this.props.match.params.id;
+    console.log('ID :::', empId);
+
+
+
     axios
       .get(
-        "https://jazzfit-api.herokuapp.com/refreshtoken/" + this.state.Emp_ID
+        "https://jazzfit-api.herokuapp.com/refreshtoken/" + empId
       )
       .then(response => {
-        // console.log("token", response.data.data);
+        console.log(response.data.data);
         this.setState({
           jwtToken: response.data.data
         });
+        this.getEmpData(empId);
       })
       .catch(error => { });
+
+
+
+    // axios.get("http://localhost:5900/emp/" + this.state.empId)
+    //   .then(res => {
+    //     console.log(res.data.data);
+    //   })
+    //   .catch(err => {
+    //     console.log(err.message);
+    //   })
+  }
+
+
+  getEmpData = async (empId) => {
+    const response = await axios.get("http://localhost:5900/emp/" + empId, {
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": this.state.jwtToken
+      }
+    });
+    console.log(response.data.data);
   }
 
   // onChange(e) {
@@ -175,7 +203,7 @@ class PersonalDetails extends React.Component {
 
               if (response.data.status === true) {
                 message.success("user added successfully");
-                
+
                 localStorage.setItem("empID", response.data.data.empId);
                 localStorage.setItem("totalAttempt", 0);
                 this.props.myNext1();
