@@ -27,7 +27,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route path="/:id" exact component={JazzMain} />
-            <Route path="/summary" component={Summary} />
+            <Route path="/summary/:id" component={Summary} />
             <Route path="/scores/:id" component={Scores} />
             <Route path="/settings" component={Settings} />
             {/* <Route path="/test" component={Sidebar} /> */}

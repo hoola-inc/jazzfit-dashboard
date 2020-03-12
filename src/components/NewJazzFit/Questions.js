@@ -51,7 +51,7 @@ export default class Questions extends Component {
   componentDidMount() {
     //// console.log("HIT!");
     const empid = localStorage.getItem("empID");
-    //// console.log("local storage emp id", empid);
+    console.log("local storage emp id", empid);
     this.setState({
       empId: parseInt(empid, 10)
     });

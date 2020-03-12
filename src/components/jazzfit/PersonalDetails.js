@@ -43,7 +43,8 @@ class PersonalDetails extends React.Component {
       testArray: [],
       iconLoading: false,
       loading: false,
-      empId: ""
+      empId: "",
+      userServerData: []
     };
     this.onChange = this.onChange.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
@@ -81,13 +82,40 @@ class PersonalDetails extends React.Component {
 
 
   getEmpData = async (empId) => {
-    const response = await axios.get("http://localhost:5900/emp/" + empId, {
+    const response = await axios.get("https://jazzfit-api.herokuapp.com/emp/" + empId, {
       headers: {
         "Content-Type": "application/json",
         "x-access-token": this.state.jwtToken
       }
     });
     console.log(response.data.data);
+    this.setState({
+      userServerData: response.data.data,
+      Emp_Name: response.data.data[0].empName,
+      Emp_ID: response.data.data[0].empId,
+      Email: response.data.data[0].email,
+      DOB: response.data.data[0].dateOfBirth,
+      Department: response.data.data[0].department,
+      Gender: response.data.data[0].gender,
+      totalAttempt: response.data.data[0].totalAttempt,
+      empId: response.data.data[0].empId,
+      // value: "",
+      // height: "",
+      // weight: "",
+      // confirmDirty: false,
+      // jwtToken: "",
+      // testArray: [],
+      // iconLoading: false,
+      // loading: false,
+    })
+
+    this.onButtonclick(response.data.data[0].gender);
+
+
+    setTimeout(() => {
+      console.log(this.state, "THIS IS SERVER DATA ");
+
+    }, 3000);
   }
 
   // onChange(e) {
@@ -156,68 +184,63 @@ class PersonalDetails extends React.Component {
   };
 
   submitHandler = () => {
+    // console.log("YO :::::: ", this.state.Emp_ID);
+    localStorage.setItem("empID", this.state.Emp_ID);
+    localStorage.setItem("totalAttempt", 0);
     // e.preventDefault();
-    this.componentMount();
+    // this.componentMount();
     // console.log("token", this.state.jwtToken + "empId " + this.state.userId);
-    axios
-      .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.Emp_ID)
+
+
+    const myData = {
+      height: this.state.height,
+      weight: this.state.weight
+    };
+    // console.log("this is submit calling", myData);
+    axios({
+      method: "put",
+      url: "https://jazzfit-api.herokuapp.com/emp/body/" + this.state.empId,
+      data: myData
+    })
       .then(response => {
+        // console.log(response.data.jwtToken);
+        // console.log("response.data.success is: ", response.data.status);
+
         if (response.data.status) {
-          // console.log('::::::::::::::::::::::::   ', this.state.userId);
-          // console.log("totalAttempt", response.data.data[0].totalAttempt);
-          if (response.data.data[0].totalAttempt === 0) {
-            localStorage.setItem("empID", this.state.userId);
-            Swal.fire(
-              "",
-              "You have not completed the survey please fill again !",
-              "info"
-            );
-            this.props.myNext1();
-          } else {
-            localStorage.setItem("empID", this.state.userId);
-            Swal.fire("Good job!", "You have completed the survey !", "info");
-            this.props.myNext1();
-            this.props.myNext1();
-          }
-        } else {
-          const myData = {
-            Emp_Name: this.state.Emp_Name,
-            Emp_ID: this.state.Emp_ID,
-            Department: this.state.Department,
-            height: this.state.height,
-            weight: this.state.weight,
-            Email: this.state.Email,
-            DOB: "21/05/1988",
-            Gender: this.state.Gender,
-            totalAttempt: 0
-          };
-          // console.log("this is submit calling", myData);
-          axios({
-            method: "post",
-            url: "https://jazzfit-api.herokuapp.com/emp/",
-            data: myData
-          })
+
+          // this.props.myNext1();
+
+          axios
+            .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.Emp_ID)
             .then(response => {
-              // console.log(response.data.jwtToken);
-              // console.log("response.data.success is: ", response.data.status);
-
-              if (response.data.status === true) {
-                message.success("user added successfully");
-
-                localStorage.setItem("empID", response.data.data.empId);
-                localStorage.setItem("totalAttempt", 0);
-                this.props.myNext1();
-
-                this.setState({
-                  iconLoading: false,
-                  loading: false
-                });
+              if (response.data.status) {
+                // console.log('::::::::::::::::::::::::   ', this.state.userId);
+                // console.log("totalAttempt", response.data.data[0].totalAttempt);
+                if (response.data.data[0].totalAttempt === 0) {
+                  localStorage.setItem("empID", this.state.Emp_ID);
+                  Swal.fire(
+                    "",
+                    "Survey is starting!",
+                    "info"
+                  );
+                  this.props.myNext1();
+                } else {
+                  localStorage.setItem("empID", this.state.Emp_ID);
+                  Swal.fire("Good job!", "You have completed the survey !", "info");
+                  this.props.myNext1();
+                  this.props.myNext1();
+                }
               }
             })
             .catch(error => {
               // console.log(error.message);
               Swal.fire("Ooppss!", "Something went wrong try again!", "error");
+              this.setState({
+                iconLoading: false,
+                loading: false
+              });
             });
+
           this.setState({
             iconLoading: false,
             loading: false
@@ -242,11 +265,13 @@ class PersonalDetails extends React.Component {
     callback();
   };
 
-  onButtonclick = e => {
-    e.preventDefault();
+  onButtonclick = (gender) => {
+    // e.preventDefault();
+    console.log("After click ", gender);
+
     // console.log("value of button ", e.currentTarget.value);
     this.setState({
-      Gender: e.currentTarget.value
+      Gender: gender
     });
   };
 
@@ -264,7 +289,8 @@ class PersonalDetails extends React.Component {
       Email,
       DOB,
       height,
-      weight
+      weight,
+      Gender
     } = this.state;
     const pressed = "primary";
 
@@ -298,29 +324,17 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("Emp_Name", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Please input your Full Name"
-                      },
-                      {
-                        validator: this.validateToNextPassword
-                      }
-                    ]
-                  })(
-                    <Input
-                      type="text"
-                      size="large"
-                      name="Emp_Name"
-                      ////disabled
-                      placeholder="Danyal Shaikh"
-                      value={this.state.Emp_Name}
-                      // {this.state.name}
-                      onChange={this.ChangeHandler}
-                      ref={this.myVideo}
-                    />
-                  )}
+
+                  <Input
+                    type="text"
+                    size="large"
+                    name="Emp_Name"
+                    disabled
+                    value={Emp_Name}
+                    // {this.state.name}
+                    onChange={this.ChangeHandler}
+                    ref={this.myVideo}
+                  />
                 </Form.Item>
               </div>
             </div>
@@ -331,29 +345,19 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("Emp_ID", {
-                    rules: [
-                      {
-                        required: true,
-                        message: "Please Enter Employee ID"
-                      },
-                      {
-                        validator: this.validateToNextPassword
-                      }
-                    ]
-                  })(
-                    <Input
-                      type="text"
-                      size="large"
-                      name="Emp_ID"
-                      ////disabled
-                      placeholder="112225"
-                      // {this.state.userId}
-                      value={this.state.Emp_ID}
-                      onChange={this.onempIdChange}
 
-                    ></Input>
-                  )}
+                  <Input
+                    type="text"
+                    size="large"
+                    name="Emp_ID"
+                    disabled
+                    placeholder="112225"
+                    // {this.state.userId}
+                    value={Emp_ID}
+                    onChange={this.onempIdChange}
+
+                  ></Input>
+
                 </Form.Item>
               </div>
             </div>
@@ -368,9 +372,9 @@ class PersonalDetails extends React.Component {
                     type="text"
                     size="large"
                     name="Department"
-                    //disabled
+                    disabled
                     placeholder="Development"
-                    value={this.state.Department}
+                    value={Department}
                     onChange={this.onDepartmentChange}
                   ></Input>
                 </Form.Item>
@@ -402,9 +406,9 @@ class PersonalDetails extends React.Component {
                     type="text"
                     size="large"
                     name="DOB"
-                    //disabled
+                    disabled
                     placeholder="1965-05-15"
-                    value={this.state.DOB}
+                    value={DOB}
                     onChange={this.onChange}
                   ></Input>
                 </Form.Item>
@@ -418,29 +422,35 @@ class PersonalDetails extends React.Component {
               <div className="flex-item flex1">
                 <Form.Item style={{ width: "100%" }}>
                   <Button
+                    className={(Gender === 'Male') ? "activeGender" : ""}
                     type="dashed"
                     size="large"
                     value="Male"
+                    disabled
                     style={{ margin: "1% 1% 1% 1%", width: "31.2%" }}
-                    onClick={this.onButtonclick}
+                    onClick={(e) => this.onButtonclick(e.target.value)}
                   >
                     Male
                   </Button>
                   <Button
+                    className={(Gender === 'Female') ? "activeGender" : ""}
                     type="dashed"
                     size="large"
                     value="Female"
+                    disabled
                     style={{ margin: "1% 1% 1% 1%", width: "31.2%" }}
-                    onClick={this.onButtonclick}
+                    onClick={(e) => this.onButtonclick(e.target.value)}
                   >
                     Female
                   </Button>
                   <Button
+                    className={(Gender === 'Other') ? "activeGender" : ""}
                     type="dashed"
                     size="large"
                     value="Other"
+                    disabled
                     style={{ margin: "1% 1% 1% 1%", width: "31.2%" }}
-                    onClick={this.onButtonclick}
+                    onClick={(e) => this.onButtonclick(e.target.value)}
                   >
                     Other
                   </Button>
@@ -461,30 +471,19 @@ class PersonalDetails extends React.Component {
               </div>
               <div className="flex-item flex1">
                 <Form.Item hasFeedback>
-                  {getFieldDecorator("Email", {
-                    rules: [
-                      {
-                        type: "email",
-                        message: "The input is not valid E-mail!"
-                      },
-                      {
-                        validator: this.validateToNextPassword
-                      }
-                    ]
-                  })(
-                    <Input
-                      prefix={<Icon type="mail" style={{ paddingTop: "9px" }} />}
 
-                      placeholder="Enter Email Address"
-                      name="Email"
-                      size="large"
-                      //disabled
-                      placeholder="dev@hoola.tech"
-                      required
-                      value={this.state.Email}
-                      onChange={this.onEmailChange}
-                    ></Input>
-                  )}
+                  <Input
+                    prefix={<Icon type="mail" style={{ paddingTop: "9px" }} />}
+
+                    placeholder="Enter Email Address"
+                    name="Email"
+                    size="large"
+                    disabled
+                    placeholder="dev@hoola.tech"
+                    required
+                    value={this.state.Email}
+                    onChange={this.onEmailChange}
+                  ></Input>
                 </Form.Item>
               </div>
             </div>

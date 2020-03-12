@@ -16,7 +16,11 @@ body {
 }
 
 
-
+.activeGender {
+  color: #e02d2d !important;
+  background-color: #fff !important;
+  border-color: #e02d2d !important;
+}
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

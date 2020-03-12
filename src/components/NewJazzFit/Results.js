@@ -178,7 +178,7 @@ class Results extends React.Component {
               </Col>
             </Row>
             <Row gutter={24}>
-              <Link target="_blank" to="/summary">
+              <Link target="_blank" to={`/summary/${localStorage.getItem("empID")}`}>
                 <Col
                   xs={{ span: 24 }}
                   lg={{ span: 24 }}

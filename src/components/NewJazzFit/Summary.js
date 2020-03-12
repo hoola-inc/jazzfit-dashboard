@@ -301,7 +301,7 @@ class Summary extends React.Component {
 
 
     const empid = localStorage.getItem("empID");
-    // // console.log("emp id", empid);
+    console.log("emp id", empid);
 
     axios
       .get("https://jazzfit-api.herokuapp.com/refreshtoken/" + empid)
