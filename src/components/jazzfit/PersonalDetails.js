@@ -191,70 +191,81 @@ class PersonalDetails extends React.Component {
     // this.componentMount();
     // console.log("token", this.state.jwtToken + "empId " + this.state.userId);
 
+    if (this.state.height === "" || this.state.weight === "") {
+      Swal.fire(
+        "",
+        "Height and Weight required!",
+        "error"
+      );
+      this.setState({
+        iconLoading: false,
+        loading: false
+      });
+    } else {
+      const myData = {
+        height: this.state.height,
+        weight: this.state.weight
+      };
+      // console.log("this is submit calling", myData);
+      axios({
+        method: "put",
+        url: "https://jazzfit-api.herokuapp.com/emp/body/" + this.state.empId,
+        data: myData
+      })
+        .then(response => {
+          // console.log(response.data.jwtToken);
+          // console.log("response.data.success is: ", response.data.status);
 
-    const myData = {
-      height: this.state.height,
-      weight: this.state.weight
-    };
-    // console.log("this is submit calling", myData);
-    axios({
-      method: "put",
-      url: "https://jazzfit-api.herokuapp.com/emp/body/" + this.state.empId,
-      data: myData
-    })
-      .then(response => {
-        // console.log(response.data.jwtToken);
-        // console.log("response.data.success is: ", response.data.status);
+          if (response.data.status) {
 
-        if (response.data.status) {
+            // this.props.myNext1();
 
-          // this.props.myNext1();
-
-          axios
-            .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.Emp_ID)
-            .then(response => {
-              if (response.data.status) {
-                // console.log('::::::::::::::::::::::::   ', this.state.userId);
-                // console.log("totalAttempt", response.data.data[0].totalAttempt);
-                if (response.data.data[0].totalAttempt === 0) {
-                  localStorage.setItem("empID", this.state.Emp_ID);
-                  Swal.fire(
-                    "",
-                    "Survey is starting!",
-                    "info"
-                  );
-                  this.props.myNext1();
-                } else {
-                  localStorage.setItem("empID", this.state.Emp_ID);
-                  Swal.fire("Good job!", "You have completed the survey !", "info");
-                  this.props.myNext1();
-                  this.props.myNext1();
+            axios
+              .get("https://jazzfit-api.herokuapp.com/checkemp/" + this.state.Emp_ID)
+              .then(response => {
+                if (response.data.status) {
+                  // console.log('::::::::::::::::::::::::   ', this.state.userId);
+                  // console.log("totalAttempt", response.data.data[0].totalAttempt);
+                  if (response.data.data[0].totalAttempt === 0) {
+                    localStorage.setItem("empID", this.state.Emp_ID);
+                    Swal.fire(
+                      "",
+                      "Survey is starting!",
+                      "info"
+                    );
+                    this.props.myNext1();
+                  } else {
+                    localStorage.setItem("empID", this.state.Emp_ID);
+                    Swal.fire("Good job!", "You have completed the survey !", "info");
+                    this.props.myNext1();
+                    this.props.myNext1();
+                  }
                 }
-              }
-            })
-            .catch(error => {
-              // console.log(error.message);
-              Swal.fire("Ooppss!", "Something went wrong try again!", "error");
-              this.setState({
-                iconLoading: false,
-                loading: false
+              })
+              .catch(error => {
+                // console.log(error.message);
+                Swal.fire("Ooppss!", "Something went wrong try again!", "error");
+                this.setState({
+                  iconLoading: false,
+                  loading: false
+                });
               });
-            });
 
+            this.setState({
+              iconLoading: false,
+              loading: false
+            });
+          }
+        })
+        .catch(error => {
+          // console.log(error.message);
+          Swal.fire("Ooppss!", "Something went wrong try again!", "error");
           this.setState({
             iconLoading: false,
             loading: false
           });
-        }
-      })
-      .catch(error => {
-        // console.log(error.message);
-        Swal.fire("Ooppss!", "Something went wrong try again!", "error");
-        this.setState({
-          iconLoading: false,
-          loading: false
         });
-      });
+    }
   };
 
   validateToNextPassword = (rule, value, callback) => {
